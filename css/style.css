@@ -723,3 +723,54 @@ form .input-box input {
     padding: 0.8rem 1.8rem; /* Botões maiores */
   }
 }
+
+/* Responsividade para dispositivos móveis */
+@media (max-width: 576px) {
+  .pdf-item iframe {
+    width: 100%;  /* O iframe vai ocupar toda a largura da tela */
+    height: 400px;  /* Ajuste a altura conforme necessário para dispositivos móveis */
+  }
+
+  .pdf-item h3 {
+    font-size: 1.2rem;  /* Reduz o tamanho do título dos certificados */
+  }
+
+  .pdf-item .btn {
+    font-size: 0.9rem;  /* Ajusta o tamanho do botão de download */
+    padding: 0.5rem 1rem;
+  }
+}
+
+/* Estilos para tablets */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .pdf-item iframe {
+    width: 90%;  /* O iframe vai ocupar 90% da tela em tablets */
+    height: 500px;  /* Altura ajustada para tablets */
+  }
+
+  .pdf-item h3 {
+    font-size: 1.4rem;  /* Ajuste o tamanho do título dos certificados */
+  }
+
+  .pdf-item .btn {
+    font-size: 1rem;  /* Ajuste o tamanho do botão de download */
+    padding: 0.7rem 1.5rem;
+  }
+}
+
+/* Estilos para notebooks */
+@media (min-width: 992px) {
+  .pdf-item iframe {
+    width: 80%;  /* O iframe vai ocupar 80% da tela em notebooks */
+    height: 600px;  /* Altura ajustada para notebooks */
+  }
+
+  .pdf-item h3 {
+    font-size: 1.6rem;  /* Ajuste o tamanho do título dos certificados */
+  }
+
+  .pdf-item .btn {
+    font-size: 1.1rem;  /* Ajuste o tamanho do botão de download */
+    padding: 0.8rem 1.8rem;
+  }
+}
