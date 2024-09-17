@@ -392,7 +392,7 @@ transform: translate(0, -0.65rem) rotate(45deg);
 
 /*====== media queries=====*/
 
-@media (min-width: 0px){
+@media (min-width: 0px) {
   .menu-hamburguer{
     display:block
   }
@@ -405,6 +405,7 @@ transform: translate(0, -0.65rem) rotate(45deg);
     font-size: 1.2rem;
     margin: 0.5rem 0;
   }
+}
 section {
   padding: 6rem 2.5rem;
 }
@@ -440,7 +441,7 @@ section {
   width: 100%;
 }
 
-}
+
 
 /*small smart*/
 
@@ -528,3 +529,197 @@ form .input-box input {
 
 
 /*====== /media queries=====*/
+
+@media (max-width: 576px) {
+  body {
+    font-size: 0.9rem;
+  }
+
+  .home-content h1, .about-content h1 {
+    font-size: 1.8rem;
+  }
+
+  .home-content p, .about-content p {
+    font-size: 1rem;
+    margin: 0.5rem;
+  }
+
+  section {
+    padding: 4rem 1rem;  /* Reduz o padding lateral */
+  }
+
+  .services-container {
+    gap: 0.5rem;
+  }
+
+  .services-box {
+    padding: 1.5rem;
+    width: 90%;
+  }
+
+  .portfolio-container {
+    grid-template-columns: 1fr;  /* Ajusta para uma coluna em telas pequenas */
+  }
+
+  .home-img, .about-img {
+    max-width: 100%;  /* Imagens responsivas para caber melhor em telas pequenas */
+  }
+
+  .menu-hamburguer {
+    width: 30px; /* Reduz o tamanho do menu em telas pequenas */
+    height: 25px;
+  }
+
+  .nav-responsive a {
+    font-size: 1rem;
+    padding: 0.5rem; /* Ajusta o tamanho do menu */
+  }
+}
+
+@media (max-width: 576px) {
+  .pdf-item embed {
+    width: 100%;  /* Ajusta a largura do PDF para 100% da tela */
+    height: auto; /* Mantém a proporção da altura */
+  }
+
+  .pdf-item h3 {
+    font-size: 1.2rem;  /* Ajusta o tamanho dos títulos dos certificados */
+  }
+
+  .pdf-item .btn {
+    font-size: 0.9rem;  /* Ajusta o tamanho do botão de download */
+    padding: 0.5rem 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .services-container {
+    flex-direction: column;  /* Empilha as caixas de serviços em vez de deixá-las lado a lado */
+    align-items: center;     /* Centraliza as caixas */
+    gap: 1rem;               /* Adiciona um espaçamento entre as caixas */
+  }
+
+  .services-box {
+    width: 90%;              /* Ajusta a largura para 90% da tela */
+    padding: 1.5rem;         /* Reduz o padding interno das caixas */
+  }
+
+  .services-box h3 {
+    font-size: 1.2rem;       /* Reduz o tamanho da fonte para os títulos */
+  }
+
+  .services-box p {
+    font-size: 0.9rem;       /* Reduz o tamanho da fonte para o texto */
+  }
+
+  .services-box i {
+    font-size: 3rem;         /* Diminui o ícone para se ajustar melhor ao espaço */
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  /* Ajustes gerais */
+  body {
+    font-size: 1rem; /* Tamanho de fonte ligeiramente maior */
+  }
+
+  .home-content h1, .about-content h1 {
+    font-size: 2.5rem; /* Ajusta o tamanho das fontes principais */
+  }
+
+  .home-content p, .about-content p {
+    font-size: 1.1rem;
+  }
+
+  /* Ajustes para a seção "Our Services" */
+  .services-container {
+    flex-direction: row; /* Mantém as caixas lado a lado */
+    justify-content: space-around; /* Espaçamento entre as caixas */
+  }
+
+  .services-box {
+    width: 45%; /* Caixas ficam lado a lado com uma largura maior em tablets */
+    padding: 2rem; /* Mais espaço interno nas caixas */
+  }
+
+  .services-box h3 {
+    font-size: 1.4rem;
+  }
+
+  .services-box p {
+    font-size: 1rem;
+  }
+
+  .services-box i {
+    font-size: 3.5rem; /* Ícones ligeiramente menores */
+  }
+
+  /* PDFs ajustados */
+  .pdf-item embed {
+    width: 90%; /* PDFs ocupam 90% da tela em tablets */
+    height: 600px; /* Ajusta a altura dos PDFs */
+  }
+
+  .pdf-item h3 {
+    font-size: 1.5rem; /* Ajusta o título dos PDFs */
+  }
+
+  .pdf-item .btn {
+    font-size: 1rem;
+    padding: 0.7rem 1.5rem; /* Botões maiores */
+  }
+}
+
+
+@media (min-width: 992px) and (max-width: 1200px) {
+  /* Ajustes gerais */
+  body {
+    font-size: 1.1rem;
+  }
+
+  .home-content h1, .about-content h1 {
+    font-size: 2.7rem;
+  }
+
+  .home-content p, .about-content p {
+    font-size: 1.2rem;
+  }
+
+  /* Ajustes para a seção "Our Services" */
+  .services-container {
+    flex-direction: row; /* Caixas lado a lado */
+    justify-content: space-evenly; /* Espaçamento maior entre as caixas */
+  }
+
+  .services-box {
+    width: 40%; /* Caixas mais largas em notebooks */
+    padding: 2.5rem; /* Mais espaço nas caixas */
+  }
+
+  .services-box h3 {
+    font-size: 1.6rem;
+  }
+
+  .services-box p {
+    font-size: 1.1rem;
+  }
+
+  .services-box i {
+    font-size: 4rem; /* Ícones maiores */
+  }
+
+  /* PDFs ajustados */
+  .pdf-item embed {
+    width: 80%; /* PDFs ocupam 80% da tela em notebooks */
+    height: 650px; /* Altura ajustada */
+  }
+
+  .pdf-item h3 {
+    font-size: 1.6rem;
+  }
+
+  .pdf-item .btn {
+    font-size: 1.1rem;
+    padding: 0.8rem 1.8rem; /* Botões maiores */
+  }
+}
