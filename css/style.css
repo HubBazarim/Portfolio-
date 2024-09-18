@@ -64,6 +64,10 @@ color: var(--text-color);
 font-weight: 600;
 cursor: default;
 }
+.project-details {
+  padding-top: 8rem; /* Adiciona mais espaço no topo para evitar que o título seja cortado */
+  margin-top: 2rem;  /* Adiciona margem extra no topo */
+}
 
 .nav-responsive {
   display: none;
@@ -624,8 +628,10 @@ form .input-box input {
 
 @media (min-width: 768px) and (max-width: 1024px) {
   /* Ajustes gerais */
+  
   body {
     font-size: 1rem; /* Tamanho de fonte ligeiramente maior */
+    
   }
 
   .home-content h1, .about-content h1 {
@@ -747,6 +753,14 @@ form .input-box input {
     padding: 0.5rem 1rem;
   }
 
+  .pdf-item img {
+    width: 100%;   /* As imagens vão ocupar toda a largura do contêiner */
+    height: auto;  /* A altura será ajustada automaticamente para manter a proporção */
+    border: 1px solid #ddd; /* (Opcional) Adiciona uma borda leve ao redor da imagem */
+    border-radius: 5px; /* (Opcional) Bordas arredondadas para um visual mais elegante */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* (Opcional) Sombras leves para destaque */
+  }
+  
 
 /* Estilos para tablets */
 @media (min-width: 768px) and (max-width: 1024px) {
@@ -779,5 +793,29 @@ form .input-box input {
   .pdf-item .btn {
     font-size: 1.1rem;  /* Ajuste o tamanho do botão de download */
     padding: 0.8rem 1.8rem;
+  }
+}
+
+/* Ajuste padrão para telas grandes (desktops) */
+.pdf-item img {
+  width: 50%;  /* As imagens ocuparão 50% da largura no desktop */
+  height: auto; /* Mantém a proporção correta */
+  max-width: 600px; /* Limita o tamanho máximo */
+  margin: 0 auto; /* Centraliza a imagem */
+}
+
+/* Ajuste para tablets (entre 768px e 1024px) */
+@media (max-width: 1024px) {
+  .pdf-item img {
+    width: 70%;  /* As imagens ocuparão 70% da largura no tablet */
+    height: auto;
+  }
+}
+
+/* Ajuste para celulares (até 768px) */
+@media (max-width: 768px) {
+  .pdf-item img {
+    width: 90%;  /* As imagens ocuparão 90% da largura no celular */
+    height: auto;
   }
 }
