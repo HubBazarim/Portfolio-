@@ -11,27 +11,51 @@
 
   <!-- Inclua o mesmo cabeçalho da sua página principal -->
   <header>
-    <a href="#" class="logo">Portfolio</a>
-
+    <a href="index.html" class="logo">Victor Bazarim</a>
     <div class="nav">
-      <a href="#home">Home</a>
-      <a href="#services">Services</a>
-      <a href="#portfolio">Portfolio</a>
-     <!--<a href="#contact">Contact</a>-->
-      <a href="#about">About</a>
+      <a href="index.html#home">Home</a>
+      <a href="index.html#services">Services</a>
+      <a href="index.html#portfolio">Portfolio</a>
+      <a href="index.html#about">About</a>
+    </div>
+  
+    <div class="menu-hamburguer">
+      <div class="bar1"></div>
+      <div class="bar2"></div>
+      <div class="bar3"></div>
+    </div>
+  
+    <!-- Adicione o menu responsivo aqui -->
+    <div class="nav-responsive">
+      <a href="index.html#home">Home</a>
+      <a href="index.html#services">Services</a>
+      <a href="index.html#portfolio">Portfolio</a>
+      <a href="index.html#about">About</a>
     </div>
   </header>
-
+  
   <!-- Conteúdo do projeto específico -->
   <section class="project-details">
-    <h1>Detalhes do Projeto 3</h1>
+    <h1>Detalhes do Projeto 1</h1>
     <p>Projetos em construção!.</p>
   </section>
 
   <!-- Inclua o mesmo rodapé da página principal -->
-  <footer>
+   <!-- Rodapé igual ao da página principal -->
+   <footer>
     <p>Contact: <span>queirozvitor11@gmail.com</span>/ Copyright &copy; 2024 by &lt;/Victor&gt;. All Rights Reserved.</p>
-   </footer>
-
-</body>
-</html>
+  </footer>
+  
+  <!-- Adicione o script aqui -->
+  <script>
+    const menuHamburguer = document.querySelector('.menu-hamburguer');
+    const navResponsive = document.querySelector('.nav-responsive');
+  
+    menuHamburguer.addEventListener('click', () => {
+      menuHamburguer.classList.toggle('change');
+      navResponsive.classList.toggle('nav-visible');  // Adiciona ou remove a classe que exibe o menu
+    });
+  </script>
+  </body>
+  </html>
+  
