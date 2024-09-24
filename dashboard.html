@@ -35,8 +35,18 @@
   
   <!-- Conteúdo do projeto específico -->
   <section class="project-details">
-    <h1>Detalhes do Projeto 1</h1>
-    <p>Projetos em construção!.</p>
+    <h1><span>Amostra dos Dashboard feitos </span></h1>
+
+     <!-- Certificado 1 -->
+   <div class="pdf-item">
+    <h2>Dashboard Gestão de Vendas</h2>
+    <!-- Exibe a imagem ao invés do PDF -->
+    <img src="img/Primeiro Dash_page-0001.jpg" alt="Dashboard Gestão de Vendas">
+    
+    <!-- Mantém o botão para download do pbix -->
+    <a href="pdfs/dashboard/Primeiro-Dash.pbix" download class="btn">Baixar Dashboard</a>
+  </div>
+  
   </section>
 
   <!-- Inclua o mesmo rodapé da página principal -->
@@ -55,6 +65,15 @@
       navResponsive.classList.toggle('nav-visible');  // Adiciona ou remove a classe que exibe o menu
     });
   </script>
+
+<script>
+  const img = document.querySelector('.pdf-item img');
+  
+  img.addEventListener('click', () => {
+    img.classList.toggle('zoomed');
+  });
+</script>
+
   </body>
   </html>
   

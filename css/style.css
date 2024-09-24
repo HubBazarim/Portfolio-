@@ -129,7 +129,7 @@ border-image: linear-gradient(135deg, transparent 50%, var(--main-color)) 1;
 }
 
 .about {
-  background-color: var(--bg-color-02);
+  background-color: var(--bg-color-01);
 }
 
 .home-content, .about-content {
@@ -818,4 +818,34 @@ form .input-box input {
     width: 90%;  /* As imagens ocuparão 90% da largura no celular */
     height: auto;
   }
+}
+
+/* Efeito de zoom ao passar o mouse (somente em telas maiores) */
+@media (min-width: 768px) {
+  .pdf-item img {
+    transition: transform 0.3s ease; /* Suaviza a transição de zoom */
+  }
+
+  .pdf-item img:hover {
+    transform: scale(1.2); /* Aumenta a imagem em 20% ao passar o mouse */
+    cursor: zoom-in;
+  }
+}
+
+/* Zoom interativo ao clicar (somente em telas maiores) */
+@media (min-width: 768px) {
+  .pdf-item img.zoomed {
+    transform: scale(2); /* Aumenta o tamanho da imagem em 200% ao clicar */
+    cursor: zoom-out; /* Cursor muda para "zoom-out" */
+    position: relative;
+    z-index: 1000;
+  }
+}
+.project-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.pdf-item {
+  margin-top: 20px;
 }
