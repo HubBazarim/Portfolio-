@@ -936,3 +936,21 @@ form .input-box input {
     max-width: 150px;
   }
 }
+
+/* Ajuste no logo e header para telas pequenas */
+@media (max-width: 576px) {
+  .logo {
+    font-size: 1.4rem; /* Diminui o tamanho da fonte do nome Victor Bazarim */
+    white-space: nowrap; /* Evita quebra de linha no nome */
+  }
+
+  header {
+    padding: 0.8rem; /* Diminui o espaçamento em torno do logo */
+  }
+
+  .home-content h1 {
+    font-size: 2rem; /* Ajusta o tamanho do título */
+    padding: 0 10px; /* Adiciona espaçamento lateral */
+    text-align: center; /* Centraliza o texto */
+  }
+}
