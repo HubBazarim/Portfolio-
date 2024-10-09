@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projeto 1</title>
+  <!-- Link correto para o CSS, verifique se o nome do arquivo está certo -->
+  <link rel="stylesheet" href="css/style.css"> 
+</head>
+<body>
+
+ <!-- Cabeçalho semelhante ao da página principal -->
+ <header>
+  <a href="index.html" class="logo">Victor Bazarim</a>
+  <div class="nav">
+    <a href="index.html#home">Home</a>
+    <a href="index.html#services">Services</a>
+    <a href="index.html#portfolio">Portfolio</a>
+    <a href="index.html#about">About</a>
+  </div>
+  
+  <div class="menu-hamburguer">
+    <div class="bar1"></div>
+    <div class="bar2"></div>
+    <div class="bar3"></div>
+  </div>
+
+  <div class="nav-responsive">
+    <a href="index.html#home">Home</a>
+    <a href="index.html#services">Services</a>
+    <a href="index.html#portfolio">Portfolio</a>
+    <a href="index.html#about">About</a>
+  </div>
+</header>
+
+<!-- Seção de Detalhes do Projeto -->
+<section class="project-overview">
+  <h1>Detalhes do Robô de Automação de Tarefas</h1>
+  <p>Este robô foi desenvolvido com o objetivo de automatizar tarefas repetitivas utilizando Python. <br>Abaixo, você pode conferir o vídeo de funcionamento e o script utilizado para este projeto.</p>
+
+  <!-- Vídeo de funcionamento -->
+  <h3>Vídeo de Funcionamento:</h3>
+  <video width="600" controls>
+    <source src="videos/funcionamento.mp4.mp4" type="video/mp4"> <!-- Coloque o caminho correto do vídeo -->
+  </video>
+
+  <!-- Botão para visualizar ou baixar o script -->
+  <h3>Script do Projeto:</h3>
+  <a href="scripts/scripts.py.zip" download class="btn" >Baixar Script</a> <!-- Botão de Download do Script -->
+
+  <a href="scripts/scripts.py.zip" target="_blank" class="btn">Visualizar Script</a> <!-- Botão para Visualizar Script -->
+</section>
+
+<Section>
+
+  <div>
+     <h3>Funcionamento do <span>Robô de Automação de Tarefas</span></h3>
+     <p>
+      Robô de Cadastro com Python e PyAutoGUI<br><br>
+      Este projeto foi desenvolvido durante minhas aulas de Python da Hashtag, onde aprendi a utilizar a biblioteca PyAutoGUI para automação de tarefas no computador. A ferramenta permite simular ações como escrever textos, pressionar teclas, clicar e realizar combinações de teclas. No projeto, automatizamos o cadastro de produtos em um sistema online.<br><br>
+      
+      Passo a Passo do Projeto:<br>
+      <span>Passo 1:</span> Entrar no sistema da empresa<br><br>
+      
+      Na aula, foi ensinado a abrir o Windows Explorer e, em seguida, o Google Chrome. No entanto, achei mais eficiente abrir o navegador padrão diretamente, independente de qual seja, utilizando a função subprocess.run() para isso. Outra alternativa seria o uso da biblioteca webbrowser, que também pode abrir um link no navegador padrão:<br>
+      <pre><code>
+    import webbrowser
+    webbrowser.open('https://dlp.hashtagtreinamentos.com/python/intensivao/login')
+      </code></pre><br>
+      
+      <span>Passo 2:</span> Fazer login no sistema<br><br>
+    
+      Utilizei o PyAutoGUI para simular o preenchimento dos campos de e-mail e senha no formulário de login e, em seguida, clicar no botão de login.<br><br>
+    
+      <span>Passo 3:</span> Importar a base de produtos<br><br>
+    
+      A base de produtos a ser cadastrada foi carregada a partir de um arquivo CSV usando a biblioteca Pandas. Isso permite a manipulação dos dados de forma eficiente.<br><br>
+    
+      <span>Passo 4:</span> Cadastro automático de produtos<br><br>
+    
+      O robô percorre cada linha da tabela de produtos e preenche os campos correspondentes no sistema, como código, marca, tipo, categoria, preço unitário, custo, e observações. Após o preenchimento, ele envia o formulário e repete o processo até o final da lista.<br><br>
+    
+      <span>Passo 5:</span> Repetição do processo até o fim da lista<br><br>
+    
+      O robô é programado para rolar a página para cima após cada envio, preparando a tela para o próximo cadastro.<br><br>
+    
+      Observações Importantes:<br>
+      Posições de "clicks" do mouse: As coordenadas usadas para clicar nos campos da tela podem variar conforme a resolução do monitor e a interface do sistema. Caso necessário, é importante ajustar os valores de x e y nas funções pyautogui.click().<br>
+      Parar o programa: Caso o robô precise ser interrompido durante a execução, basta mover o mouse para o canto superior esquerdo da tela, uma função de segurança embutida no PyAutoGUI chamada FAILSAFE.<br><br>
+    
+      Ferramentas Utilizadas:<br>
+      PyAutoGUI: Para automação das interações com a interface gráfica do sistema.<br>
+      Pandas: Para manipulação e leitura dos dados do CSV.<br><br>
+    
+      Essa aula foi fundamental para meu aprendizado no uso do PyAutoGUI, que se mostrou uma ferramenta muito interessante para automação de tarefas repetitivas.<br><br>
+    </p>
+    
+  
+  </div>
+
+</Section>
+   <!-- Rodapé igual ao da página principal -->
+   <footer>
+    <p>Contact: <span>queirozvitor11@gmail.com</span>/ Copyright &copy; 2024 by &lt;/Victor&gt;. All Rights Reserved.</p>
+  </footer>
+  
+  <!-- Adicione o script aqui -->
+  <script>
+    const menuHamburguer = document.querySelector('.menu-hamburguer');
+    const navResponsive = document.querySelector('.nav-responsive');
+  
+    menuHamburguer.addEventListener('click', () => {
+      menuHamburguer.classList.toggle('change');
+      navResponsive.classList.toggle('nav-visible');  // Adiciona ou remove a classe que exibe o menu
+    });
+  </script>
+  </body>
+  </html>
+  

@@ -849,3 +849,90 @@ form .input-box input {
 .pdf-item {
   margin-top: 20px;
 }
+
+.project-overview img {
+  width: 100%; /* Ou ajuste para a largura desejada */
+  max-width: 600px; /* Define um tamanho máximo */
+  height: auto; /* Mantém a proporção correta */
+  float: left; /* Coloca a imagem no canto esquerdo */
+  display: block;
+}
+/* Estilos globais */
+* { 
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Estilos da imagem na seção de projeto */
+.project-overview img {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  float: left;
+  display: block;
+  margin-bottom: 1rem; /* Espaço abaixo da imagem */
+}
+
+/* Estilos para o botão */
+.project-overview .btn {
+  display: inline-block;
+  padding: 0.7rem 1.8rem;
+  background-color: var(--main-color);
+  border-radius: 2rem;
+  color: var(--bg-color-02);
+  font-weight: 600;
+  letter-spacing: 0.1rem;
+  transition: 0.3s ease;
+  clear: both; /* Garante que o botão fique abaixo da imagem */
+  margin-top: 1rem; /* Espaço acima do botão */
+  text-align: center;
+  width: auto; /* Ajuste automático do tamanho */
+  max-width: 150px; /* Limita a largura máxima */
+}
+
+.project-overview .btn:hover {
+  box-shadow: 0 0 0.3rem var(--main-color);
+  background-color: inherit;
+  color: var(--main-color);
+  cursor: pointer;
+}
+
+/* Estilos para o vídeo */
+.project-overview video {
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+  margin-bottom: 2rem;
+}
+
+/* Responsividade para celulares */
+@media (max-width: 576px) {
+  .project-overview img {
+    max-width: 100%;
+  }
+
+  .project-overview video {
+    max-width: 100%;
+  }
+
+  .project-overview .btn {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+/* Responsividade para tablets */
+@media (min-width: 577px) and (max-width: 1024px) {
+  .project-overview img {
+    max-width: 80%;
+  }
+
+  .project-overview video {
+    max-width: 90%;
+  }
+
+  .project-overview .btn {
+    max-width: 150px;
+  }
+}

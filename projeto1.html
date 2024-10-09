@@ -3,13 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projeto 1</title>
-  <!-- Link correto para o CSS, verifique se o nome do arquivo está certo -->
-  <link rel="stylesheet" href="css/style.css"> 
+  <title>Projeto de Automação</title>
+  <link rel="stylesheet" href="css/style.css"> <!-- Verifique se o caminho do CSS está correto -->
 </head>
 <body>
 
-  <!-- Inclua o mesmo cabeçalho da sua página principal -->
+  <!-- Cabeçalho da página principal -->
   <header>
     <a href="index.html" class="logo">Victor Bazarim</a>
     <div class="nav">
@@ -32,29 +31,34 @@
       <a href="index.html#about">About</a>
     </div>
   </header>
-  
-  <!-- Conteúdo do projeto específico -->
-  <section class="project-details">
-    <h1>Detalhes do Projeto 1</h1>
-    <p>Projetos em construção!.</p>
+
+  <!-- Conteúdo do projeto de automação -->
+  <section class="project-overview">
+    <h1>Robô de Automação de Tarefas</h1>
+    <p>
+      Este robô foi desenvolvido para automatizar tarefas repetitivas utilizando Python.<br>
+  Na página "Ver Detalhes", estará disponível o script e o vídeo mostrando o robô em ação,<br>
+  além do passo a passo de como utilizá-lo.
+    </p>
+    <img src="img/paginarobo.jpg" alt="Robo de automação de tarefas" >
+    <a href="detalhes-projeto.html" class="btn">Ver Detalhes</a> <!-- Botão para a nova página -->
+
   </section>
 
-  <!-- Inclua o mesmo rodapé da página principal -->
-   <!-- Rodapé igual ao da página principal -->
-   <footer>
-    <p>Contact: <span>queirozvitor11@gmail.com</span>/ Copyright &copy; 2024 by &lt;/Victor&gt;. All Rights Reserved.</p>
+
+  <!-- Rodapé -->
+  <footer>
+    <p>Contact: <span>queirozvitor11@gmail.com</span> / Copyright &copy; 2024 by &lt;/Victor&gt;. All Rights Reserved.</p>
   </footer>
-  
-  <!-- Adicione o script aqui -->
+
   <script>
     const menuHamburguer = document.querySelector('.menu-hamburguer');
     const navResponsive = document.querySelector('.nav-responsive');
-  
+
     menuHamburguer.addEventListener('click', () => {
       menuHamburguer.classList.toggle('change');
-      navResponsive.classList.toggle('nav-visible');  // Adiciona ou remove a classe que exibe o menu
+      navResponsive.classList.toggle('nav-visible');  
     });
   </script>
-  </body>
-  </html>
-  
+</body>
+</html>
