@@ -954,3 +954,43 @@ form .input-box input {
     text-align: center; /* Centraliza o texto */
   }
 }
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.6;
+  max-width: 100%;
+  overflow-x: hidden; /* Isso evita a rolagem lateral */
+}
+
+.dashboard-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* Mantém a proporção 16:9 */
+  height: 0;
+  overflow: hidden;
+  background-color: #000; /* Coloca uma cor de fundo preta para o dashboard */
+  margin: 0 auto; /* Centraliza o dashboard */
+}
+
+.dashboard-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none; /* Remove a borda */
+}
+
+@media (max-width: 768px) {
+  .dashboard-container {
+      padding-bottom: 75%; /* Proporção ajustada para dispositivos menores */
+  }
+}
+
+@media (min-width: 1200px) {
+  .dashboard-container {
+      width: 80%; /* Limita a largura em telas maiores */
+  }
+}
+
