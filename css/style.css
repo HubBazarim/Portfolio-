@@ -995,4 +995,75 @@ body {
 }
 
 
+.contact {
+  text-align: center;
+  padding: 4rem 2rem;
+  background-color: var(--bg-color-02); /* Cor de fundo ajustada */
+  color: var(--text-color); /* Texto */
+}
+
+.contact h2 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  color: var(--main-color);
+}
+
+.contact span {
+  color: var(--text-color);
+}
+
+form {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: var(--bg-color-01); /* Fundo do formulário */
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.input-box {
+  margin-bottom: 1.5rem;
+}
+
+.input-box input,
+.input-box textarea {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1rem;
+  color: var(--text-color);
+  background-color: var(--bg-color-02); /* Fundo dos campos */
+  border: 1px solid var(--color-01);
+  border-radius: 5px;
+}
+
+.input-box input::placeholder,
+.input-box textarea::placeholder {
+  color: var(--color-01);
+}
+
+.input-box input:focus,
+.input-box textarea:focus {
+  outline: none;
+  border-color: var(--main-color);
+  box-shadow: 0 0 4px var(--main-color);
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  background-color: var(--main-color);
+  color: var(--bg-color-01);
+  border-radius: 25px;
+  font-weight: 600;
+  text-transform: uppercase;
+  transition: 0.3s ease;
+  cursor: pointer;
+  border: none;
+}
+
+.btn:hover {
+  background-color: var(--bg-color-01);
+  color: var(--main-color);
+  box-shadow: 0 0 10px var(--main-color);
+}
 
