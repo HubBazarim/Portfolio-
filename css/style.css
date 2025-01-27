@@ -1067,3 +1067,214 @@ form {
   box-shadow: 0 0 10px var(--main-color);
 }
 
+/* Container principal */
+.timeline {
+  position: relative;
+  margin: 2rem auto;
+  padding: 0;
+  max-width: 800px; /* Define uma largura máxima */
+  border-left: 4px solid var(--main-color); /* Linha principal */
+}
+
+/* Itens da linha do tempo */
+.timeline-item {
+  position: relative;
+  margin: 2rem 0;
+  width: calc(50% - 40px); /* Itens ocupam 50% da largura menos margens */
+  padding: 1rem;
+  background-color: var(--bg-color-02);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+  word-wrap: break-word; /* Garante quebra de texto */
+  overflow: hidden;
+  text-align: left; /* Mantém o texto alinhado à esquerda */
+}
+
+/* Itens à esquerda */
+.timeline-item.left {
+  left: 0;
+  transform: translateX(-10%); /* Pequeno deslocamento para diferenciar */
+}
+
+/* Itens à direita */
+.timeline-item.right {
+  left: 50%; /* Inicia no meio */
+  transform: translateX(10%); /* Desloca para a direita */
+  text-align: left; /* Texto alinhado à esquerda */
+}
+
+/* Linha e círculo */
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: -20px;
+  width: 16px;
+  height: 16px;
+  background-color: var(--main-color);
+  border: 3px solid white;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+/* Círculos para a direita */
+.timeline-item.right::before {
+  left: auto;
+  right: -20px;
+}
+
+/* Animação no hover */
+.timeline-item:hover {
+  transform: scale(1.03); /* Cresce levemente */
+}
+
+/* Para dispositivos móveis (tudo centralizado) */
+@media screen and (max-width: 768px) {
+  .timeline-item {
+    width: 100%; /* Cada item ocupa 100% da largura */
+    left: 0;
+    transform: translateX(0); /* Remove deslocamentos */
+    text-align: left; /* Texto alinhado à esquerda */
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .timeline-item::before {
+    left: -10px; /* Reposiciona o círculo */
+  }
+}
+/* Linha e círculo */
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: -1px; /* Posição inicial para itens à esquerda */
+  width: 15px;
+  height: 15px;
+  background-color: white; /* Bolinha branca por padrão */
+  border: 3px solid var(--main-color); /* Contorno azul */
+  border-radius: 50%; /* Transformar em círculo */
+  z-index: 1;
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Transições suaves */
+}
+
+/* Reposiciona o círculo para itens à direita */
+.timeline-item.right::before {
+  left: auto;
+  right: -1px; /* Move o círculo para o lado direito */
+}
+
+/* Efeito no hover: muda a cor da bolinha */
+.timeline-item:hover::before {
+  background-color: var(--main-color); /* Torna a bolinha azul */
+  transform: scale(0.8); /* Aumenta levemente o tamanho */
+}
+
+/* Estilo geral para a seção de projetos */
+.projects {
+  display: flex;
+  flex-wrap: wrap; /* Permite quebra de linha em telas menores */
+  gap: 3rem; /* Espaçamento entre itens */
+  justify-content: center; /* Centraliza os projetos */
+  padding: 2rem;
+  background-color: var(--bg-color-02);
+}
+
+.project-item {
+  background-color: var(--bg-color-01);
+  border: 1px solid var(--main-color);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 300px;
+  width: calc(100% - 20px); /* Adapta o tamanho automaticamente */
+  padding: 1.5rem;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-item:hover {
+  transform: translateY(-5px); /* Efeito de elevação */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.project-item img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4spx;
+  margin-bottom: 1rem;
+}
+
+/* Títulos dos projetos */
+/* Ajuste para garantir que o título não seja cortado */
+.project-item h3 {
+  font-size: 2rem; /* Tamanho do título ajustado */
+  margin-bottom: 1rem; /* Espaço inferior */
+  color: var(--main-color); /* Cor principal */
+  word-wrap: break-word; /* Quebra palavras longas */
+  white-space: normal; /* Permite quebra de linha */
+  overflow: visible; /* Garante que o texto não seja cortado */
+  text-overflow: clip; /* Remove cortes no texto */
+  line-height: 1.4; /* Espaçamento entre linhas */
+  max-height: none; /* Remove limite de altura */
+}
+/* Ajustes para telas maiores */
+.project-item {
+  max-width: 300px; /* Mantém a largura fixa */
+  padding: 1.5rem 1rem; /* Espaço interno ajustado para permitir que o título desça */
+  text-align: center;
+  height: auto; /* Garante que o contêiner se ajuste ao conteúdo */
+}
+
+.project-item h3 {
+  font-size: 1.5rem; /* Reduz levemente o tamanho para caber */
+  white-space: normal; /* Permite quebra de linha */
+  line-height: 1.3; /* Espaçamento entre linhas */
+  margin-top: 4rem; /* Empurra o título para baixo */
+  margin-bottom: 0.5rem; /* Reduz espaço inferior */
+}
+
+
+/* Parágrafo de descrição */
+.project-item p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--text-color);
+  margin-bottom: 1rem;
+}
+
+
+/* Estilo para os botões */
+.project-item .btn {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  background-color: var(--main-color);
+  color: var(--bg-color-01); /* Cor do texto */
+  border-radius: 25px;
+  font-weight: 600;
+  text-transform: uppercase;
+  transition: 0.3s ease;
+  cursor: pointer;
+  border: none;
+}
+
+.project-item .btn:hover {
+  background-color: var(--bg-color-01); /* Cor invertida no hover */
+  color: var(--main-color); /* Cor principal no texto */
+  box-shadow: 0 0 10px var(--main-color); /* Destaque no hover */
+}
+
+/* Responsividade: ajustes para telas menores */
+@media screen and (max-width: 768px) {
+  .project-item {
+    width: 100%; /* Cada item ocupa 100% da largura */
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .project-item h3 {
+    font-size: 1.2rem; /* Reduz o tamanho do título */
+    white-space: normal; /* Permite quebra de linha */
+    line-height: 1.4; /* Mais espaçamento entre linhas */
+  }
+}
