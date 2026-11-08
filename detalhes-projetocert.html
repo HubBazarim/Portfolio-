@@ -1,57 +1,173 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="no-js">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projeto 1</title>
-  <!-- Link correto para o CSS, verifique se o nome do arquivo está certo -->
-  <link rel="stylesheet" href="css/style.css"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Junção de Arquivos PDF com Python | Victor Queiroz Bazarim</title>
+  <meta name="description" content="Programa em Python com PyPDF2 que junta vários arquivos PDF de uma pasta em um único documento.">
+  <meta name="theme-color" content="#1f242d">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="Junção de Arquivos PDF com Python | Victor Queiroz Bazarim">
+  <meta property="og:description" content="Programa em Python com PyPDF2 que junta vários arquivos PDF de uma pasta em um único documento.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
+  <script src="js/script.js" defer></script>
 </head>
-<body>
+<body id="top">
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
- <!-- Cabeçalho semelhante ao da página principal -->
- <header>
-  <a href="index.html" class="logo">Victor Bazarim</a>
-  <div class="nav">
-    <a href="index.html#home">Home</a>
-    <a href="index.html#services">Services</a>
-    <a href="index.html#portfolio">Portfolio</a>
-    <a href="index.html#about">About</a>
-  </div>
-  
-  <div class="menu-hamburguer">
-    <div class="bar1"></div>
-    <div class="bar2"></div>
-    <div class="bar3"></div>
-  </div>
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="index.html" aria-label="Victor Bazarim, página inicial">
+        <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="17" width="5" height="10" rx="1.5"/><rect x="13.5" y="11" width="5" height="16" rx="1.5"/><rect x="22" y="5" width="5" height="22" rx="1.5"/></svg>
+        <span>Victor Bazarim</span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-toggle>
+        <span class="menu-toggle__bars" aria-hidden="true"><span></span><span></span><span></span></span>
+        Menu
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Principal">
+        <ul class="site-nav__list">
+          <li><a href="index.html#home">Início</a></li>
+          <li><a href="projeto1.html" class="is-active">Projetos</a></li>
+          <li><a href="dashboard.html">Dashboards</a></li>
+          <li><a href="certificados.html">Certificados</a></li>
+          <li><a href="index.html#about">Sobre</a></li>
+          <li><a href="index.html#contact" class="site-nav__cta">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-  <div class="nav-responsive">
-    <a href="index.html#home">Home</a>
-    <a href="index.html#services">Services</a>
-    <a href="index.html#portfolio">Portfolio</a>
-    <a href="index.html#about">About</a>
-  </div>
-</header>
+  <main id="conteudo" tabindex="-1">
+    <header class="page-head">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Trilha de navegação">
+          <ol><li><a href="index.html">Início</a></li><li><a href="projeto1.html">Projetos</a></li><li aria-current="page">Junção de PDFs</li></ol>
+        </nav>
+        <ul class="tags"><li>Python</li><li>Automação</li><li>PyPDF2</li></ul>
+        <h1>Programa para Junção de Arquivos PDF</h1>
+        <p class="lead">Automatizando o processo de combinação de vários PDFs em um único documento.</p>
+      </div>
+    </header>
 
-<!-- Seção de Detalhes do Projeto -->
-<section class="project-overview">
-  <h1>Projeto de Junção de Arquivos PDF</h1>
-  <h2><span>Automatizando o Processo de Combinação de Múltiplos PDFs em um Único Documento</span></h2>
+    <div class="container case-layout">
+      <article class="prose">
+          <figure class="media">
+            <video controls preload="metadata" playsinline width="1280" height="720" data-fallback="video-pdf-aviso">
+              <source src="videos/python%20pdf.mp4" type="video/mp4">
+              <p>Seu navegador não reproduz vídeos. <a href="videos/python%20pdf.mp4" download>Baixe o vídeo</a>.</p>
+            </video>
+            <figcaption>
+              <span>Vídeo de funcionamento do programa.</span>
+              <a href="videos/python%20pdf.mp4" download><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Baixar vídeo</a>
+              <span class="media__note" id="video-pdf-aviso" hidden>Não foi possível reproduzir o vídeo neste navegador. <a href="videos/python%20pdf.mp4" download>Baixe o arquivo</a> para assistir.</span>
+            </figcaption>
+          </figure>
 
-  <!-- Vídeo de funcionamento -->
-  <h3>Vídeo de Funcionamento:</h3>
-  <video width="600" controls>
-    <source src="videos/python pdf.mp4" type="video/mp4"> <!-- Coloque o caminho correto do vídeo -->
-  </video>
+          <h2>Problema</h2>
+          <p>Facilitar o gerenciamento de documentos ao consolidar vários arquivos PDF em um único documento, principalmente quando há um grande volume de arquivos.</p>
 
-  <!-- Botão para visualizar ou baixar o script -->
-  <h3>resumo do Projeto:</h3>
-  <p>
-    <span>Este projeto consiste em um programa desenvolvido em Python</span> para <span>juntar múltiplos arquivos PDF</span> em um único documento.<br>
-    Utilizando a biblioteca <span>PyPDF2</span>, o programa realiza a leitura de todos os arquivos PDF presentes em uma pasta, <span>ordena-os alfabeticamente</span> e os combina em sequência.<br>
-    O código utiliza a função <span>PdfMerger</span> para <span>anexar os arquivos PDF</span>, gerando um arquivo final denominado <span>"PDF Final.pdf"</span>.<br>
-    Essa <span>automação</span> pode ser útil para quem precisa <span>consolidar vários documentos</span> em um único arquivo, proporcionando uma maneira <span>prática</span> e <span>eficiente</span> de organizar PDFs.<br>
-    O processo visa facilitar o gerenciamento de documentos, principalmente quando se lida com grandes volumes de arquivos PDF, oferecendo uma solução simples e eficaz para compactar informações dispersas em um único arquivo organizado.
-  </p>
-  
-</section>
+          <h2>Dados utilizados</h2>
+          <p>Todos os arquivos PDF presentes em uma pasta.</p>
+
+          <h2>Processo</h2>
+          <ol class="steps">
+            <li>
+              <h3>Ler os arquivos</h3>
+              <p>O programa, escrito em Python, faz a leitura de todos os arquivos PDF presentes na pasta.</p>
+            </li>
+            <li>
+              <h3>Ordenar</h3>
+              <p>Os arquivos são ordenados alfabeticamente.</p>
+            </li>
+            <li>
+              <h3>Combinar</h3>
+              <p>A função <code>PdfMerger</code>, da biblioteca PyPDF2, anexa os arquivos em sequência.</p>
+            </li>
+            <li>
+              <h3>Gerar o arquivo final</h3>
+              <p>O resultado é salvo como <strong>“PDF Final.pdf”</strong>.</p>
+            </li>
+          </ol>
+
+          <h2>Resultado</h2>
+          <p>Uma automação útil para quem precisa consolidar vários documentos em um único arquivo: uma maneira prática e eficiente de organizar PDFs e de reunir informações dispersas em um só lugar.</p>
+
+          <nav class="pager" aria-label="Outros projetos">
+            <a class="pager__prev" href="detalhes-projeto.html"><span>Anterior</span><strong>Robô de Automação de Tarefas</strong></a>
+            <a class="pager__next" href="Chat.html"><span>Próximo</span><strong>Chat para Empresas</strong></a>
+          </nav>
+      </article>
+      <aside class="case-aside" aria-labelledby="ficha-title">
+        <h2 id="ficha-title">Ficha do projeto</h2>
+        <dl class="facts">
+          <div><dt>Tipo</dt><dd>Automação de processos</dd></div>
+          <div><dt>Ferramentas</dt><dd>Python e PyPDF2 (PdfMerger)</dd></div>
+          <div><dt>Entrada</dt><dd>Arquivos PDF de uma pasta</dd></div>
+          <div><dt>Saída</dt><dd>PDF Final.pdf, com os arquivos em ordem alfabética</dd></div>
+        </dl>
+      </aside>
+    </div>
+  </main>
+
+  <section class="cta-band" aria-labelledby="cta-title">
+    <div class="container cta-band__inner">
+      <div>
+        <h2 id="cta-title">Vamos conversar?</h2>
+        <p>Estou sempre disposto a aprender, explorar novas tecnologias e encarar novas oportunidades.</p>
+      </div>
+      <div class="cta-band__actions">
+        <a class="btn btn--primary" href="index.html#contact">Entrar em contato</a>
+        <a class="btn btn--ghost" href="pdfs/Curriculo,%20Victor%20Queiroz%20Bazarim%20-%20v7.pdf" download><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Baixar currículo (PDF)</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <div class="site-footer__brand">
+        <a class="brand" href="index.html" aria-label="Victor Bazarim, página inicial">
+          <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="17" width="5" height="10" rx="1.5"/><rect x="13.5" y="11" width="5" height="16" rx="1.5"/><rect x="22" y="5" width="5" height="22" rx="1.5"/></svg>
+          <span>Victor Bazarim</span>
+        </a>
+        <p>Análise de dados, inteligência comercial e automação de processos.</p>
+      </div>
+      <nav class="footer-nav" aria-labelledby="rodape-nav">
+        <h2 id="rodape-nav">Navegação</h2>
+        <ul>
+            <li><a href="index.html#home">Início</a></li>
+            <li><a href="projeto1.html">Projetos</a></li>
+            <li><a href="dashboard.html">Dashboards</a></li>
+            <li><a href="certificados.html">Certificados</a></li>
+            <li><a href="index.html#about">Sobre</a></li>
+            <li><a href="index.html#contact">Contato</a></li>
+        </ul>
+      </nav>
+      <div class="site-footer__contact">
+        <h2>Contato</h2>
+        <a href="mailto:queirozvitor11@gmail.com">queirozvitor11@gmail.com</a>
+        <ul class="social">
+          <li><a href="https://www.linkedin.com/in/victor-queiroz-bazarim-401411167/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (abre em nova aba)"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a></li>
+          <li><a href="https://github.com/HubBazarim" target="_blank" rel="noopener noreferrer" aria-label="GitHub (abre em nova aba)"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></a></li>
+          <li><a href="https://www.instagram.com/victor_bazarim/" target="_blank" rel="noopener noreferrer" aria-label="Instagram (abre em nova aba)"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container site-footer__legal">
+      <p>&copy; 2024–<span data-year>2026</span> &lt;/Victor&gt;. Todos os direitos reservados.</p>
+      <a href="#top">Voltar ao topo</a>
+    </div>
+  </footer>
+
+  <a class="to-top" href="#top" data-to-top>
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+    <span class="visually-hidden">Voltar ao topo</span>
+  </a>
+</body>
+</html>

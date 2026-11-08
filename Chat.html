@@ -1,84 +1,182 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="no-js">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projeto de Automação</title>
-  <link rel="stylesheet" href="css/style.css"> <!-- Verifique se o caminho do CSS está correto -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aplicativo de Chat com Python e Flet | Victor Queiroz Bazarim</title>
+  <meta name="description" content="Aplicativo de chat em tempo real desenvolvido com Python e a biblioteca Flet.">
+  <meta name="theme-color" content="#1f242d">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="Aplicativo de Chat com Python e Flet | Victor Queiroz Bazarim">
+  <meta property="og:description" content="Aplicativo de chat em tempo real desenvolvido com Python e a biblioteca Flet.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
+  <script src="js/script.js" defer></script>
 </head>
-<body>
+<body id="top">
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
-  <!-- Cabeçalho da página principal -->
-  <header>
-    <a href="index.html" class="logo">Victor Bazarim</a>
-    <div class="nav">
-      <a href="index.html#home">Home</a>
-      <a href="index.html#services">Services</a>
-      <a href="index.html#portfolio">Portfolio</a>
-      <a href="index.html#about">About</a>
-    </div>
-    
-    <div class="menu-hamburguer">
-      <div class="bar1"></div>
-      <div class="bar2"></div>
-      <div class="bar3"></div>
-    </div>
-  
-    <div class="nav-responsive">
-      <a href="index.html#home">Home</a>
-      <a href="index.html#services">Services</a>
-      <a href="index.html#portfolio">Portfolio</a>
-      <a href="index.html#about">About</a>
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="index.html" aria-label="Victor Bazarim, página inicial">
+        <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="17" width="5" height="10" rx="1.5"/><rect x="13.5" y="11" width="5" height="16" rx="1.5"/><rect x="22" y="5" width="5" height="22" rx="1.5"/></svg>
+        <span>Victor Bazarim</span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-toggle>
+        <span class="menu-toggle__bars" aria-hidden="true"><span></span><span></span><span></span></span>
+        Menu
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Principal">
+        <ul class="site-nav__list">
+          <li><a href="index.html#home">Início</a></li>
+          <li><a href="projeto1.html" class="is-active">Projetos</a></li>
+          <li><a href="dashboard.html">Dashboards</a></li>
+          <li><a href="certificados.html">Certificados</a></li>
+          <li><a href="index.html#about">Sobre</a></li>
+          <li><a href="index.html#contact" class="site-nav__cta">Contato</a></li>
+        </ul>
+      </nav>
     </div>
   </header>
 
-  
-<!-- Seção de Detalhes do Projeto -->
-<section class="project-overview">
-  <h1>Aplicativo de Chat</h1>
-  <p><h3>Comunicação em Tempo Real com Python e Flet</h3></p>
+  <main id="conteudo" tabindex="-1">
+    <header class="page-head">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Trilha de navegação">
+          <ol><li><a href="index.html">Início</a></li><li><a href="projeto1.html">Projetos</a></li><li aria-current="page">Chat em tempo real</li></ol>
+        </nav>
+        <ul class="tags"><li>Python</li><li>Flet</li><li>Aplicação</li></ul>
+        <h1>Aplicativo de Chat: Zap da Empresa</h1>
+        <p class="lead">Comunicação em tempo real com Python e Flet.</p>
+        <div class="page-actions">
+          <a class="btn btn--ghost" href="scripts/taskteste.txt" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>Ver script<span class="visually-hidden"> (abre em nova aba)</span></a>
+        </div>
+      </div>
+    </header>
 
-  <!-- Vídeo de funcionamento -->
-  <h3>Vídeo de Funcionamento:</h3>
-  <video width="600" controls>
-    <source src="videos/biblioteca flet.mkv" type="video/mp4"> <!-- Coloque o caminho correto do vídeo -->
-  </video>
+    <div class="container case-layout">
+      <article class="prose">
+          <figure class="media">
+            <video controls preload="metadata" playsinline width="1280" height="720" data-fallback="video-chat-aviso">
+              <source src="videos/biblioteca%20flet.mkv">
+              <p>Seu navegador não reproduz vídeos. <a href="videos/biblioteca%20flet.mkv" download>Baixe o vídeo</a>.</p>
+            </video>
+            <figcaption>
+              <span>Vídeo de funcionamento do chat.</span>
+              <a href="videos/biblioteca%20flet.mkv" download><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Baixar vídeo</a>
+              <span class="media__note" id="video-chat-aviso" hidden>Não foi possível reproduzir o vídeo neste navegador. O arquivo está no formato MKV, que alguns navegadores não abrem. <a href="videos/biblioteca%20flet.mkv" download>Baixe o arquivo</a> para assistir.</span>
+            </figcaption>
+          </figure>
 
-  <!-- Botão para visualizar ou baixar o script -->
-  <h3>Script do Projeto:</h3>
-  <!-- <a href="scripts/scripts.py.zip" download class="btn" >Baixar Script</a> Botão de Download do Script -->
+          <h2>Para que serve</h2>
+          <p>O Zap da Empresa é um aplicativo de chat em tempo real, desenvolvido com a biblioteca <strong>Flet</strong> em Python. Ele permite que vários usuários interajam em uma sala de chat, com funcionalidades simples e feedback visual sobre mensagens e novas entradas.</p>
+          <p>É um exemplo de como a tecnologia pode facilitar a comunicação de forma prática e intuitiva.</p>
 
-  <a href="scripts/taskteste.txt" target="_blank" class="btn">Visualizar Script</a> <!-- Botão para Visualizar Script -->
-  <!-- Botão para visualizar ou baixar o script -->
-  <div>
-    <h2>Aplicativo de Chat - Zap da Empresa</h2>
-    <h3>Comunicação em Tempo Real com Python e Flet</h3>
-    
-    <p>
-      Este projeto é um aplicativo de chat em tempo real, desenvolvido com a biblioteca <strong>Flet</strong> utilizando a linguagem Python. Ele foi projetado para proporcionar uma comunicação interativa entre os usuários de forma prática e eficiente.<br>
-      
-      - <span>Para que serve?</span> Permitir que múltiplos usuários interajam em uma sala de chat em tempo real, com funcionalidades simples e feedback visual sobre mensagens e novas entradas.<br>
-      
-      - <span>Como usar?</span>
-      <span>
-        1. Certifique-se de ter o Python instalado na versão 3.9 ou superior.<br>
-        2. Instale a biblioteca Flet com o comando: <code>pip install flet</code>.<br>
-        3. Execute o arquivo principal do projeto com: <code>python main.py</code>.<br>
-        4. Acesse o aplicativo no navegador através do endereço <strong>http://localhost:8000</strong>.<br>
-        5. Clique no botão "Iniciar Chat", insira seu nome no pop-up e comece a interagir no chat enviando mensagens.
-      </span><br>
-      
-      - <span>O que foi usado?</span> 
-      <span>
+          <h2>Como foi feito</h2>
+          <ul>
+            <li><strong>Linguagem:</strong> Python.</li>
+            <li><strong>Biblioteca:</strong> Flet, para criar interfaces interativas.</li>
+            <li><strong>Sistema PubSub:</strong> sincroniza as mensagens em tempo real.</li>
+            <li><strong>Interface:</strong> AlertDialog, Column, Row e ElevatedButton.</li>
+          </ul>
+
+          <h2>Como usar</h2>
+          <ol class="steps">
+            <li>
+              <h3>Instale o Python</h3>
+              <p>Use a versão 3.9 ou superior.</p>
+            </li>
+            <li>
+              <h3>Instale o Flet</h3>
+              <pre class="code-block"><code>pip install flet</code></pre>
+            </li>
+            <li>
+              <h3>Execute o arquivo principal</h3>
+              <pre class="code-block"><code>python main.py</code></pre>
+            </li>
+            <li>
+              <h3>Abra no navegador</h3>
+              <p>Acesse o endereço <code>http://localhost:8000</code>.</p>
+            </li>
+            <li>
+              <h3>Entre no chat</h3>
+              <p>Clique em “Iniciar Chat”, informe seu nome no pop-up e comece a enviar mensagens.</p>
+            </li>
+          </ol>
+
+          <nav class="pager" aria-label="Outros projetos">
+            <a class="pager__prev" href="detalhes-projetocert.html"><span>Anterior</span><strong>Programa para Junção de Arquivos PDF</strong></a>
+            <a class="pager__next" href="dashboard.html"><span>Próximo</span><strong>Dashboards em Power BI</strong></a>
+          </nav>
+      </article>
+      <aside class="case-aside" aria-labelledby="ficha-title">
+        <h2 id="ficha-title">Ficha do projeto</h2>
+        <dl class="facts">
+          <div><dt>Tipo</dt><dd>Aplicação em tempo real</dd></div>
+          <div><dt>Ferramentas</dt><dd>Python, Flet e PubSub</dd></div>
+          <div><dt>Requisitos</dt><dd>Python 3.9 ou superior</dd></div>
+        </dl>
+      </aside>
+    </div>
+  </main>
+
+  <section class="cta-band" aria-labelledby="cta-title">
+    <div class="container cta-band__inner">
+      <div>
+        <h2 id="cta-title">Vamos conversar?</h2>
+        <p>Estou sempre disposto a aprender, explorar novas tecnologias e encarar novas oportunidades.</p>
+      </div>
+      <div class="cta-band__actions">
+        <a class="btn btn--primary" href="index.html#contact">Entrar em contato</a>
+        <a class="btn btn--ghost" href="pdfs/Curriculo,%20Victor%20Queiroz%20Bazarim%20-%20v7.pdf" download><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Baixar currículo (PDF)</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <div class="site-footer__brand">
+        <a class="brand" href="index.html" aria-label="Victor Bazarim, página inicial">
+          <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="17" width="5" height="10" rx="1.5"/><rect x="13.5" y="11" width="5" height="16" rx="1.5"/><rect x="22" y="5" width="5" height="22" rx="1.5"/></svg>
+          <span>Victor Bazarim</span>
+        </a>
+        <p>Análise de dados, inteligência comercial e automação de processos.</p>
+      </div>
+      <nav class="footer-nav" aria-labelledby="rodape-nav">
+        <h2 id="rodape-nav">Navegação</h2>
         <ul>
-          <li><strong>Linguagem:</strong> Python</li>
-          <li><strong>Biblioteca:</strong> Flet (para criação de interfaces interativas)</li>
-          <li><strong>Sistema PubSub:</strong> Sincronização de mensagens em tempo real</li>
-          <li><strong>Interface Responsiva:</strong> AlertDialog, Column, Rows, e ElevatedButton</li>
+            <li><a href="index.html#home">Início</a></li>
+            <li><a href="projeto1.html">Projetos</a></li>
+            <li><a href="dashboard.html">Dashboards</a></li>
+            <li><a href="certificados.html">Certificados</a></li>
+            <li><a href="index.html#about">Sobre</a></li>
+            <li><a href="index.html#contact">Contato</a></li>
         </ul>
-      </span><br>
-    </p>
-  </div>
-  
-  
-</section>
+      </nav>
+      <div class="site-footer__contact">
+        <h2>Contato</h2>
+        <a href="mailto:queirozvitor11@gmail.com">queirozvitor11@gmail.com</a>
+        <ul class="social">
+          <li><a href="https://www.linkedin.com/in/victor-queiroz-bazarim-401411167/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (abre em nova aba)"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a></li>
+          <li><a href="https://github.com/HubBazarim" target="_blank" rel="noopener noreferrer" aria-label="GitHub (abre em nova aba)"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></a></li>
+          <li><a href="https://www.instagram.com/victor_bazarim/" target="_blank" rel="noopener noreferrer" aria-label="Instagram (abre em nova aba)"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container site-footer__legal">
+      <p>&copy; 2024–<span data-year>2026</span> &lt;/Victor&gt;. Todos os direitos reservados.</p>
+      <a href="#top">Voltar ao topo</a>
+    </div>
+  </footer>
+
+  <a class="to-top" href="#top" data-to-top>
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+    <span class="visually-hidden">Voltar ao topo</span>
+  </a>
+</body>
+</html>

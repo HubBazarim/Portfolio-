@@ -1,227 +1,291 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="no-js">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projeto 1</title>
-  <!-- Link correto para o CSS, verifique se o nome do arquivo está certo -->
-  <link rel="stylesheet" href="css/style.css"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboards em Power BI | Victor Queiroz Bazarim</title>
+  <meta name="description" content="Dashboards em Power BI de Victor Queiroz Bazarim: gestão de vendas, produção e comportamento de compra.">
+  <meta name="theme-color" content="#1f242d">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="Dashboards em Power BI | Victor Queiroz Bazarim">
+  <meta property="og:description" content="Dashboards em Power BI de Victor Queiroz Bazarim: gestão de vendas, produção e comportamento de compra.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
+  <script src="js/script.js" defer></script>
 </head>
-<body>
+<body id="top">
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
-  <!-- Inclua o mesmo cabeçalho da sua página principal -->
-  <header>
-    <a href="index.html" class="logo">Victor Bazarim</a>
-    <div class="nav">
-      <a href="index.html#home">Home</a>
-      <a href="index.html#services">Services</a>
-      <a href="index.html#portfolio">Portfolio</a>
-      <a href="index.html#about">About</a>
-    </div>
-    
-    <div class="menu-hamburguer">
-      <div class="bar1"></div>
-      <div class="bar2"></div>
-      <div class="bar3"></div>
-    </div>
-  
-    <div class="nav-responsive">
-      <a href="index.html#home">Home</a>
-      <a href="index.html#services">Services</a>
-      <a href="index.html#portfolio">Portfolio</a>
-      <a href="index.html#about">About</a>
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="index.html" aria-label="Victor Bazarim, página inicial">
+        <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="17" width="5" height="10" rx="1.5"/><rect x="13.5" y="11" width="5" height="16" rx="1.5"/><rect x="22" y="5" width="5" height="22" rx="1.5"/></svg>
+        <span>Victor Bazarim</span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-toggle>
+        <span class="menu-toggle__bars" aria-hidden="true"><span></span><span></span><span></span></span>
+        Menu
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Principal">
+        <ul class="site-nav__list">
+          <li><a href="index.html#home">Início</a></li>
+          <li><a href="projeto1.html">Projetos</a></li>
+          <li><a href="dashboard.html" aria-current="page">Dashboards</a></li>
+          <li><a href="certificados.html">Certificados</a></li>
+          <li><a href="index.html#about">Sobre</a></li>
+          <li><a href="index.html#contact" class="site-nav__cta">Contato</a></li>
+        </ul>
+      </nav>
     </div>
   </header>
-  
-  <section> 
 
-   
+  <main id="conteudo" tabindex="-1">
+    <header class="page-head">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Trilha de navegação">
+          <ol><li><a href="index.html">Início</a></li><li><a href="projeto1.html">Projetos</a></li><li aria-current="page">Dashboards</li></ol>
+        </nav>
+        <h1>Dashboards em Power BI</h1>
+        <p class="lead">Três relatórios publicados no Power BI. Ao lado de cada um estão os principais números que ele exibe; carregue o dashboard para interagir com os filtros na própria página.</p>
+        <nav class="jump" aria-label="Dashboards desta página">
+          <a href="#vendas">Gestão de vendas</a>
+          <a href="#producao">Produção</a>
+          <a href="#monitoramento">Comportamento de compra</a>
+        </nav>
+      </div>
+    </header>
 
-    <!-- Dashboard inserido diretamente -->
-    <div class="pdf-item">
-        <h2>Dashboard de Produção</h2>
-        <p>Análise e Monitoramento do Desempenho Produtivo: Eficiência, Qualidade e Disponibilidade em Foco</p>
-        <!-- Dashboard Power BI -->
-        <div class="dashboard-container">
-          <iframe title="Aula 2 - Gabarito" width="600" height="373.5" src="https://app.powerbi.com/view?r=eyJrIjoiNTM0MDg2MmItYmQyZS00MTIxLTgyYTUtM2FjYWJhYTdhZjU4IiwidCI6ImVlOWNhMzg2LTAxOGUtNDUwMC04NGMzLWE5OWM3OWVjMTNkMyJ9" frameborder="0" allowFullScreen="true"></iframe>
+    <!-- Dashboard 1 -->
+    <article class="dash" id="vendas" aria-labelledby="vendas-title">
+      <div class="container">
+        <header class="dash__head">
+          <ul class="tags"><li>Power BI</li><li>Vendas</li></ul>
+          <h2 id="vendas-title">Dashboard de Gestão de Vendas</h2>
+          <p class="dash__lead">Desenvolvido para monitorar e analisar o desempenho de vendas de diferentes unidades e produtos, com uma visão clara e intuitiva dos principais indicadores do negócio.</p>
+        </header>
+        <div class="dash__grid">
+          <div class="dash__embed">
+            <div class="embed" data-embed>
+              <div class="embed__placeholder">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                <p class="embed__title">Relatório interativo do Power BI</p>
+                <p>O dashboard carrega só quando você pede, para a página abrir mais rápido.</p>
+                <a class="btn btn--primary" href="https://app.powerbi.com/view?r=eyJrIjoiMGVmMzFiMjktNzU2Yy00ODc3LWExYmYtOTZhZGNmMjBiMDcwIiwidCI6ImVlOWNhMzg2LTAxOGUtNDUwMC04NGMzLWE5OWM3OWVjMTNkMyJ9" target="_blank" rel="noopener" data-embed-src="https://app.powerbi.com/view?r=eyJrIjoiMGVmMzFiMjktNzU2Yy00ODc3LWExYmYtOTZhZGNmMjBiMDcwIiwidCI6ImVlOWNhMzg2LTAxOGUtNDUwMC04NGMzLWE5OWM3OWVjMTNkMyJ9" data-embed-title="Dashboard de Gestão de Vendas (Power BI)">Carregar dashboard<span class="visually-hidden">: Dashboard de Gestão de Vendas</span></a>
+              </div>
+            </div>
+            <p class="embed__alt"><a href="https://app.powerbi.com/view?r=eyJrIjoiMGVmMzFiMjktNzU2Yy00ODc3LWExYmYtOTZhZGNmMjBiMDcwIiwidCI6ImVlOWNhMzg2LTAxOGUtNDUwMC04NGMzLWE5OWM3OWVjMTNkMyJ9" target="_blank" rel="noopener">Abrir em tela cheia no Power BI <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg><span class="visually-hidden">(abre em nova aba)</span></a></p>
+          </div>
+          <aside class="panel" aria-labelledby="vendas-numeros">
+            <h3 class="panel__title" id="vendas-numeros">Indicadores exibidos no dashboard</h3>
+            <dl class="kpis"><div class="kpi"><dt>Valor total faturado</dt><dd>R$ 12,9 mi</dd></div><div class="kpi"><dt>Comissão gerada</dt><dd>R$ 643 mil</dd></div><div class="kpi"><dt>Ticket médio</dt><dd>R$ 51,6 mil</dd></div></dl>
+            <div class="viz viz-anim">
+              <p class="viz__title">Faturamento por tipo de pagamento</p>
+              <div class="split" style="--cols: 61.39fr 38.61fr" aria-hidden="true"><span class="split__seg"></span><span class="split__seg split__seg--rest"></span></div><ul class="legend"><li><span class="swatch" aria-hidden="true"></span>Transferência/PIX <strong>61,39%</strong></li><li><span class="swatch swatch--rest" aria-hidden="true"></span>Cartão de crédito <strong>38,61%</strong></li></ul>
+            </div>
+            <div class="viz viz-anim">
+              <div class="meter"><div class="meter__head"><span>Participação de Bolsas no faturamento</span><strong>32,06%</strong></div><div class="meter__track" aria-hidden="true"><span class="meter__fill" style="--v: 32.06%"></span></div></div>
+            </div>
+          </aside>
         </div>
-           
-    </div>
-    <p>
-      <span>Este dashboard oferece uma visão consolidada do desempenho produtivo ao longo do tempo, focando em métricas acumuladas e indicadores de eficiência, qualidade e disponibilidade.</span><br>
-      - <strong>Métricas Principais</strong>: <span>Quantidade Produzida (3.084.251), Quantidade Rejeitada (21.076), Horas Produtivas (30.956) e Horas Paradas (8.890).</span><br>
-      - <strong>Disponibilidade e Qualidade</strong>: <span>Indicadores mostram a Disponibilidade acumulada (77,69%) e a Qualidade (99,32%).</span><br>
-      - <strong>Produção Mensal</strong>: <span>Gráfico de barras exibe a variação de produção mensal de forma consolidada.</span><br>
-      - <strong>Filtros Interativos</strong>: <span>Permite segmentar a análise por operador e período, ajustando o escopo das métricas apresentadas.</span><br>
-    </p>
-    
-    <p>
-      <strong>Objetivo</strong><br>
-      <span>Oferecer uma visão abrangente e detalhada do desempenho produtivo, facilitando a análise de gargalos, a avaliação da qualidade dos processos e a otimização de recursos.</span><br>
-      - <strong>Decisões Baseadas em Dados</strong>: <span>Proporciona insights estratégicos para melhoria contínua.</span><br>
-      - <strong>Análise Global e Detalhada</strong>: <span>Possibilita acompanhar tanto o panorama geral quanto detalhes específicos.</span><br>
-    </p>
-    
-    <p>
-      <strong>Aplicabilidade</strong><br>
-      <span>Ferramenta estratégica para indústrias e setores operacionais.</span><br>
-      - <strong>Gestão de Produção</strong>: <span>Monitoramento contínuo do desempenho produtivo.</span><br>
-      - <strong>Otimização de Recursos</strong>: <span>Redução de perdas e melhoria nos processos.</span><br>
-      - <strong>Planejamento Estratégico</strong>: <span>Informações detalhadas para embasar decisões táticas e estratégicas.</span><br>
-    </p>
-    
-    <p>
-      <strong>Ferramentas e Técnicas</strong><br>
-      <span>Desenvolvido com recursos avançados de modelagem e visualização de dados no Power BI.</span><br>
-      - <strong>Visualizações</strong>: <span>Gráficos de barras, indicadores (cards) e medidores circulares (gauges).</span><br>
-      - <strong>Modelagem de Dados</strong>: <span>Criação de medidas para cálculos de disponibilidade, qualidade e métricas acumuladas.</span><br>
-      - <strong>Interatividade</strong>: <span>Filtros dinâmicos para personalizar a análise por operador e período.</span><br>
-    </p>
-    
-    
-  <div>
+        <div class="dash__body">
+          <section class="prose" aria-labelledby="vendas-mostra">
+            <h3 id="vendas-mostra">O que o dashboard mostra</h3>
+            <ul>
+              <li><strong>Faturamento por loja:</strong> desempenho das unidades (Matriz e Filiais), com destaque para a Matriz, que faturou R$ 5,4 milhões.</li>
+              <li><strong>Faturamento por tipo de pagamento:</strong> 61,39% das vendas por Transferência/PIX e 38,61% via cartão de crédito.</li>
+              <li><strong>Faturamento por período:</strong> tendências de vendas ao longo do ano, com pico em março (R$ 2,04 milhões).</li>
+              <li><strong>Análise por produto:</strong> representatividade dos itens no faturamento; Bolsas lideram com 32,06% do total.</li>
+            </ul>
+          </section>
+          <section class="prose" aria-labelledby="vendas-objetivo">
+            <h3 id="vendas-objetivo">Objetivo</h3>
+            <p>Permitir decisões estratégicas baseadas em dados, a partir de uma visão clara do faturamento por unidade, forma de pagamento, período e produto.</p>
+            <h3>Indicadores gerais</h3>
+            <ul>
+              <li><strong>Valor total faturado:</strong> R$ 12,9 milhões</li>
+              <li><strong>Comissão gerada:</strong> R$ 643 mil</li>
+              <li><strong>Ticket médio:</strong> R$ 51,6 mil</li>
+            </ul>
+          </section>
+        </div>
+      </div>
+    </article>
 
+    <!-- Dashboard 2 -->
+    <article class="dash" id="producao" aria-labelledby="producao-title">
+      <div class="container">
+        <header class="dash__head">
+          <ul class="tags"><li>Power BI</li><li>Produção</li><li>Indicadores industriais</li></ul>
+          <h2 id="producao-title">Dashboard de Produção</h2>
+          <p class="dash__lead">Análise e monitoramento do desempenho produtivo, com eficiência, qualidade e disponibilidade em foco. Oferece uma visão consolidada ao longo do tempo, com métricas acumuladas.</p>
+        </header>
+        <div class="dash__grid">
+          <div class="dash__embed">
+            <div class="embed" data-embed>
+              <div class="embed__placeholder">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                <p class="embed__title">Relatório interativo do Power BI</p>
+                <p>O dashboard carrega só quando você pede, para a página abrir mais rápido.</p>
+                <a class="btn btn--primary" href="https://app.powerbi.com/view?r=eyJrIjoiNTM0MDg2MmItYmQyZS00MTIxLTgyYTUtM2FjYWJhYTdhZjU4IiwidCI6ImVlOWNhMzg2LTAxOGUtNDUwMC04NGMzLWE5OWM3OWVjMTNkMyJ9" target="_blank" rel="noopener" data-embed-src="https://app.powerbi.com/view?r=eyJrIjoiNTM0MDg2MmItYmQyZS00MTIxLTgyYTUtM2FjYWJhYTdhZjU4IiwidCI6ImVlOWNhMzg2LTAxOGUtNDUwMC04NGMzLWE5OWM3OWVjMTNkMyJ9" data-embed-title="Dashboard de Produção (Power BI)">Carregar dashboard<span class="visually-hidden">: Dashboard de Produção</span></a>
+              </div>
+            </div>
+            <p class="embed__alt"><a href="https://app.powerbi.com/view?r=eyJrIjoiNTM0MDg2MmItYmQyZS00MTIxLTgyYTUtM2FjYWJhYTdhZjU4IiwidCI6ImVlOWNhMzg2LTAxOGUtNDUwMC04NGMzLWE5OWM3OWVjMTNkMyJ9" target="_blank" rel="noopener">Abrir em tela cheia no Power BI <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg><span class="visually-hidden">(abre em nova aba)</span></a></p>
+          </div>
+          <aside class="panel" aria-labelledby="producao-numeros">
+            <h3 class="panel__title" id="producao-numeros">Indicadores exibidos no dashboard</h3>
+            <dl class="kpis"><div class="kpi"><dt>Quantidade produzida</dt><dd>3.084.251</dd></div><div class="kpi"><dt>Quantidade rejeitada</dt><dd>21.076</dd></div><div class="kpi"><dt>Horas produtivas</dt><dd>30.956</dd></div><div class="kpi"><dt>Horas paradas</dt><dd>8.890</dd></div></dl>
+            <div class="viz viz-anim">
+              <div class="meter"><div class="meter__head"><span>Disponibilidade acumulada</span><strong>77,69%</strong></div><div class="meter__track" aria-hidden="true"><span class="meter__fill" style="--v: 77.69%"></span></div></div>
+              <div class="meter"><div class="meter__head"><span>Qualidade</span><strong>99,32%</strong></div><div class="meter__track" aria-hidden="true"><span class="meter__fill" style="--v: 99.32%"></span></div></div>
+            </div>
+          </aside>
+        </div>
+        <div class="dash__body">
+          <section class="prose" aria-labelledby="producao-mostra">
+            <h3 id="producao-mostra">O que o dashboard mostra</h3>
+            <ul>
+              <li><strong>Métricas principais:</strong> quantidade produzida (3.084.251), quantidade rejeitada (21.076), horas produtivas (30.956) e horas paradas (8.890).</li>
+              <li><strong>Disponibilidade e qualidade:</strong> disponibilidade acumulada de 77,69% e qualidade de 99,32%.</li>
+              <li><strong>Produção mensal:</strong> gráfico de barras com a variação da produção mês a mês.</li>
+              <li><strong>Filtros interativos:</strong> segmentação por operador e período, ajustando o escopo das métricas.</li>
+            </ul>
+            <h3>Ferramentas e técnicas</h3>
+            <ul>
+              <li><strong>Visualizações:</strong> gráficos de barras, indicadores (cards) e medidores circulares (gauges).</li>
+              <li><strong>Modelagem de dados:</strong> medidas para calcular disponibilidade, qualidade e métricas acumuladas.</li>
+              <li><strong>Interatividade:</strong> filtros dinâmicos por operador e período.</li>
+            </ul>
+          </section>
+          <section class="prose" aria-labelledby="producao-objetivo">
+            <h3 id="producao-objetivo">Objetivo</h3>
+            <p>Oferecer uma visão abrangente e detalhada do desempenho produtivo, facilitando a análise de gargalos, a avaliação da qualidade dos processos e a otimização de recursos.</p>
+            <ul>
+              <li><strong>Decisões baseadas em dados:</strong> insights estratégicos para a melhoria contínua.</li>
+              <li><strong>Análise global e detalhada:</strong> acompanha tanto o panorama geral quanto detalhes específicos.</li>
+            </ul>
+            <h3>Aplicabilidade</h3>
+            <ul>
+              <li><strong>Gestão de produção:</strong> monitoramento contínuo do desempenho produtivo.</li>
+              <li><strong>Otimização de recursos:</strong> redução de perdas e melhoria nos processos.</li>
+              <li><strong>Planejamento estratégico:</strong> informações detalhadas para embasar decisões táticas e estratégicas.</li>
+            </ul>
+          </section>
+        </div>
+      </div>
+    </article>
+
+    <!-- Dashboard 3 -->
+    <article class="dash" id="monitoramento" aria-labelledby="monitoramento-title">
+      <div class="container">
+        <header class="dash__head">
+          <ul class="tags"><li>Power BI</li><li>Clientes</li><li>Marketing</li></ul>
+          <h2 id="monitoramento-title">Monitoramento Estratégico de Vendas, Custos e Lucros</h2>
+          <p class="dash__lead">Este dashboard oferece uma visão completa do desempenho financeiro, permitindo identificar tendências, otimizar estratégias de envio e maximizar a lucratividade em diferentes mercados e categorias de produtos.</p>
+        </header>
+        <div class="dash__grid">
+          <div class="dash__embed">
+            <div class="embed" data-embed>
+              <div class="embed__placeholder">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                <p class="embed__title">Relatório interativo do Power BI</p>
+                <p>O dashboard carrega só quando você pede, para a página abrir mais rápido.</p>
+                <a class="btn btn--primary" href="https://app.powerbi.com/view?r=eyJrIjoiMmU3YzY2MDktOTJjNC00NmUwLWE1OTUtMGYxNWI5OTEyOTRjIiwidCI6ImVlOWNhMzg2LTAxOGUtNDUwMC04NGMzLWE5OWM3OWVjMTNkMyJ9" target="_blank" rel="noopener" data-embed-src="https://app.powerbi.com/view?r=eyJrIjoiMmU3YzY2MDktOTJjNC00NmUwLWE1OTUtMGYxNWI5OTEyOTRjIiwidCI6ImVlOWNhMzg2LTAxOGUtNDUwMC04NGMzLWE5OWM3OWVjMTNkMyJ9" data-embed-title="Monitoramento Estratégico de Vendas, Custos e Lucros (Power BI)">Carregar dashboard<span class="visually-hidden">: Monitoramento Estratégico de Vendas, Custos e Lucros</span></a>
+              </div>
+            </div>
+            <p class="embed__alt"><a href="https://app.powerbi.com/view?r=eyJrIjoiMmU3YzY2MDktOTJjNC00NmUwLWE1OTUtMGYxNWI5OTEyOTRjIiwidCI6ImVlOWNhMzg2LTAxOGUtNDUwMC04NGMzLWE5OWM3OWVjMTNkMyJ9" target="_blank" rel="noopener">Abrir em tela cheia no Power BI <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg><span class="visually-hidden">(abre em nova aba)</span></a></p>
+          </div>
+          <aside class="panel" aria-labelledby="monitoramento-estrutura">
+            <h3 class="panel__title" id="monitoramento-estrutura">Como o relatório está organizado</h3>
+            <dl class="facts">
+              <div><dt>Painel 1</dt><dd>Comportamento de compra: salário anual, perfil familiar, estado civil e escolaridade em relação ao total de gastos.</dd></div>
+              <div><dt>Painel 2</dt><dd>Perfil dos clientes: total de clientes, salário médio e compras por canal (loja, web, catálogo e com desconto).</dd></div>
+              <div><dt>Técnicas</dt><dd>Correlação, diagrama de Sankey, segmentação demográfica e filtro por país.</dd></div>
+            </dl>
+          </aside>
+        </div>
+        <div class="dash__body">
+          <section class="prose" aria-labelledby="monitoramento-compra">
+            <h3 id="monitoramento-compra">Análise do comportamento de compra</h3>
+            <p>Como o salário anual e as características demográficas influenciam o total de gastos.</p>
+            <ul>
+              <li><strong>Correlação (salário anual × total de gastos):</strong> clientes com salários maiores tendem a gastar mais.</li>
+              <li><strong>Diagrama de Sankey:</strong> relaciona estado civil e escolaridade ao total de gastos, destacando diferenças entre perfis.</li>
+              <li><strong>Impacto familiar:</strong> efeito do número de filhos e adolescentes em casa nos gastos.</li>
+            </ul>
+          </section>
+          <section class="prose" aria-labelledby="monitoramento-perfil">
+            <h3 id="monitoramento-perfil">Perfil dos clientes</h3>
+            <p>Dados demográficos e canais de compra dos clientes.</p>
+            <ul>
+              <li><strong>Indicadores:</strong> total de clientes, média de salário anual e número de compras por canal (loja, web, catálogo e com desconto).</li>
+              <li><strong>Distribuição demográfica:</strong> escolaridade e estado civil para entender o perfil do cliente.</li>
+              <li><strong>Segmentação por país:</strong> filtros para análises específicas por região.</li>
+            </ul>
+            <h3>Resultado da análise</h3>
+            <p>Padrões de compra identificados e características demográficas que influenciam o consumo, com insights estratégicos para campanhas de marketing.</p>
+          </section>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <section class="cta-band" aria-labelledby="cta-title">
+    <div class="container cta-band__inner">
+      <div>
+        <h2 id="cta-title">Vamos conversar?</h2>
+        <p>Estou sempre disposto a aprender, explorar novas tecnologias e encarar novas oportunidades.</p>
+      </div>
+      <div class="cta-band__actions">
+        <a class="btn btn--primary" href="index.html#contact">Entrar em contato</a>
+        <a class="btn btn--ghost" href="pdfs/Curriculo,%20Victor%20Queiroz%20Bazarim%20-%20v7.pdf" download><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Baixar currículo (PDF)</a>
+      </div>
+    </div>
   </section>
-  <!-- Conteúdo do projeto específico -->
-  <section class="project-details">
 
-    <!-- Dashboard inserido diretamente -->
-    <div class="pdf-item">
-      <h2>Dashboard de Gestão de Vendas</h2>
-
-      <p>
-        Este dashboard foi desenvolvido para monitorar e analisar o desempenho de vendas de diferentes unidades e produtos. <br>
-        Ele apresenta uma visão clara e intuitiva dos principais indicadores de negócio, permitindo decisões estratégicas baseadas em dados. <br>
-      </p>
-        <!-- Dashboard Power BI -->
-        <div class="dashboard-container">
-            <iframe title="Primeiro-Dash" src="https://app.powerbi.com/view?r=eyJrIjoiMGVmMzFiMjktNzU2Yy00ODc3LWExYmYtOTZhZGNmMjBiMDcwIiwidCI6ImVlOWNhMzg2LTAxOGUtNDUwMC04NGMzLWE5OWM3OWVjMTNkMyJ9" frameborder="0" allowfullscreen="true"></iframe>
-        </div>
-        
-        <!-- Mantém o botão para download do pbix -->
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <div class="site-footer__brand">
+        <a class="brand" href="index.html" aria-label="Victor Bazarim, página inicial">
+          <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="17" width="5" height="10" rx="1.5"/><rect x="13.5" y="11" width="5" height="16" rx="1.5"/><rect x="22" y="5" width="5" height="22" rx="1.5"/></svg>
+          <span>Victor Bazarim</span>
+        </a>
+        <p>Análise de dados, inteligência comercial e automação de processos.</p>
+      </div>
+      <nav class="footer-nav" aria-labelledby="rodape-nav">
+        <h2 id="rodape-nav">Navegação</h2>
+        <ul>
+            <li><a href="index.html#home">Início</a></li>
+            <li><a href="projeto1.html">Projetos</a></li>
+            <li><a href="dashboard.html">Dashboards</a></li>
+            <li><a href="certificados.html">Certificados</a></li>
+            <li><a href="index.html#about">Sobre</a></li>
+            <li><a href="index.html#contact">Contato</a></li>
+        </ul>
+      </nav>
+      <div class="site-footer__contact">
+        <h2>Contato</h2>
+        <a href="mailto:queirozvitor11@gmail.com">queirozvitor11@gmail.com</a>
+        <ul class="social">
+          <li><a href="https://www.linkedin.com/in/victor-queiroz-bazarim-401411167/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (abre em nova aba)"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a></li>
+          <li><a href="https://github.com/HubBazarim" target="_blank" rel="noopener noreferrer" aria-label="GitHub (abre em nova aba)"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></a></li>
+          <li><a href="https://www.instagram.com/victor_bazarim/" target="_blank" rel="noopener noreferrer" aria-label="Instagram (abre em nova aba)"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a></li>
+        </ul>
+      </div>
     </div>
-
-  <div>
-
-<h3>Principais Métricas e Funcionalidades:</h3>
-
-<ul style="margin-bottom: 15px;">
-  <li style="margin-bottom: 10px;">
-    <strong>Faturamento por Loja:</strong> 
-    <span>Análise do desempenho das unidades (Matriz e Filiais) com destaque para a Matriz, que faturou R$ 5,4 milhões.</span>
-  </li>
-  <li style="margin-bottom: 10px;">
-    <strong>Faturamento por Tipo de Pagamento:</strong> 
-    <span>Comparação entre as formas de pagamento, com 61,39% das vendas feitas por Transferência/PIX e 38,61% via cartão de crédito.</span>
-  </li>
-  <li style="margin-bottom: 10px;">
-    <strong>Faturamento por Período:</strong> 
-    <span>Tendências de vendas ao longo do ano, evidenciando o pico em março com R$ 2,04 milhões.</span>
-  </li>
-  <li style="margin-bottom: 10px;">
-    <strong>Análise por Produto:</strong> 
-    <span>Acompanhe a representatividade dos itens no faturamento, onde Bolsas lideram com 32,06% do total.</span>
-  </li>
-  <li style="margin-bottom: 10px;">
-    <strong>Indicadores Gerais:</strong> <br>
-    <span><strong>Valor total faturado:</strong> R$ 12,9 milhões</span> <br>
-    <span><strong>Comissão gerada:</strong> R$ 643 mil</span> <br>
-    <span><strong>Ticket médio:</strong> R$ 51,6 mil</span>
-  </li>
-</ul>
-
-
-  </div>
-</section>
-
-<section>
-  <Div>
-<h1>Monitoramento Estratégico de Vendas, Custos e Lucros</h1>
-<p>Este dashboard oferece uma visão completa do desempenho financeiro, permitindo identificar tendências, <br>otimizar estratégias de envio e maximizar a lucratividade em diferentes mercados e categorias de produtos</p>
-
-<div class="pdf-item">
-  <!-- Dashboard Power BI -->
-  <div class="dashboard-container">
-    <iframe title="Mini-Projeto1" width="600" height="373.5" src="https://app.powerbi.com/view?r=eyJrIjoiMmU3YzY2MDktOTJjNC00NmUwLWE1OTUtMGYxNWI5OTEyOTRjIiwidCI6ImVlOWNhMzg2LTAxOGUtNDUwMC04NGMzLWE5OWM3OWVjMTNkMyJ9" frameborder="0" allowFullScreen="true"></iframe>
-  </div>
-  
-  <!-- Mantém o botão para download do pbix -->
-<p>
-  <strong>Análise do Comportamento de Compra</strong><br>
-  <span>Analisamos como o salário anual e características demográficas influenciam o total de gastos.</span><br>
-  - <strong>Correlação (Salário Anual x Total de Gastos)</strong>: <span>Identificamos que clientes com salários maiores tendem a gastar mais.</span><br>
-  - <strong>Diagrama de Sankey</strong>: <span>Relacionamos estado civil e escolaridade ao total de gastos, destacando diferenças entre perfis.</span><br>
-  - <strong>Impacto Familiar</strong>: <span>Avaliamos o efeito do número de filhos e adolescentes em casa nos gastos.</span><br>
-</p>
-
-<p>
-  <strong>Segundo Dashboard: Perfil dos Clientes</strong><br>
-  <span>Exploramos os dados demográficos e canais de compra dos clientes.</span><br>
-  - <strong>Indicadores</strong>: <span>Exibimos o total de clientes, média de salário anual e número de compras por canal (loja, web, catálogo e com desconto).</span><br>
-  - <strong>Distribuição Demográfica</strong>: <span>Analisamos a escolaridade e estado civil para entender o perfil do cliente.</span><br>
-  - <strong>Segmentação por País</strong>: <span>Incluímos filtros para análises específicas por região.</span><br>
-</p>
-
-<p>
-  <strong>Resultado da Análise</strong><br>
-  <span>Conseguimos identificar padrões de compra e destacar características demográficas que influenciam no consumo, oferecendo insights estratégicos para as campanhas de marketing.</span><br>
-</p>
-
-</Div>
-</section>
-
-<section>
-<div class="pdf-item">
-  <h2>Análise da Produção de Petróleo e Gás no Brasil</h2>
-  <p>Estudo detalhado das principais métricas do setor de petróleo e gás, com foco em volumes de produção, localização geográfica e desempenho operacional</p>
-  <iframe src="https://1drv.ms/x/c/0e59b3caec045048/IQRTAeH8eYVJQotznjKBWxk3AWbBTArm3oRCbyjW2a_LIFA" width="410" height="346" frameborder="0" scrolling="no"></iframe>
-</div>
-<p>
-  - <strong>Produção de Gás por UF</strong>: <span>Destaca os estados com maior volume de produção, liderados pelo RJ (2589 bi).</span><br>
-  - <strong>Top 5 Bacias Produtoras de Petróleo</strong>: <span>Santos é a principal bacia produtora, com 439 bi.</span><br>
-  - <strong>Top 5 Campos de Produção</strong>: <span>Campos como Tupi e Búzios lideram a produção de petróleo e gás.</span><br>
-  - <strong>Operadores</strong>: <span>Petrobras lidera com 602 bi de petróleo e 4423 bi de gás, seguida por TotalEnergies.</span><br>
-  - <strong>Tendências Mensais</strong>: <span>Gráficos apresentam variações mensais na produção de petróleo (bbl) e gás (m³).</span><br>
-</p>
-
-<p>
-  <strong>Visualização e Insights</strong><br>
-  <span>O dashboard permite a identificação de padrões de produção, desempenho regional e eficiência dos operadores.</span><br>
-  - <strong>Indicadores de Ocupação</strong>: <span>Taxa de ocupação média de 48% em campos monitorados.</span><br>
-  - <strong>Comparações por Bacias</strong>: <span>Diferenciações claras entre as maiores bacias, como Santos e Campos.</span><br>
-</p>
-
-<p>
-  <strong>Resultados e Aplicações</strong><br>
-  <span>Os insights obtidos auxiliam no planejamento estratégico das operadoras e na tomada de decisão com base em dados regionais e operacionais.</span><br>
-</p>
-
-</section>
-  <!-- Inclua o mesmo rodapé da página principal -->
-   <!-- Rodapé igual ao da página principal -->
-   <footer>
-    <p>Contact: <span>queirozvitor11@gmail.com</span>/ Copyright &copy; 2024 by &lt;/Victor&gt;. All Rights Reserved.</p>
+    <div class="container site-footer__legal">
+      <p>&copy; 2024–<span data-year>2026</span> &lt;/Victor&gt;. Todos os direitos reservados.</p>
+      <a href="#top">Voltar ao topo</a>
+    </div>
   </footer>
-  
-  <!-- Adicione o script aqui -->
-  <script>
-    const menuHamburguer = document.querySelector('.menu-hamburguer');
-    const navResponsive = document.querySelector('.nav-responsive');
-  
-    menuHamburguer.addEventListener('click', () => {
-      menuHamburguer.classList.toggle('change');
-      navResponsive.classList.toggle('nav-visible');  // Adiciona ou remove a classe que exibe o menu
-    });
-  </script>
 
-<script>
-  const img = document.querySelector('.pdf-item img');
-  
-  img.addEventListener('click', () => {
-    img.classList.toggle('zoomed');
-  });
-</script>
-
-  </body>
-  </html>
-  
+  <a class="to-top" href="#top" data-to-top>
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+    <span class="visually-hidden">Voltar ao topo</span>
+  </a>
+</body>
+</html>

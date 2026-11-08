@@ -1,94 +1,247 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="no-js">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projeto de Automação</title>
-  <link rel="stylesheet" href="css/style.css"> <!-- Verifique se o caminho do CSS está correto -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Projetos | Victor Queiroz Bazarim</title>
+  <meta name="description" content="Projetos de análise de dados, dashboards em Power BI e automação com Python de Victor Queiroz Bazarim.">
+  <meta name="theme-color" content="#1f242d">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="Projetos | Victor Queiroz Bazarim">
+  <meta property="og:description" content="Projetos de análise de dados, dashboards em Power BI e automação com Python de Victor Queiroz Bazarim.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
+  <script src="js/script.js" defer></script>
 </head>
-<body>
+<body id="top">
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
-  <!-- Cabeçalho da página principal -->
-  <header>
-    <a href="index.html" class="logo">Victor Bazarim</a>
-    <div class="nav">
-      <a href="index.html#home">Home</a>
-      <a href="index.html#services">Services</a>
-      <a href="index.html#portfolio">Portfolio</a>
-      <a href="index.html#about">About</a>
-    </div>
-    
-    <div class="menu-hamburguer">
-      <div class="bar1"></div>
-      <div class="bar2"></div>
-      <div class="bar3"></div>
-    </div>
-  
-    <div class="nav-responsive">
-      <a href="index.html#home">Home</a>
-      <a href="index.html#services">Services</a>
-      <a href="index.html#portfolio">Portfolio</a>
-      <a href="index.html#about">About</a>
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="index.html" aria-label="Victor Bazarim, página inicial">
+        <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="17" width="5" height="10" rx="1.5"/><rect x="13.5" y="11" width="5" height="16" rx="1.5"/><rect x="22" y="5" width="5" height="22" rx="1.5"/></svg>
+        <span>Victor Bazarim</span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-toggle>
+        <span class="menu-toggle__bars" aria-hidden="true"><span></span><span></span><span></span></span>
+        Menu
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Principal">
+        <ul class="site-nav__list">
+          <li><a href="index.html#home">Início</a></li>
+          <li><a href="projeto1.html" aria-current="page">Projetos</a></li>
+          <li><a href="dashboard.html">Dashboards</a></li>
+          <li><a href="certificados.html">Certificados</a></li>
+          <li><a href="index.html#about">Sobre</a></li>
+          <li><a href="index.html#contact" class="site-nav__cta">Contato</a></li>
+        </ul>
+      </nav>
     </div>
   </header>
 
-  <!-- Conteúdo do projeto de automação -->
-  <section class="projects">
-    <div class="project-item">
-      <h3>Robô de Automação de Tarefas</h3>
-      <img src="img/paginarobo.jpg" alt="Robô de Automação">
-      <p>
-        Este robô foi desenvolvido para automatizar tarefas repetitivas utilizando Python.
-        Na página "Ver Detalhes", estará disponível o script e o vídeo mostrando o robô em ação, além do passo a passo de como utilizá-lo.
-      </p>
-      <a href="detalhes-projeto.html" class="btn">Ver Detalhes</a>
-    </div>
-  
-    <div class="project-item">
-      <h3>Programa para Junção de Arquivos PDF</h3>
-      <img src="img/pdf imagem.png" alt="Compilador de PDF">
-      <p>
-        Este projeto consiste em um programa em Python que utiliza a biblioteca PyPDF2 para combinar múltiplos arquivos PDF em um único documento.
-        O código organiza os arquivos PDF em ordem alfabética e os junta de forma eficiente, gerando um arquivo final denominado "PDF Final.pdf".
-      </p>
-      <a href="detalhes-projetocert.html" class="btn">Ver Detalhes</a>
-    </div>
-  
-    <div class="project-item">
-      <h3>Análise Exploratória de Dados Municipais</h3>
-      <img src="img/exploratoria.png" alt="Análise Exploratória">
-      <p>
-        Este projeto realiza uma análise exploratória de dados de 5.570 municípios brasileiros, abordando aspectos como distribuição populacional e PIB per capita.
-        Ideal para entender como a análise de dados pode apoiar o planejamento público e decisões informadas.
-      </p>
-      <a href="datalhes-projetoanalise.html" class="btn">Ver Detalhes</a>
-    </div>
+  <main id="conteudo" tabindex="-1">
+    <header class="page-head">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Trilha de navegação">
+          <ol><li><a href="index.html">Início</a></li><li aria-current="page">Projetos</li></ol>
+        </nav>
+        <h1>Projetos</h1>
+        <p class="lead">Dashboards em Power BI, análise exploratória de dados e automações em Python. Cada projeto traz o problema, os dados, as ferramentas e o resultado.</p>
+      </div>
+    </header>
 
-    <div class="project-item">
-      <h3>Chat Para Empresas</h3>
-      <img src="img/zap empresa.png" alt="Chat Para Empresas">
-      <p>
-       Chat Zap é um aplicativo de chat em tempo real, desenvolvido com a biblioteca Flet em Python. Ele permite interação instantânea entre usuários, com notificações visuais e um design simples e funcional. Ideal para demonstrar como a tecnologia pode facilitar a comunicação de forma prática e intuitiva.
-      </p>
-      <a href="Chat.html" class="btn">Ver Detalhes</a>
+    <section class="section" aria-label="Lista de projetos">
+      <div class="container">
+        <div class="slicer" role="group" aria-label="Filtrar projetos por área" data-filter-controls="lista-projetos" data-filter-noun="projeto|projetos" data-filter-url>
+          <span class="slicer__label" aria-hidden="true">Filtrar</span>
+          <button class="chip" type="button" data-filter="todos" aria-pressed="true">Todos</button>
+          <button class="chip" type="button" data-filter="analise" aria-pressed="false">Análise de dados</button>
+          <button class="chip" type="button" data-filter="powerbi" aria-pressed="false">Power BI</button>
+          <button class="chip" type="button" data-filter="python" aria-pressed="false">Python</button>
+          <button class="chip" type="button" data-filter="automacao" aria-pressed="false">Automação</button>
+        </div>
+        <p class="slicer__status" role="status" data-filter-status="lista-projetos"></p>
+        <ul class="case-list" data-filter-list="lista-projetos">
+          <li class="case-row" data-tags="analise powerbi">
+            <div class="cover cover--data viz-anim"><p class="cover__value">R$ 12,9 mi</p><p class="cover__label">faturamento total exibido no painel, por tipo de pagamento:</p><div class="split" style="--cols: 61.39fr 38.61fr" aria-hidden="true"><span class="split__seg"></span><span class="split__seg split__seg--rest"></span></div><ul class="legend"><li><span class="swatch" aria-hidden="true"></span>Transferência/PIX <strong>61,39%</strong></li><li><span class="swatch swatch--rest" aria-hidden="true"></span>Cartão de crédito <strong>38,61%</strong></li></ul></div>
+            <div class="case-row__body">
+              <ul class="tags"><li>Power BI</li><li>Análise de dados</li></ul>
+              <h2>Dashboard de Gestão de Vendas</h2>
+              <p>Desempenho de vendas por loja, forma de pagamento, período e produto em um só painel.</p>
+              <dl class="facts facts--grid">
+                <div><dt>Objetivo</dt><dd>Monitorar e analisar o desempenho de vendas de diferentes unidades e produtos, apoiando decisões estratégicas baseadas em dados.</dd></div>
+                <div><dt>Dados</dt><dd>Faturamento por loja (Matriz e Filiais), tipo de pagamento, período e produto.</dd></div>
+                <div><dt>Ferramentas</dt><dd>Power BI.</dd></div>
+                <div><dt>Resultado</dt><dd>Painel com os principais indicadores do negócio: R$ 12,9 milhões faturados, 61,39% via Transferência/PIX, pico em março (R$ 2,04 milhões) e Bolsas liderando com 32,06% do total.</dd></div>
+              </dl>
+              <div class="case-row__actions">
+                <a class="btn btn--primary btn--small" href="dashboard.html#vendas">Ver dashboard<span class="visually-hidden">: Dashboard de Gestão de Vendas</span></a>
+              </div>
+            </div>
+          </li>
+          <li class="case-row" data-tags="analise powerbi">
+            <div class="cover cover--data viz-anim"><div class="viz"><div class="meter"><div class="meter__head"><span>Disponibilidade acumulada</span><strong>77,69%</strong></div><div class="meter__track" aria-hidden="true"><span class="meter__fill" style="--v: 77.69%"></span></div></div><div class="meter"><div class="meter__head"><span>Qualidade</span><strong>99,32%</strong></div><div class="meter__track" aria-hidden="true"><span class="meter__fill" style="--v: 99.32%"></span></div></div></div><p class="cover__label">Quantidade produzida: 3.084.251. Rejeitada: 21.076.</p></div>
+            <div class="case-row__body">
+              <ul class="tags"><li>Power BI</li><li>Análise de dados</li></ul>
+              <h2>Dashboard de Produção</h2>
+              <p>Eficiência, qualidade e disponibilidade da produção, com filtros por operador e período.</p>
+              <dl class="facts facts--grid">
+                <div><dt>Objetivo</dt><dd>Oferecer uma visão abrangente do desempenho produtivo, facilitando a análise de gargalos, a avaliação da qualidade dos processos e a otimização de recursos.</dd></div>
+                <div><dt>Dados</dt><dd>Quantidade produzida e rejeitada, horas produtivas e horas paradas, por operador e período.</dd></div>
+                <div><dt>Ferramentas</dt><dd>Power BI: medidas para disponibilidade, qualidade e métricas acumuladas; cards, medidores e gráfico de barras.</dd></div>
+                <div><dt>Resultado</dt><dd>Indicadores acumulados em um só painel, com disponibilidade de 77,69% e qualidade de 99,32%, filtráveis por operador e período.</dd></div>
+              </dl>
+              <div class="case-row__actions">
+                <a class="btn btn--primary btn--small" href="dashboard.html#producao">Ver dashboard<span class="visually-hidden">: Dashboard de Produção</span></a>
+              </div>
+            </div>
+          </li>
+          <li class="case-row" data-tags="analise">
+            <div class="cover cover--data viz-anim"><p class="cover__value">r = 0,85</p><p class="cover__label">correlação entre PIB e população em 5.570 municípios brasileiros</p><div class="corr" aria-hidden="true"><div class="corr__track"><span class="corr__bar" style="--r: 0.85"></span><span class="corr__zero"></span></div><div class="corr__ticks"><span>−1</span><span>0</span><span>+1</span></div></div></div>
+            <div class="case-row__body">
+              <ul class="tags"><li>Análise exploratória</li><li>Estatística</li><li>Projeto acadêmico</li></ul>
+              <h2>Análise Exploratória de Dados Municipais</h2>
+              <p>Aspectos demográficos, econômicos e sociais de 5.570 municípios brasileiros.</p>
+              <dl class="facts facts--grid">
+                <div><dt>Problema</dt><dd>Entender como a análise de dados pode apoiar o planejamento público e decisões informadas.</dd></div>
+                <div><dt>Dados</dt><dd>5.570 municípios brasileiros, com variáveis como população, PIB, PIB per capita, IDHM, região e porte.</dd></div>
+                <div><dt>Técnicas</dt><dd>Checagem de dados, análise de frequência, tendência central, correlação, boxplots e gráficos de pizza.</dd></div>
+                <div><dt>Resultado</dt><dd>Forte assimetria populacional (média de 37 mil e mediana de 11,5 mil habitantes) e correlação forte entre PIB e população (r = 0,85).</dd></div>
+              </dl>
+              <div class="case-row__actions">
+                <a class="btn btn--primary btn--small" href="datalhes-projetoanalise.html">Ver detalhes do projeto<span class="visually-hidden">: Análise Exploratória de Dados Municipais</span></a>
+              </div>
+            </div>
+          </li>
+          <li class="case-row" data-tags="analise powerbi">
+            <div class="cover cover--data"><p class="cover__label">Dois painéis no mesmo relatório:</p><ul class="page-thumbs"><li>Comportamento de compra</li><li>Perfil dos clientes</li></ul><ul class="tags"><li>Correlação</li><li>Diagrama de Sankey</li><li>Filtro por país</li></ul></div>
+            <div class="case-row__body">
+              <ul class="tags"><li>Power BI</li><li>Análise de dados</li></ul>
+              <h2>Monitoramento Estratégico de Vendas, Custos e Lucros</h2>
+              <p>Comportamento de compra e perfil dos clientes por salário, escolaridade, estado civil e canal de compra.</p>
+              <dl class="facts facts--grid">
+                <div><dt>Objetivo</dt><dd>Oferecer uma visão completa do desempenho financeiro, permitindo identificar tendências, otimizar estratégias de envio e maximizar a lucratividade em diferentes mercados e categorias de produtos.</dd></div>
+                <div><dt>Dados</dt><dd>Clientes com salário anual, estado civil, escolaridade, filhos e adolescentes em casa, canais de compra e país.</dd></div>
+                <div><dt>Ferramentas</dt><dd>Power BI: correlação, diagrama de Sankey e filtros por país.</dd></div>
+                <div><dt>Resultado</dt><dd>Padrões de compra identificados: clientes com salários maiores tendem a gastar mais, e características demográficas influenciam o consumo, o que gera insights para campanhas de marketing.</dd></div>
+              </dl>
+              <div class="case-row__actions">
+                <a class="btn btn--primary btn--small" href="dashboard.html#monitoramento">Ver dashboard<span class="visually-hidden">: Monitoramento Estratégico de Vendas, Custos e Lucros</span></a>
+              </div>
+            </div>
+          </li>
+          <li class="case-row" data-tags="python automacao">
+            <div class="cover cover--image"><img src="img/paginarobo.jpg" alt="" width="800" height="500" loading="lazy" decoding="async"></div>
+            <div class="case-row__body">
+              <ul class="tags"><li>Python</li><li>PyAutoGUI</li><li>Pandas</li></ul>
+              <h2>Robô de Automação de Tarefas</h2>
+              <p>Cadastro automático de produtos em um sistema online a partir de uma base CSV.</p>
+              <dl class="facts facts--grid">
+                <div><dt>Problema</dt><dd>Automatizar uma tarefa repetitiva: o cadastro de produtos em um sistema online.</dd></div>
+                <div><dt>Dados</dt><dd>Base de produtos em CSV com código, marca, tipo, categoria, preço unitário, custo e observações.</dd></div>
+                <div><dt>Ferramentas</dt><dd>Python, PyAutoGUI e Pandas.</dd></div>
+                <div><dt>Resultado</dt><dd>O robô faz login, percorre a base e preenche e envia cada cadastro até o fim da lista.</dd></div>
+              </dl>
+              <div class="case-row__actions">
+                <a class="btn btn--primary btn--small" href="detalhes-projeto.html">Ver detalhes do projeto<span class="visually-hidden">: Robô de Automação de Tarefas</span></a>
+              </div>
+            </div>
+          </li>
+          <li class="case-row" data-tags="python automacao">
+            <div class="cover cover--image"><img src="img/pdf%20imagem.png" alt="" width="800" height="500" loading="lazy" decoding="async"></div>
+            <div class="case-row__body">
+              <ul class="tags"><li>Python</li><li>PyPDF2</li></ul>
+              <h2>Programa para Junção de Arquivos PDF</h2>
+              <p>Combina os PDFs de uma pasta, em ordem alfabética, em um único documento.</p>
+              <dl class="facts facts--grid">
+                <div><dt>Problema</dt><dd>Consolidar vários documentos em um único arquivo, principalmente quando há um grande volume de PDFs.</dd></div>
+                <div><dt>Dados</dt><dd>Os arquivos PDF presentes em uma pasta.</dd></div>
+                <div><dt>Ferramentas</dt><dd>Python e PyPDF2 (PdfMerger).</dd></div>
+                <div><dt>Resultado</dt><dd>Gera o arquivo “PDF Final.pdf” com todos os documentos em ordem alfabética.</dd></div>
+              </dl>
+              <div class="case-row__actions">
+                <a class="btn btn--primary btn--small" href="detalhes-projetocert.html">Ver detalhes do projeto<span class="visually-hidden">: Programa para Junção de Arquivos PDF</span></a>
+              </div>
+            </div>
+          </li>
+          <li class="case-row" data-tags="python">
+            <div class="cover cover--image"><img src="img/zap%20empresa.png" alt="" width="800" height="500" loading="lazy" decoding="async"></div>
+            <div class="case-row__body">
+              <ul class="tags"><li>Python</li><li>Flet</li></ul>
+              <h2>Chat para Empresas</h2>
+              <p>Aplicativo de chat em tempo real com Python e Flet, com feedback visual de mensagens e novas entradas.</p>
+              <dl class="facts facts--grid">
+                <div><dt>Para que serve</dt><dd>Permitir que vários usuários conversem em uma sala de chat em tempo real.</dd></div>
+                <div><dt>Ferramentas</dt><dd>Python, Flet e o sistema PubSub para sincronizar as mensagens.</dd></div>
+                <div><dt>Resultado</dt><dd>Chat com interface simples e funcional e notificações visuais sobre mensagens e novas entradas.</dd></div>
+              </dl>
+              <div class="case-row__actions">
+                <a class="btn btn--primary btn--small" href="Chat.html">Ver detalhes do projeto<span class="visually-hidden">: Chat para Empresas</span></a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <section class="cta-band" aria-labelledby="cta-title">
+    <div class="container cta-band__inner">
+      <div>
+        <h2 id="cta-title">Vamos conversar?</h2>
+        <p>Estou sempre disposto a aprender, explorar novas tecnologias e encarar novas oportunidades.</p>
+      </div>
+      <div class="cta-band__actions">
+        <a class="btn btn--primary" href="index.html#contact">Entrar em contato</a>
+        <a class="btn btn--ghost" href="pdfs/Curriculo,%20Victor%20Queiroz%20Bazarim%20-%20v7.pdf" download><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Baixar currículo (PDF)</a>
+      </div>
     </div>
-    
   </section>
-  
 
-  <!-- Rodapé -->
-  <footer>
-    <p>Contact: <span>queirozvitor11@gmail.com</span> / Copyright &copy; 2024 by &lt;/Victor&gt;. All Rights Reserved.</p>
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <div class="site-footer__brand">
+        <a class="brand" href="index.html" aria-label="Victor Bazarim, página inicial">
+          <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="17" width="5" height="10" rx="1.5"/><rect x="13.5" y="11" width="5" height="16" rx="1.5"/><rect x="22" y="5" width="5" height="22" rx="1.5"/></svg>
+          <span>Victor Bazarim</span>
+        </a>
+        <p>Análise de dados, inteligência comercial e automação de processos.</p>
+      </div>
+      <nav class="footer-nav" aria-labelledby="rodape-nav">
+        <h2 id="rodape-nav">Navegação</h2>
+        <ul>
+            <li><a href="index.html#home">Início</a></li>
+            <li><a href="projeto1.html">Projetos</a></li>
+            <li><a href="dashboard.html">Dashboards</a></li>
+            <li><a href="certificados.html">Certificados</a></li>
+            <li><a href="index.html#about">Sobre</a></li>
+            <li><a href="index.html#contact">Contato</a></li>
+        </ul>
+      </nav>
+      <div class="site-footer__contact">
+        <h2>Contato</h2>
+        <a href="mailto:queirozvitor11@gmail.com">queirozvitor11@gmail.com</a>
+        <ul class="social">
+          <li><a href="https://www.linkedin.com/in/victor-queiroz-bazarim-401411167/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (abre em nova aba)"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a></li>
+          <li><a href="https://github.com/HubBazarim" target="_blank" rel="noopener noreferrer" aria-label="GitHub (abre em nova aba)"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></a></li>
+          <li><a href="https://www.instagram.com/victor_bazarim/" target="_blank" rel="noopener noreferrer" aria-label="Instagram (abre em nova aba)"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container site-footer__legal">
+      <p>&copy; 2024–<span data-year>2026</span> &lt;/Victor&gt;. Todos os direitos reservados.</p>
+      <a href="#top">Voltar ao topo</a>
+    </div>
   </footer>
 
-  <script>
-    const menuHamburguer = document.querySelector('.menu-hamburguer');
-    const navResponsive = document.querySelector('.nav-responsive');
-
-    menuHamburguer.addEventListener('click', () => {
-      menuHamburguer.classList.toggle('change');
-      navResponsive.classList.toggle('nav-visible');  
-    });
-  </script>
+  <a class="to-top" href="#top" data-to-top>
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+    <span class="visually-hidden">Voltar ao topo</span>
+  </a>
 </body>
 </html>

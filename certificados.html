@@ -1,168 +1,329 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="no-js">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Certificados</title>
-  <link rel="stylesheet" href="css/style.css"> <!-- Certifique-se de que o CSS está linkado corretamente -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Certificados | Victor Queiroz Bazarim</title>
+  <meta name="description" content="Certificados de Victor Queiroz Bazarim em Power BI, SQL, análise de dados, Python, Scrum e outros cursos.">
+  <meta name="theme-color" content="#1f242d">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="Certificados | Victor Queiroz Bazarim">
+  <meta property="og:description" content="Certificados de Victor Queiroz Bazarim em Power BI, SQL, análise de dados, Python, Scrum e outros cursos.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
+  <script src="js/script.js" defer></script>
 </head>
-<body>
+<body id="top">
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
-  <!-- Cabeçalho igual ao da página principal -->
-  <header>
-    <a href="index.html" class="logo">Victor Bazarim</a>
-    <div class="nav">
-      <a href="index.html#home">Home</a>
-      <a href="index.html#services">Services</a>
-      <a href="index.html#portfolio">Portfolio</a>
-      <a href="index.html#about">About</a>
-    </div>
-  
-    <div class="menu-hamburguer">
-      <div class="bar1"></div>
-      <div class="bar2"></div>
-      <div class="bar3"></div>
-    </div>
-  
-    <!-- Adicione o menu responsivo aqui -->
-    <div class="nav-responsive">
-      <a href="index.html#home">Home</a>
-      <a href="index.html#services">Services</a>
-      <a href="index.html#portfolio">Portfolio</a>
-      <a href="index.html#about">About</a>
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="index.html" aria-label="Victor Bazarim, página inicial">
+        <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="17" width="5" height="10" rx="1.5"/><rect x="13.5" y="11" width="5" height="16" rx="1.5"/><rect x="22" y="5" width="5" height="22" rx="1.5"/></svg>
+        <span>Victor Bazarim</span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-toggle>
+        <span class="menu-toggle__bars" aria-hidden="true"><span></span><span></span><span></span></span>
+        Menu
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Principal">
+        <ul class="site-nav__list">
+          <li><a href="index.html#home">Início</a></li>
+          <li><a href="projeto1.html">Projetos</a></li>
+          <li><a href="dashboard.html">Dashboards</a></li>
+          <li><a href="certificados.html" aria-current="page">Certificados</a></li>
+          <li><a href="index.html#about">Sobre</a></li>
+          <li><a href="index.html#contact" class="site-nav__cta">Contato</a></li>
+        </ul>
+      </nav>
     </div>
   </header>
-  
 
-  <!-- Conteúdo da página com múltiplos PDFs -->
-  <section class="project-details">
-    <h1>Meus Certificados</h1>
-    <p>Abaixo estão os certificados dos cursos que completei.</p>
-    
- 
- 
-  <!-- Certificado 1 -->
-  <div class="pdf-item">
-    <h3>Microsoft Power BI Para Business Intelligence e Data Science</h3>
-    <img src="img/certificate-microsoft_page-0001.jpg">
-    <a href="pdfs/certificate-microsoft.pdf" download class="btn">Baixar Certificado</a>
-  </div>
+  <main id="conteudo" tabindex="-1">
+    <header class="page-head">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Trilha de navegação">
+          <ol><li><a href="index.html">Início</a></li><li aria-current="page">Certificados</li></ol>
+        </nav>
+        <h1>Certificados</h1>
+        <p class="lead">Cursos que concluí ao longo da minha jornada, com foco em dados e BI. Clique em um certificado para ampliá-lo ou baixe o PDF.</p>
+      </div>
+    </header>
 
-<div class="pdf-item">
-  <h3>Introdução a analise de dados</h3>
-  <img src="img/CertificadoDeConclusao_Introducao as Competencias Essenciais para a Carreira de Analise de Dados_page-0001.jpg">
-  <a href="pdfs/CertificadoDeConclusao_Introducao as Competencias Essenciais para a Carreira de Analise de Dados.pdf" download class="btn">Baixar Certificado</a>
-</div>
-<!-- Certificado 2 -->
-    <div class="pdf-item">
-      <h3>Certificado SCRUM - Metodologias ageis </h3>
-      <img src="img/Certificate scrum_page-0001.jpg" alt="Certificado LGPD">
-      <a href="pdfs/Certificate scrum.pdf" download class="btn">Baixar Certificado</a>
+    <section class="section" aria-label="Lista de certificados">
+      <div class="container">
+        <div class="slicer" role="group" aria-label="Filtrar certificados por área" data-filter-controls="certificados" data-filter-noun="certificado|certificados" data-filter-url>
+          <span class="slicer__label" aria-hidden="true">Filtrar</span>
+          <button class="chip" type="button" data-filter="todos" aria-pressed="true">Todos</button>
+          <button class="chip" type="button" data-filter="dados" aria-pressed="false">Dados e BI</button>
+          <button class="chip" type="button" data-filter="programacao" aria-pressed="false">Programação</button>
+          <button class="chip" type="button" data-filter="gestao" aria-pressed="false">Gestão e comportamento</button>
+          <button class="chip" type="button" data-filter="redes" aria-pressed="false">Redes e LGPD</button>
+        </div>
+        <p class="slicer__status" role="status" data-filter-status="certificados"></p>
+        <ul class="cert-grid" data-filter-list="certificados">
+          <li class="cert-card" data-tags="dados">
+            <a class="cert-card__preview" href="img/certificate-microsoft_page-0001.jpg" data-lightbox data-title="Microsoft Power BI para Business Intelligence e Data Science" data-alt="Certificado: Microsoft Power BI para Business Intelligence e Data Science" data-pdf="pdfs/certificate-microsoft.pdf" aria-label="Ampliar certificado: Microsoft Power BI para Business Intelligence e Data Science">
+              <img src="img/certificate-microsoft_page-0001.jpg" alt="Certificado: Microsoft Power BI para Business Intelligence e Data Science" width="800" height="566" loading="lazy" decoding="async">
+              <span class="cert-card__zoom" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>Ampliar</span>
+            </a>
+            <div class="cert-card__body">
+              <p class="cert-card__area">Dados e BI</p>
+              <h2 class="cert-card__title">Microsoft Power BI para Business Intelligence e Data Science</h2>
+              <div class="cert-card__actions">
+                <a class="btn btn--ghost btn--small" href="pdfs/certificate-microsoft.pdf" download><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Baixar PDF<span class="visually-hidden">: Microsoft Power BI para Business Intelligence e Data Science</span></a>
+              </div>
+            </div>
+          </li>
+          <li class="cert-card" data-tags="dados">
+            <a class="cert-card__preview" href="img/CertificadoDeConclusao_Introducao%20as%20Competencias%20Essenciais%20para%20a%20Carreira%20de%20Analise%20de%20Dados_page-0001.jpg" data-lightbox data-title="Introdução às Competências Essenciais para a Carreira de Análise de Dados" data-alt="Certificado: Introdução às Competências Essenciais para a Carreira de Análise de Dados" data-pdf="pdfs/CertificadoDeConclusao_Introducao%20as%20Competencias%20Essenciais%20para%20a%20Carreira%20de%20Analise%20de%20Dados.pdf" aria-label="Ampliar certificado: Introdução às Competências Essenciais para a Carreira de Análise de Dados">
+              <img src="img/CertificadoDeConclusao_Introducao%20as%20Competencias%20Essenciais%20para%20a%20Carreira%20de%20Analise%20de%20Dados_page-0001.jpg" alt="Certificado: Introdução às Competências Essenciais para a Carreira de Análise de Dados" width="800" height="566" loading="lazy" decoding="async">
+              <span class="cert-card__zoom" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>Ampliar</span>
+            </a>
+            <div class="cert-card__body">
+              <p class="cert-card__area">Dados e BI</p>
+              <h2 class="cert-card__title">Introdução às Competências Essenciais para a Carreira de Análise de Dados</h2>
+              <div class="cert-card__actions">
+                <a class="btn btn--ghost btn--small" href="pdfs/CertificadoDeConclusao_Introducao%20as%20Competencias%20Essenciais%20para%20a%20Carreira%20de%20Analise%20de%20Dados.pdf" download><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Baixar PDF<span class="visually-hidden">: Introdução às Competências Essenciais para a Carreira de Análise de Dados</span></a>
+              </div>
+            </div>
+          </li>
+          <li class="cert-card" data-tags="dados">
+            <a class="cert-card__preview" href="img/certificado%20power%20BI.jpg" data-lightbox data-title="Power BI" data-alt="Certificado: Power BI" data-pdf="pdfs/certificado%20power%20BI.pdf" aria-label="Ampliar certificado: Power BI">
+              <img src="img/certificado%20power%20BI.jpg" alt="Certificado: Power BI" width="800" height="566" loading="lazy" decoding="async">
+              <span class="cert-card__zoom" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>Ampliar</span>
+            </a>
+            <div class="cert-card__body">
+              <p class="cert-card__area">Dados e BI</p>
+              <h2 class="cert-card__title">Power BI</h2>
+              <div class="cert-card__actions">
+                <a class="btn btn--ghost btn--small" href="pdfs/certificado%20power%20BI.pdf" download><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Baixar PDF<span class="visually-hidden">: Power BI</span></a>
+              </div>
+            </div>
+          </li>
+          <li class="cert-card" data-tags="dados">
+            <a class="cert-card__preview" href="img/certificado%20power%20bi%20intensivo.jpg" data-lightbox data-title="Power BI Intensivo" data-alt="Certificado: Power BI Intensivo" data-pdf="pdfs/certificado%20power%20bi%20intensivo.pdf" aria-label="Ampliar certificado: Power BI Intensivo">
+              <img src="img/certificado%20power%20bi%20intensivo.jpg" alt="Certificado: Power BI Intensivo" width="800" height="566" loading="lazy" decoding="async">
+              <span class="cert-card__zoom" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>Ampliar</span>
+            </a>
+            <div class="cert-card__body">
+              <p class="cert-card__area">Dados e BI</p>
+              <h2 class="cert-card__title">Power BI Intensivo</h2>
+              <div class="cert-card__actions">
+                <a class="btn btn--ghost btn--small" href="pdfs/certificado%20power%20bi%20intensivo.pdf" download><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Baixar PDF<span class="visually-hidden">: Power BI Intensivo</span></a>
+              </div>
+            </div>
+          </li>
+          <li class="cert-card" data-tags="dados">
+            <a class="cert-card__preview" href="img/certificado%20sql_page-0001.jpg" data-lightbox data-title="SQL (1)" data-alt="Certificado: SQL (1)" data-pdf="pdfs/certificado%20sql.pdf" aria-label="Ampliar certificado: SQL (1)">
+              <img src="img/certificado%20sql_page-0001.jpg" alt="Certificado: SQL (1)" width="800" height="566" loading="lazy" decoding="async">
+              <span class="cert-card__zoom" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>Ampliar</span>
+            </a>
+            <div class="cert-card__body">
+              <p class="cert-card__area">Dados e BI</p>
+              <h2 class="cert-card__title">SQL (1)</h2>
+              <div class="cert-card__actions">
+                <a class="btn btn--ghost btn--small" href="pdfs/certificado%20sql.pdf" download><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Baixar PDF<span class="visually-hidden">: SQL (1)</span></a>
+              </div>
+            </div>
+          </li>
+          <li class="cert-card" data-tags="dados">
+            <a class="cert-card__preview" href="img/certificado%20sql%202_page-0001.jpg" data-lightbox data-title="SQL (2)" data-alt="Certificado: SQL (2)" data-pdf="pdfs/certificado%20sql%202.pdf" aria-label="Ampliar certificado: SQL (2)">
+              <img src="img/certificado%20sql%202_page-0001.jpg" alt="Certificado: SQL (2)" width="800" height="566" loading="lazy" decoding="async">
+              <span class="cert-card__zoom" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>Ampliar</span>
+            </a>
+            <div class="cert-card__body">
+              <p class="cert-card__area">Dados e BI</p>
+              <h2 class="cert-card__title">SQL (2)</h2>
+              <div class="cert-card__actions">
+                <a class="btn btn--ghost btn--small" href="pdfs/certificado%20sql%202.pdf" download><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Baixar PDF<span class="visually-hidden">: SQL (2)</span></a>
+              </div>
+            </div>
+          </li>
+          <li class="cert-card" data-tags="programacao">
+            <a class="cert-card__preview" href="img/python%20certificado_page-0001.jpg" data-lightbox data-title="Python" data-alt="Certificado: Python" data-pdf="pdfs/python%20certificado.pdf" aria-label="Ampliar certificado: Python">
+              <img src="img/python%20certificado_page-0001.jpg" alt="Certificado: Python" width="800" height="566" loading="lazy" decoding="async">
+              <span class="cert-card__zoom" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>Ampliar</span>
+            </a>
+            <div class="cert-card__body">
+              <p class="cert-card__area">Programação</p>
+              <h2 class="cert-card__title">Python</h2>
+              <div class="cert-card__actions">
+                <a class="btn btn--ghost btn--small" href="pdfs/python%20certificado.pdf" download><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Baixar PDF<span class="visually-hidden">: Python</span></a>
+              </div>
+            </div>
+          </li>
+          <li class="cert-card" data-tags="programacao">
+            <a class="cert-card__preview" href="img/logica%20de%20programação.jpg" data-lightbox data-title="Lógica de Programação" data-alt="Certificado: Lógica de Programação" data-pdf="pdfs/logica%20de%20programação.pdf" aria-label="Ampliar certificado: Lógica de Programação">
+              <img src="img/logica%20de%20programação.jpg" alt="Certificado: Lógica de Programação" width="800" height="566" loading="lazy" decoding="async">
+              <span class="cert-card__zoom" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>Ampliar</span>
+            </a>
+            <div class="cert-card__body">
+              <p class="cert-card__area">Programação</p>
+              <h2 class="cert-card__title">Lógica de Programação</h2>
+              <div class="cert-card__actions">
+                <a class="btn btn--ghost btn--small" href="pdfs/logica%20de%20programação.pdf" download><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Baixar PDF<span class="visually-hidden">: Lógica de Programação</span></a>
+              </div>
+            </div>
+          </li>
+          <li class="cert-card" data-tags="programacao">
+            <a class="cert-card__preview" href="img/Certificate%20of%20participation%20-%20Copia.jpg" data-lightbox data-title="JavaScript – Node.js" data-alt="Certificado: JavaScript – Node.js" data-pdf="pdfs/Certificate%20of%20participation.pdf" aria-label="Ampliar certificado: JavaScript – Node.js">
+              <img src="img/Certificate%20of%20participation%20-%20Copia.jpg" alt="Certificado: JavaScript – Node.js" width="800" height="566" loading="lazy" decoding="async">
+              <span class="cert-card__zoom" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>Ampliar</span>
+            </a>
+            <div class="cert-card__body">
+              <p class="cert-card__area">Programação</p>
+              <h2 class="cert-card__title">JavaScript – Node.js</h2>
+              <div class="cert-card__actions">
+                <a class="btn btn--ghost btn--small" href="pdfs/Certificate%20of%20participation.pdf" download><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Baixar PDF<span class="visually-hidden">: JavaScript – Node.js</span></a>
+              </div>
+            </div>
+          </li>
+          <li class="cert-card" data-tags="gestao">
+            <a class="cert-card__preview" href="img/Certificate%20scrum_page-0001.jpg" data-lightbox data-title="Scrum – Metodologias Ágeis" data-alt="Certificado: Scrum – Metodologias Ágeis" data-pdf="pdfs/Certificate%20scrum.pdf" aria-label="Ampliar certificado: Scrum – Metodologias Ágeis">
+              <img src="img/Certificate%20scrum_page-0001.jpg" alt="Certificado: Scrum – Metodologias Ágeis" width="800" height="566" loading="lazy" decoding="async">
+              <span class="cert-card__zoom" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>Ampliar</span>
+            </a>
+            <div class="cert-card__body">
+              <p class="cert-card__area">Gestão e comportamento</p>
+              <h2 class="cert-card__title">Scrum – Metodologias Ágeis</h2>
+              <div class="cert-card__actions">
+                <a class="btn btn--ghost btn--small" href="pdfs/Certificate%20scrum.pdf" download><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Baixar PDF<span class="visually-hidden">: Scrum – Metodologias Ágeis</span></a>
+              </div>
+            </div>
+          </li>
+          <li class="cert-card" data-tags="gestao">
+            <a class="cert-card__preview" href="img/liderança_page-0001.jpg" data-lightbox data-title="Liderança" data-alt="Certificado: Liderança" data-pdf="pdfs/liderança.pdf" aria-label="Ampliar certificado: Liderança">
+              <img src="img/liderança_page-0001.jpg" alt="Certificado: Liderança" width="800" height="566" loading="lazy" decoding="async">
+              <span class="cert-card__zoom" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>Ampliar</span>
+            </a>
+            <div class="cert-card__body">
+              <p class="cert-card__area">Gestão e comportamento</p>
+              <h2 class="cert-card__title">Liderança</h2>
+              <div class="cert-card__actions">
+                <a class="btn btn--ghost btn--small" href="pdfs/liderança.pdf" download><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Baixar PDF<span class="visually-hidden">: Liderança</span></a>
+              </div>
+            </div>
+          </li>
+          <li class="cert-card" data-tags="gestao">
+            <a class="cert-card__preview" href="img/Certificado_soft_skills_page-0001.jpg" data-lightbox data-title="Soft Skills" data-alt="Certificado: Soft Skills" data-pdf="pdfs/Certificado_soft_skills.pdf" aria-label="Ampliar certificado: Soft Skills">
+              <img src="img/Certificado_soft_skills_page-0001.jpg" alt="Certificado: Soft Skills" width="800" height="566" loading="lazy" decoding="async">
+              <span class="cert-card__zoom" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>Ampliar</span>
+            </a>
+            <div class="cert-card__body">
+              <p class="cert-card__area">Gestão e comportamento</p>
+              <h2 class="cert-card__title">Soft Skills</h2>
+              <div class="cert-card__actions">
+                <a class="btn btn--ghost btn--small" href="pdfs/Certificado_soft_skills.pdf" download><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Baixar PDF<span class="visually-hidden">: Soft Skills</span></a>
+              </div>
+            </div>
+          </li>
+          <li class="cert-card" data-tags="redes">
+            <a class="cert-card__preview" href="img/certificado%20cisco.jpg" data-lightbox data-title="Redes" data-alt="Certificado: Redes" data-pdf="pdfs/certificado%20cisco.pdf" aria-label="Ampliar certificado: Redes">
+              <img src="img/certificado%20cisco.jpg" alt="Certificado: Redes" width="800" height="566" loading="lazy" decoding="async">
+              <span class="cert-card__zoom" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>Ampliar</span>
+            </a>
+            <div class="cert-card__body">
+              <p class="cert-card__area">Redes e LGPD</p>
+              <h2 class="cert-card__title">Redes</h2>
+              <div class="cert-card__actions">
+                <a class="btn btn--ghost btn--small" href="pdfs/certificado%20cisco.pdf" download><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Baixar PDF<span class="visually-hidden">: Redes</span></a>
+              </div>
+            </div>
+          </li>
+          <li class="cert-card" data-tags="redes">
+            <a class="cert-card__preview" href="img/LGPD___Treinamento_de_Colaboradores-Certificação_de_Conclusão_5067-imagens-0-mesclado-imagens-0.jpg" data-lightbox data-title="LGPD" data-alt="Certificado: LGPD" data-pdf="pdfs/LGPD___Treinamento_de_Colaboradores-Certificação_de_Conclusão_5067.pdf" aria-label="Ampliar certificado: LGPD">
+              <img src="img/LGPD___Treinamento_de_Colaboradores-Certificação_de_Conclusão_5067-imagens-0-mesclado-imagens-0.jpg" alt="Certificado: LGPD" width="800" height="566" loading="lazy" decoding="async">
+              <span class="cert-card__zoom" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>Ampliar</span>
+            </a>
+            <div class="cert-card__body">
+              <p class="cert-card__area">Redes e LGPD</p>
+              <h2 class="cert-card__title">LGPD</h2>
+              <div class="cert-card__actions">
+                <a class="btn btn--ghost btn--small" href="pdfs/LGPD___Treinamento_de_Colaboradores-Certificação_de_Conclusão_5067.pdf" download><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Baixar PDF<span class="visually-hidden">: LGPD</span></a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <dialog class="lightbox" data-lightbox-dialog aria-labelledby="lightbox-title">
+    <div class="lightbox__head">
+      <h2 class="lightbox__title" id="lightbox-title" data-lightbox-title>Certificado</h2>
+      <button class="icon-btn" type="button" data-lightbox-close aria-label="Fechar"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
     </div>
-
-  <!-- Certificado 3-->
-  <div class="pdf-item">
-    <h3>Certificado de SQL</h3>
-    <img src="img/certificado sql 2_page-0001.jpg" alt="Certificado de SQL">
-    <a href="pdfs/certificado sql 2.pdf" download class="btn">Baixar Certificado</a>
-  </div>
-  
-
-  <!-- Certificado 4 -->
-  <div class="pdf-item">
-    <h3>Certificado de SQL</h3>
-    <img src="img/certificado sql_page-0001.jpg" alt="Certificado de SQL">
-    <a href="pdfs/certificado sql.pdf" download class="btn">Baixar Certificado</a>
-  </div>
-  
-
-  <!-- Certificado 5 -->
-  <div class="pdf-item">
-    <h3>Certificado de Liderança</h3>
-    <img src="img/liderança_page-0001.jpg" alt="Certificado de Liderança">
-    <a href="pdfs/liderança.pdf" download class="btn">Baixar Certificado</a>
-  </div>
- 
-    <!-- Certificado 6 -->
-    <div class="pdf-item">
-      <h3>Certificado Power BI</h3>
-      <!-- Exibe a imagem ao invés do PDF -->
-      <img src="img/certificado power BI.jpg" alt="Certificado Power BI">
-      
-      <!-- Mantém o botão para download do PDF -->
-      <a href="pdfs/certificado power BI.pdf" download class="btn">Baixar Certificado</a>
+    <div class="lightbox__figure">
+      <img class="lightbox__img" data-lightbox-img alt="">
     </div>
-    
-    
-    <!-- Certificado 7-->
-    <div class="pdf-item">
-      <h3>Certificado de Python</h3>
-      <img src="img/python certificado_page-0001.jpg" alt="Certificado de Python">
-      <a href="pdfs/python certificado.pdf" download class="btn">Baixar Certificado</a>
+    <div class="lightbox__foot">
+      <div class="lightbox__nav">
+        <button class="icon-btn" type="button" data-lightbox-prev aria-label="Certificado anterior"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg></button>
+        <span data-lightbox-counter></span>
+        <button class="icon-btn" type="button" data-lightbox-next aria-label="Próximo certificado"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></button>
+      </div>
+      <a class="btn btn--primary btn--small" href="#" data-lightbox-download download><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Baixar PDF</a>
     </div>
- 
-  <!-- Certificado 8-->
-  <div class="pdf-item">
-    <h3>Power BI Intensivo</h3>
-    <img src="img/certificado power bi intensivo.jpg" alt="Certificado Power BI Intensivo">
-    <a href="pdfs/certificado power bi intensivo.pdf" download class="btn">Baixar Certificado</a>
-  </div>
-  
-  <!-- Certificado 9-->
-  <div class="pdf-item">
-    <h3>Lógica de Programação</h3>
-    <img src="img/logica de programação.jpg" alt="Certificado Lógica de Programação">
-    <a href="pdfs/logica de programação.pdf" download class="btn">Baixar Certificado</a>
-  </div>
-  
-  <!-- Certificado 10 -->
-  <div class="pdf-item">
-    <h3>Certificado de Redes</h3>
-    <img src="img/certificado cisco.jpg" alt="Certificado de Redes">
-    <a href="pdfs/certificado cisco.pdf" download class="btn">Baixar Certificado</a>
-  </div>
-  
-  <!-- Certificado 11 -->
-  <div class="pdf-item">
-    <h3>Certificado LGPD</h3>
-    <img src="img/LGPD___Treinamento_de_Colaboradores-Certificação_de_Conclusão_5067-imagens-0-mesclado-imagens-0.jpg" alt="Certificado LGPD">
-    <a href="pdfs/LGPD___Treinamento_de_Colaboradores-Certificação_de_Conclusão_5067.pdf" download class="btn">Baixar Certificado</a>
-  </div>
+  </dialog>
 
- <!-- Certificado 12 -->
- <div class="pdf-item">
-  <h3>Soft Skills</h3>
-  <img src="img/Certificado_soft_skills_page-0001.jpg" alt="Certificado LGPD">
-  <a href="pdfs/Certificado_soft_skills.pdf" download class="btn">Baixar Certificado</a>
-</div>
-
-<!-- Certificado 13 -->
-<div class="pdf-item">
-  <h3>Javascript - Node.js</h3>
-  <img src="img/Certificate of participation - Copia.jpg" alt="Certificado Javascript Node.js">
-  <a href="pdfs/Certificate of participation.pdf" download class="btn">Baixar Certificado</a>
-</div>
-
-
-</section>
-
+  <section class="cta-band" aria-labelledby="cta-title">
+    <div class="container cta-band__inner">
+      <div>
+        <h2 id="cta-title">Vamos conversar?</h2>
+        <p>Estou sempre disposto a aprender, explorar novas tecnologias e encarar novas oportunidades.</p>
+      </div>
+      <div class="cta-band__actions">
+        <a class="btn btn--primary" href="index.html#contact">Entrar em contato</a>
+        <a class="btn btn--ghost" href="pdfs/Curriculo,%20Victor%20Queiroz%20Bazarim%20-%20v7.pdf" download><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Baixar currículo (PDF)</a>
+      </div>
+    </div>
   </section>
 
-  <!-- Rodapé igual ao da página principal -->
-  <footer>
-    <p>Contact: <span>queirozvitor11@gmail.com</span>/ Copyright &copy; 2024 by &lt;/Victor&gt;. All Rights Reserved.</p>
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <div class="site-footer__brand">
+        <a class="brand" href="index.html" aria-label="Victor Bazarim, página inicial">
+          <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="17" width="5" height="10" rx="1.5"/><rect x="13.5" y="11" width="5" height="16" rx="1.5"/><rect x="22" y="5" width="5" height="22" rx="1.5"/></svg>
+          <span>Victor Bazarim</span>
+        </a>
+        <p>Análise de dados, inteligência comercial e automação de processos.</p>
+      </div>
+      <nav class="footer-nav" aria-labelledby="rodape-nav">
+        <h2 id="rodape-nav">Navegação</h2>
+        <ul>
+            <li><a href="index.html#home">Início</a></li>
+            <li><a href="projeto1.html">Projetos</a></li>
+            <li><a href="dashboard.html">Dashboards</a></li>
+            <li><a href="certificados.html">Certificados</a></li>
+            <li><a href="index.html#about">Sobre</a></li>
+            <li><a href="index.html#contact">Contato</a></li>
+        </ul>
+      </nav>
+      <div class="site-footer__contact">
+        <h2>Contato</h2>
+        <a href="mailto:queirozvitor11@gmail.com">queirozvitor11@gmail.com</a>
+        <ul class="social">
+          <li><a href="https://www.linkedin.com/in/victor-queiroz-bazarim-401411167/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (abre em nova aba)"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a></li>
+          <li><a href="https://github.com/HubBazarim" target="_blank" rel="noopener noreferrer" aria-label="GitHub (abre em nova aba)"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></a></li>
+          <li><a href="https://www.instagram.com/victor_bazarim/" target="_blank" rel="noopener noreferrer" aria-label="Instagram (abre em nova aba)"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container site-footer__legal">
+      <p>&copy; 2024–<span data-year>2026</span> &lt;/Victor&gt;. Todos os direitos reservados.</p>
+      <a href="#top">Voltar ao topo</a>
+    </div>
   </footer>
-  
-  <!-- Adicione o script aqui -->
-  <script>
-    const menuHamburguer = document.querySelector('.menu-hamburguer');
-    const navResponsive = document.querySelector('.nav-responsive');
-  
-    menuHamburguer.addEventListener('click', () => {
-      menuHamburguer.classList.toggle('change');
-      navResponsive.classList.toggle('nav-visible');  // Adiciona ou remove a classe que exibe o menu
-    });
-  </script>
-  </body>
-  </html>
-  
+
+  <a class="to-top" href="#top" data-to-top>
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+    <span class="visually-hidden">Voltar ao topo</span>
+  </a>
+</body>
+</html>

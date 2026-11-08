@@ -1,248 +1,376 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR" class="no-js">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Complete Portfolio Website</title>
-<link rel="shortcut icon" href="#" type="image/x-icon">
-<!-- box  icons -->,
-<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-<!-- custom css -->
- <link rel="stylesheet" href="css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Victor Queiroz Bazarim | Análise de Dados e BI</title>
+  <meta name="description" content="Portfólio de Victor Queiroz Bazarim: dashboards em Power BI, análise de dados, SQL, Excel e automação de processos com Python.">
+  <meta name="theme-color" content="#1f242d">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="Victor Queiroz Bazarim | Análise de Dados e BI">
+  <meta property="og:description" content="Portfólio de Victor Queiroz Bazarim: dashboards em Power BI, análise de dados, SQL, Excel e automação de processos com Python.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
+  <script src="js/script.js" defer></script>
 </head>
-<body>
-  <header>
-    <a href="#" class="logo">Victor Bazarim</a>
+<body id="top">
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
- <div class="nav">
-  <a href="#home">Home</a>
-  <a href="#services">Services</a>
-  <a href="#portfolio">Portfolio</a>
-  <a href="#about">about</a>
-  <a href="#contact">Contact</a>
- </div>
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="#home" aria-label="Victor Bazarim, página inicial">
+        <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="17" width="5" height="10" rx="1.5"/><rect x="13.5" y="11" width="5" height="16" rx="1.5"/><rect x="22" y="5" width="5" height="22" rx="1.5"/></svg>
+        <span>Victor Bazarim</span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-toggle>
+        <span class="menu-toggle__bars" aria-hidden="true"><span></span><span></span><span></span></span>
+        Menu
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Principal">
+        <ul class="site-nav__list">
+          <li><a href="#home">Início</a></li>
+          <li><a href="#portfolio">Projetos</a></li>
+          <li><a href="dashboard.html">Dashboards</a></li>
+          <li><a href="certificados.html">Certificados</a></li>
+          <li><a href="#about">Sobre</a></li>
+          <li><a href="#contact" class="site-nav__cta">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
- <div class="nav-responsive">
-  <a href="#home">Home</a>
-  <a href="#services">Services</a>
-  <a href="#portfolio">Portfolio</a>
-  <a href="#about">about</a>
-<a href="#contact">Contact</a>
- 
- </div>
+  <main id="conteudo" tabindex="-1">
 
-
-
-<div class="menu-hamburguer">
-<div class="bar1"></div>
-<div class="bar2"></div>
-<div class="bar3"></div>
-</div>
-</header>
-
-  <!-- home section -->
-   <section class="home" id="home">
-  <div class="home-content">
-    <h3>Olá, eu sou</h3>
-<h1>Victor Queiroz Bazarim</h1>
-<h3>Interessado nas <span>complexidades digitais</span>, esse sou eu  </h3>
-
-
-   <p>
-    Profissional na área administrativa em transição de carreira para a área de TI, estudante de ciência da computação com habilidades técnicas em análise de dados, capaz de investigar, interpretar, coletar informações, produzindo insights para tomadas de decisões, com ferramentas de Power BI, Excel, SQL e Python, certificações em LGPD, lógica de programação, administração de rede e rede de computadores, experiência em relacionamento com cliente, coordenação e acompanhamento de chamados, controle de protocolos e arquivos. contato: <span>queirozvitor11@gmail.com</span>
-   </p>
-   <div class="social-media">
-    <a href="https://www.instagram.com/victor_bazarim/" target="_blank"><i class='bx bxl-instagram'></i></a>
-    <a href="https://www.linkedin.com/in/victor-queiroz-bazarim-401411167/" target="_blank"><i class='bx bxl-linkedin'></i></a>
-    <a href="https://github.com/HubBazarim" target="_blank"><i class="bx bxl-github"></i></a>
-  </div>
-  
-   
-   <div>
-    <a href="pdfs/Curriculo, Victor Queiroz Bazarim.pdf" class="btn" download>Download CV</a>
-  </div>
-  </div>
-
- <div class="home-img">
-  <img src="img/Imagem do WhatsApp de 2024-08-25 à(s) 21.26.46_5df9bf81.png" alt="Profile picture">
- </div>
-</section>
-  <!-- /home section -->
-
-    <!-- service section -->
-<section class="services" id="services">
-<h2> Our <span>Services</span></h2>
-
-<div class="services-container">
-  <div class="services-box">
-    <i class='bx bx-code-alt'></i>
-    <h3>Web Development</h3>
-
-    <p> Confira meus projetos, acesso aos recentes está logo abaixo.</p>
-    <a href="projeto1.html" class="btn">Ver Projetos</a>
-  </div>
-
-  <div class="services-box">
-    <i class='bx bx-code-curly' ></i>
-    <h3>Certificados Conquistados</h3>
-
-    <p> Veja os certificados que adquiri ao longo da minha jornada profissional</p>
-    <a href="certificados.html" class="btn">Certificados Conquistados</a>
-  </div>
-
-  <div class="services-box">
-    <i class='bx bxs-dashboard' ></i>
-    <h3>Dashboard</h3>
-
-    <p> Acesse uma visão detalhada dos meus trabalhos e resultados em tempo real</p>
-    <a href="dashboard.html" class="btn">Dashboard</a>
-  </div>
-
-</div>
-</section>
-<!-- /service section -->
-
-<!-- Portfolio section-->
-
-<section class="portfolio" id="portfolio">
-  <h2>Latest <span>Projects</span></h2>
-
-  <div class="portfolio-container">
-<div class="portfolio-box">
-
-  <img src="img/portfolio1.jpg" alt="Portfolio-1">
-
-  <div class="portfolio-layer">
-    <h2>Robo em Python</h2>
-    <p>  </p>
-    <a href="projeto1.html" class="btn">Projeto</a>
-  </div>
-</div>
-
-<!-- Certificado Power BI -->
-<div class="portfolio-box">
-  <img src="img/portfolio6.jpg" alt="Certificado Power BI">
-  <div class="portfolio-layer">
-    <h2>Certificados de Cursos</h2>
-    <p></p>
-    <!-- Link para a nova página com múltiplos PDFs -->
-    <a href="certificados.html" class="btn">Ver Certificados</a>
-  </div>
-</div>
-
-<div class="portfolio-box">
-  <img src="img/portfolio2.jpg" alt="Portfolio-3">
-
-  <div class="portfolio-layer">
-    <h2>Compilador de PDF</h2>
-    <p> </p>
-    <a href="detalhes-projetocert.html" class="btn">PDF</a>
-  </div>
-</div>
-
-<div class="portfolio-box">
-  <img src="img/portfolio3.jpg" alt="Portfolio-4">
-
-  <div class="portfolio-layer">
-    <h2>Análise Exploratória</h2>
-    <p> </p>
-    <a href="datalhes-projetoanalise.html" class="btn">Análise de Dados</a>
-  </div>
-</div>
-
-<div class="portfolio-box">
-  <img src="img/portfolio4.jpg" alt="Portfolio-5">
-
-  <div class="portfolio-layer">
-    <h2>Chat em tempo real</h2>
-    <p> </p>
-    <a href="Chat.html" class="btn">Chat</a>
-  </div>
-</div>
-
-<div class="portfolio-box">
-  <img src="img/portfolio5.jpg" alt="Portfolio-6">
-
-  <div class="portfolio-layer">
-    <h2>Em breve</h2>
-    <p> </p>
-    <a href="#"><i class='bx bx-link-external' ></i></a>
-  </div>
-</div>
-
-
-  </div>
-
-
-</section>
-
- <!-- about section-->
- <section class="about" id="about">
-
-  <div class="about-content">
-  <h1>About Me</h1>
-  <p>Sou o Victor, um apaixonado por tecnologia, vídeo games, e sempre em busca do novo. Estudante de Ciência da Computação e fascinado pela simplicidade, acredito que as soluções mais impactantes são aquelas que tornam o complexo fácil de entender.
-  
-    Com uma formação técnica em Administração e Serviços Jurídicos, já tive a oportunidade de desenvolver habilidades em coordenar atendimentos, processos administrativos e analise de documentos publicos. Atualmente, estou focado em evoluir no campo da tecnologia, com especial interesse em dados e desenvolvimento web.
-    
-    Além do lado profissional, sou um entusiasta dos games, curioso pela cibersegurança e não tenho medo de correr riscos em busca de novas oportunidades!</p>
-  
-  </div>
-  </section>
-  
-  
-<section class="contact" id="contact">
-  <h2>Contato <span>Rápido</span></h2>
-  <form id="contact-form">
-      <div class="input-box">
-          <input type="text" name="name" placeholder="Seu Nome" required>
+    <!-- Início -->
+    <section class="hero" id="home" aria-labelledby="hero-title">
+      <div class="container hero__inner">
+        <div class="hero__intro">
+          <p class="hero__hello">Olá, eu sou</p>
+          <h1 class="hero__title" id="hero-title">Victor Queiroz Bazarim</h1>
+          <p class="hero__role">Análise de dados, inteligência comercial e melhoria de processos</p>
+          <p class="hero__text">Estudante de Ciência da Computação, atuo na criação e manutenção de dashboards, no acompanhamento de KPIs, na análise de informações e na automação de processos.</p>
+          <ul class="tool-list" aria-label="Ferramentas principais">
+            <li>Power BI</li>
+            <li>Excel</li>
+            <li>SQL</li>
+            <li>Python</li>
+          </ul>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#portfolio">Ver projetos</a>
+            <a class="btn btn--ghost" href="pdfs/Curriculo,%20Victor%20Queiroz%20Bazarim%20-%20v7.pdf" download><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Baixar currículo (PDF)</a>
+          </div>
+          <ul class="social">
+            <li><a href="https://www.linkedin.com/in/victor-queiroz-bazarim-401411167/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (abre em nova aba)"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a></li>
+            <li><a href="https://github.com/HubBazarim" target="_blank" rel="noopener noreferrer" aria-label="GitHub (abre em nova aba)"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></a></li>
+            <li><a href="https://www.instagram.com/victor_bazarim/" target="_blank" rel="noopener noreferrer" aria-label="Instagram (abre em nova aba)"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a></li>
+          </ul>
+        </div>
+        <div class="hero__media">
+          <div class="portrait">
+            <img src="img/Imagem%20do%20WhatsApp%20de%202024-08-25%20à(s)%2021.26.46_5df9bf81.png" alt="Foto de Victor Queiroz Bazarim" width="480" height="600" fetchpriority="high" decoding="async">
+          </div>
+        </div>
       </div>
-      <div class="input-box">
-          <input type="email" name="email" placeholder="Seu Email" required>
+    </section>
+
+    <!-- Competências (id "services" mantido para não quebrar links antigos) -->
+    <section class="section section--band" id="services" aria-labelledby="services-title">
+      <div class="container">
+        <header class="section-head">
+          <h2 id="services-title">Competências</h2>
+          <p>Cada área vem com a evidência: um projeto publicado, um certificado ou a experiência descrita no currículo.</p>
+        </header>
+        <div class="skills__head" aria-hidden="true"><span>Área</span><span>O que faço</span><span>Evidências</span></div>
+        <ul class="skills">
+          <li class="skill">
+            <div class="skill__name"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg><h3>Dashboards e BI</h3></div>
+            <div class="skill__desc">
+              <p>Criação e manutenção de dashboards e acompanhamento de KPIs.</p>
+              <ul class="tags"><li>Power BI</li></ul>
+            </div>
+            <div>
+              <p class="skill__label">Evidências</p>
+              <ul class="proof">
+                <li><a href="dashboard.html">3 dashboards publicados no Power BI</a></li>
+                <li><a href="certificados.html?filtro=dados">3 certificados de Power BI</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="skill">
+            <div class="skill__name"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg><h3>Análise de dados</h3></div>
+            <div class="skill__desc">
+              <p>Análise de informações para transformar dados em insumos para a tomada de decisões.</p>
+              <ul class="tags"><li>Excel</li><li>SQL</li><li>Estatística descritiva</li></ul>
+            </div>
+            <div>
+              <p class="skill__label">Evidências</p>
+              <ul class="proof">
+                <li><a href="datalhes-projetoanalise.html">Análise exploratória de 5.570 municípios</a></li>
+                <li><a href="certificados.html?filtro=dados">Certificados de SQL e de análise de dados</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="skill">
+            <div class="skill__name"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg><h3>Automação de processos</h3></div>
+            <div class="skill__desc">
+              <p>Automação de tarefas repetitivas com Python, para ganhar eficiência operacional.</p>
+              <ul class="tags"><li>Python</li><li>Pandas</li><li>PyAutoGUI</li><li>PyPDF2</li></ul>
+            </div>
+            <div>
+              <p class="skill__label">Evidências</p>
+              <ul class="proof">
+                <li><a href="detalhes-projeto.html">Robô de cadastro automático</a></li>
+                <li><a href="detalhes-projetocert.html">Junção automática de PDFs</a></li>
+                <li><a href="Chat.html">Chat em tempo real com Flet</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="skill">
+            <div class="skill__name"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg><h3>Inteligência comercial</h3></div>
+            <div class="skill__desc">
+              <p>Pricing, suporte a áreas comerciais e relacionamento com clientes, com soluções voltadas à eficiência operacional e à tomada de decisões.</p>
+            </div>
+            <div>
+              <p class="skill__label">Evidências</p>
+              <ul class="proof">
+                <li><span>Experiência profissional, detalhada no</span> <a href="pdfs/Curriculo,%20Victor%20Queiroz%20Bazarim%20-%20v7.pdf" download>currículo (PDF)</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
       </div>
-      <div class="input-box">
-          <textarea name="message" rows="5" placeholder="Sua Mensagem" required></textarea>
+    </section>
+
+    <!-- Projetos (id "portfolio" mantido) -->
+    <section class="section" id="portfolio" aria-labelledby="portfolio-title">
+      <div class="container">
+        <header class="section-head section-head--split">
+          <div>
+            <h2 id="portfolio-title">Projetos</h2>
+            <p>Dashboards em Power BI, análise exploratória e automações em Python. Os números nas capas são os que aparecem em cada projeto.</p>
+          </div>
+          <a class="link-more" href="projeto1.html">Ver todos com problema, dados e resultados</a>
+        </header>
+        <div class="slicer" role="group" aria-label="Filtrar projetos por área" data-filter-controls="inicio-projetos" data-filter-noun="projeto|projetos">
+          <span class="slicer__label" aria-hidden="true">Filtrar</span>
+          <button class="chip" type="button" data-filter="todos" aria-pressed="true">Todos</button>
+          <button class="chip" type="button" data-filter="analise" aria-pressed="false">Análise de dados</button>
+          <button class="chip" type="button" data-filter="powerbi" aria-pressed="false">Power BI</button>
+          <button class="chip" type="button" data-filter="python" aria-pressed="false">Python</button>
+          <button class="chip" type="button" data-filter="automacao" aria-pressed="false">Automação</button>
+        </div>
+        <p class="slicer__status" role="status" data-filter-status="inicio-projetos"></p>
+        <ul class="project-grid" data-filter-list="inicio-projetos">
+          <li class="project-card" data-tags="analise powerbi">
+            <div class="project-card__body">
+              <ul class="tags"><li>Power BI</li><li>Análise de dados</li></ul>
+              <h3 class="project-card__title"><a href="dashboard.html#vendas">Dashboard de Gestão de Vendas</a></h3>
+              <p>Desempenho de vendas por loja, forma de pagamento, período e produto em um só painel.</p>
+              <span class="project-card__more" aria-hidden="true">Ver dashboard</span>
+            </div>
+            <div class="cover cover--data viz-anim"><p class="cover__value">R$ 12,9 mi</p><p class="cover__label">faturamento total exibido no painel, por tipo de pagamento:</p><div class="split" style="--cols: 61.39fr 38.61fr" aria-hidden="true"><span class="split__seg"></span><span class="split__seg split__seg--rest"></span></div><ul class="legend"><li><span class="swatch" aria-hidden="true"></span>Transferência/PIX <strong>61,39%</strong></li><li><span class="swatch swatch--rest" aria-hidden="true"></span>Cartão de crédito <strong>38,61%</strong></li></ul></div>
+          </li>
+          <li class="project-card" data-tags="analise powerbi">
+            <div class="project-card__body">
+              <ul class="tags"><li>Power BI</li><li>Análise de dados</li></ul>
+              <h3 class="project-card__title"><a href="dashboard.html#producao">Dashboard de Produção</a></h3>
+              <p>Eficiência, qualidade e disponibilidade da produção, com filtros por operador e período.</p>
+              <span class="project-card__more" aria-hidden="true">Ver dashboard</span>
+            </div>
+            <div class="cover cover--data viz-anim"><div class="viz"><div class="meter"><div class="meter__head"><span>Disponibilidade acumulada</span><strong>77,69%</strong></div><div class="meter__track" aria-hidden="true"><span class="meter__fill" style="--v: 77.69%"></span></div></div><div class="meter"><div class="meter__head"><span>Qualidade</span><strong>99,32%</strong></div><div class="meter__track" aria-hidden="true"><span class="meter__fill" style="--v: 99.32%"></span></div></div></div><p class="cover__label">Quantidade produzida: 3.084.251. Rejeitada: 21.076.</p></div>
+          </li>
+          <li class="project-card" data-tags="analise">
+            <div class="project-card__body">
+              <ul class="tags"><li>Análise exploratória</li><li>Estatística</li><li>Projeto acadêmico</li></ul>
+              <h3 class="project-card__title"><a href="datalhes-projetoanalise.html">Análise Exploratória de Dados Municipais</a></h3>
+              <p>Aspectos demográficos, econômicos e sociais de 5.570 municípios brasileiros.</p>
+              <span class="project-card__more" aria-hidden="true">Ver projeto</span>
+            </div>
+            <div class="cover cover--data viz-anim"><p class="cover__value">r = 0,85</p><p class="cover__label">correlação entre PIB e população em 5.570 municípios brasileiros</p><div class="corr" aria-hidden="true"><div class="corr__track"><span class="corr__bar" style="--r: 0.85"></span><span class="corr__zero"></span></div><div class="corr__ticks"><span>−1</span><span>0</span><span>+1</span></div></div></div>
+          </li>
+          <li class="project-card" data-tags="analise powerbi">
+            <div class="project-card__body">
+              <ul class="tags"><li>Power BI</li><li>Análise de dados</li></ul>
+              <h3 class="project-card__title"><a href="dashboard.html#monitoramento">Monitoramento Estratégico de Vendas, Custos e Lucros</a></h3>
+              <p>Comportamento de compra e perfil dos clientes por salário, escolaridade, estado civil e canal de compra.</p>
+              <span class="project-card__more" aria-hidden="true">Ver dashboard</span>
+            </div>
+            <div class="cover cover--data"><p class="cover__label">Dois painéis no mesmo relatório:</p><ul class="page-thumbs"><li>Comportamento de compra</li><li>Perfil dos clientes</li></ul><ul class="tags"><li>Correlação</li><li>Diagrama de Sankey</li><li>Filtro por país</li></ul></div>
+          </li>
+          <li class="project-card" data-tags="python automacao">
+            <div class="project-card__body">
+              <ul class="tags"><li>Python</li><li>PyAutoGUI</li><li>Pandas</li></ul>
+              <h3 class="project-card__title"><a href="detalhes-projeto.html">Robô de Automação de Tarefas</a></h3>
+              <p>Cadastro automático de produtos em um sistema online a partir de uma base CSV.</p>
+              <span class="project-card__more" aria-hidden="true">Ver projeto</span>
+            </div>
+            <div class="cover cover--image"><img src="img/portfolio1.jpg" alt="" width="800" height="500" loading="lazy" decoding="async"></div>
+          </li>
+          <li class="project-card" data-tags="python automacao">
+            <div class="project-card__body">
+              <ul class="tags"><li>Python</li><li>PyPDF2</li></ul>
+              <h3 class="project-card__title"><a href="detalhes-projetocert.html">Programa para Junção de Arquivos PDF</a></h3>
+              <p>Combina os PDFs de uma pasta, em ordem alfabética, em um único documento.</p>
+              <span class="project-card__more" aria-hidden="true">Ver projeto</span>
+            </div>
+            <div class="cover cover--image"><img src="img/portfolio2.jpg" alt="" width="800" height="500" loading="lazy" decoding="async"></div>
+          </li>
+          <li class="project-card" data-tags="python">
+            <div class="project-card__body">
+              <ul class="tags"><li>Python</li><li>Flet</li></ul>
+              <h3 class="project-card__title"><a href="Chat.html">Chat para Empresas</a></h3>
+              <p>Aplicativo de chat em tempo real com Python e Flet, com feedback visual de mensagens e novas entradas.</p>
+              <span class="project-card__more" aria-hidden="true">Ver projeto</span>
+            </div>
+            <div class="cover cover--image"><img src="img/portfolio4.jpg" alt="" width="800" height="500" loading="lazy" decoding="async"></div>
+          </li>
+        </ul>
       </div>
-      <button type="submit" class="btn">Enviar Mensagem</button>
-      
-  </form>
-  <div>
-    <a href="#" class="btn">Voltar ao Início</a>
-  </div>
-</section>
+    </section>
 
-   <!-- /about section-->
+    <!-- Certificados -->
+    <section class="section section--band" id="certificados" aria-labelledby="certificados-title">
+      <div class="container cert-teaser">
+        <header class="section-head">
+          <h2 id="certificados-title">Certificados</h2>
+          <p>14 certificados de cursos. Os de dados e BI estão ao lado; a página completa também reúne programação, metodologias ágeis, soft skills, redes e LGPD.</p>
+          <a class="btn btn--ghost" href="certificados.html"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>Ver todos os certificados</a>
+        </header>
+        <ul class="cert-list" aria-label="Certificados de dados e BI">
+          <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg><span>Microsoft Power BI para Business Intelligence e Data Science</span></li>
+          <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg><span>Introdução às Competências Essenciais para a Carreira de Análise de Dados</span></li>
+          <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg><span>Power BI</span></li>
+          <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg><span>Power BI Intensivo</span></li>
+          <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg><span>SQL (1)</span></li>
+          <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg><span>SQL (2)</span></li>
+        </ul>
+      </div>
+    </section>
 
-   <footer>
-    <p>Contact: <span>queirozvitor11@gmail.com</span>/ Copyright &copy; 2024 by &lt;/Victor&gt;. All Rights Reserved.</p>
-   </footer>
+    <!-- Sobre (id "about" mantido) -->
+    <section class="section" id="about" aria-labelledby="about-title">
+      <div class="container about">
+        <div class="about__text">
+          <h2 id="about-title">Sobre mim</h2>
+          <p class="about__lead">Interessado nas complexidades digitais, esse sou eu.</p>
+          <p>Sou o Victor, apaixonado por tecnologia, videogames e novos desafios. Estudante de Ciência da Computação, acredito que as melhores soluções são aquelas que simplificam o complexo e geram resultados reais.</p>
+          <p>Com formação técnica em Administração e Serviços Jurídicos, construí uma trajetória que une gestão, análise e tecnologia. Já atuei com processos administrativos, Pricing e análise de dados, desenvolvendo dashboards, acompanhando indicadores e implementando automações. Atualmente, busco evoluir em Power BI, Excel, SQL e Python, com foco em transformar dados em informações relevantes para a tomada de decisões.</p>
+          <p>Além da vida profissional, gosto muito de games, sou curioso por desenvolvimento web e estou sempre disposto a aprender, explorar novas tecnologias e encarar novas oportunidades.</p>
+        </div>
+        <aside class="about__card" aria-labelledby="resumo-title">
+          <h3 id="resumo-title">Em resumo</h3>
+          <dl class="facts">
+            <div><dt>Formação</dt><dd>Ciência da Computação (cursando) e formação técnica em Administração e Serviços Jurídicos</dd></div>
+            <div><dt>Atuação</dt><dd>Análise de dados, inteligência comercial, Pricing e melhoria de processos</dd></div>
+            <div><dt>Ferramentas</dt><dd>Power BI, Excel, SQL e Python</dd></div>
+            <div><dt>Fora do trabalho</dt><dd>Games e desenvolvimento web</dd></div>
+          </dl>
+        </aside>
+      </div>
+    </section>
 
+    <!-- Contato (id "contact" mantido) -->
+    <section class="section section--band" id="contact" aria-labelledby="contact-title">
+      <div class="container contact">
+        <div class="contact__intro">
+          <h2 id="contact-title">Contato</h2>
+          <p>Estou sempre disposto a encarar novas oportunidades. Escreva pelo formulário ou direto no meu e-mail.</p>
+          <div class="email-box">
+            <a class="email-box__link" href="mailto:queirozvitor11@gmail.com">queirozvitor11@gmail.com</a>
+            <button class="btn btn--ghost btn--small" type="button" data-copy="queirozvitor11@gmail.com"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span data-copy-label>Copiar e-mail</span></button>
+          </div>
+          <p class="visually-hidden" role="status" data-copy-status></p>
+          <ul class="social">
+            <li><a href="https://www.linkedin.com/in/victor-queiroz-bazarim-401411167/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (abre em nova aba)"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a></li>
+            <li><a href="https://github.com/HubBazarim" target="_blank" rel="noopener noreferrer" aria-label="GitHub (abre em nova aba)"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></a></li>
+            <li><a href="https://www.instagram.com/victor_bazarim/" target="_blank" rel="noopener noreferrer" aria-label="Instagram (abre em nova aba)"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a></li>
+          </ul>
+        </div>
+
+        <!-- O envio usa o EmailJS (serviço externo). A mensagem de sucesso só aparece
+             depois que o EmailJS confirma o envio. A Public Key é pública por definição;
+             nunca coloque a Private Key aqui. -->
+        <form class="contact-form" id="contact-form" novalidate
+              data-emailjs-key="My8Xt5qLi0IMnFo73"
+              data-emailjs-service="service_g4p5uu9"
+              data-emailjs-template="template_fh5hnhv"
+              data-fallback-email="queirozvitor11@gmail.com">
+          <div class="form-row">
+            <div class="field">
+              <label for="cf-name">Nome</label>
+              <input id="cf-name" name="name" type="text" autocomplete="name" maxlength="100" required aria-describedby="cf-name-erro">
+              <p class="field__error" id="cf-name-erro" hidden><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><span data-error-text></span></p>
+            </div>
+            <div class="field">
+              <label for="cf-email">E-mail</label>
+              <input id="cf-email" name="email" type="email" autocomplete="email" maxlength="150" required aria-describedby="cf-email-erro">
+              <p class="field__error" id="cf-email-erro" hidden><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><span data-error-text></span></p>
+            </div>
+          </div>
+          <div class="field">
+            <label for="cf-message">Mensagem</label>
+            <textarea id="cf-message" name="message" rows="5" maxlength="3000" required aria-describedby="cf-message-erro"></textarea>
+            <p class="field__error" id="cf-message-erro" hidden><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><span data-error-text></span></p>
+          </div>
+          <div class="hp" aria-hidden="true">
+            <label for="cf-website">Deixe este campo vazio</label>
+            <input id="cf-website" name="website" type="text" tabindex="-1" autocomplete="off">
+          </div>
+          <div class="form-actions">
+            <button class="btn btn--primary" type="submit"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg><span data-submit-label>Enviar mensagem</span></button>
+            <p class="form-hint">Todos os campos são obrigatórios.</p>
+          </div>
+          <p class="form-status" role="status" data-form-status></p>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <div class="site-footer__brand">
+        <a class="brand" href="#home" aria-label="Victor Bazarim, página inicial">
+          <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="17" width="5" height="10" rx="1.5"/><rect x="13.5" y="11" width="5" height="16" rx="1.5"/><rect x="22" y="5" width="5" height="22" rx="1.5"/></svg>
+          <span>Victor Bazarim</span>
+        </a>
+        <p>Análise de dados, inteligência comercial e automação de processos.</p>
+      </div>
+      <nav class="footer-nav" aria-labelledby="rodape-nav">
+        <h2 id="rodape-nav">Navegação</h2>
+        <ul>
+            <li><a href="#home">Início</a></li>
+            <li><a href="#portfolio">Projetos</a></li>
+            <li><a href="dashboard.html">Dashboards</a></li>
+            <li><a href="certificados.html">Certificados</a></li>
+            <li><a href="#about">Sobre</a></li>
+            <li><a href="#contact">Contato</a></li>
+        </ul>
+      </nav>
+      <div class="site-footer__contact">
+        <h2>Contato</h2>
+        <a href="mailto:queirozvitor11@gmail.com">queirozvitor11@gmail.com</a>
+        <ul class="social">
+          <li><a href="https://www.linkedin.com/in/victor-queiroz-bazarim-401411167/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (abre em nova aba)"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a></li>
+          <li><a href="https://github.com/HubBazarim" target="_blank" rel="noopener noreferrer" aria-label="GitHub (abre em nova aba)"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></a></li>
+          <li><a href="https://www.instagram.com/victor_bazarim/" target="_blank" rel="noopener noreferrer" aria-label="Instagram (abre em nova aba)"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container site-footer__legal">
+      <p>&copy; 2024–<span data-year>2026</span> &lt;/Victor&gt;. Todos os direitos reservados.</p>
+      <a href="#top">Voltar ao topo</a>
+    </div>
+  </footer>
+
+  <a class="to-top" href="#top" data-to-top>
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+    <span class="visually-hidden">Voltar ao topo</span>
+  </a>
 </body>
-<script src="js/script.js"></script>
-<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-<script>
-  // Inicialize o EmailJS com o User ID
-  (function() {
-      emailjs.init("My8Xt5qLi0IMnFo73"); // Substituído pelo seu User ID
-  })();
-
-  // Configuração do formulário de envio
-  document.getElementById('contact-form').addEventListener('submit', function(e) {
-      e.preventDefault(); // Impede o recarregamento da página ao enviar o formulário
-      
-      // Envia o formulário utilizando o Service ID e o Template ID configurados
-      emailjs.sendForm('service_g4p5uu9', 'template_fh5hnhv', this)
-          .then(() => {
-              alert('Mensagem enviada com sucesso!');
-              document.getElementById('contact-form').reset(); // Limpa o formulário após o envio
-          })
-          .catch(err => {
-              alert('Erro ao enviar mensagem: ' + err);
-          });
-  });
-
-  
-</script>
-
-
 </html>

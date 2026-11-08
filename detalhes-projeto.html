@@ -1,119 +1,191 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="no-js">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projeto 1</title>
-  <!-- Link correto para o CSS, verifique se o nome do arquivo está certo -->
-  <link rel="stylesheet" href="css/style.css"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Robô de Automação de Tarefas | Victor Queiroz Bazarim</title>
+  <meta name="description" content="Robô em Python com PyAutoGUI e Pandas que automatiza o cadastro de produtos em um sistema online.">
+  <meta name="theme-color" content="#1f242d">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="Robô de Automação de Tarefas | Victor Queiroz Bazarim">
+  <meta property="og:description" content="Robô em Python com PyAutoGUI e Pandas que automatiza o cadastro de produtos em um sistema online.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
+  <script src="js/script.js" defer></script>
 </head>
-<body>
+<body id="top">
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
- <!-- Cabeçalho semelhante ao da página principal -->
- <header>
-  <a href="index.html" class="logo">Victor Bazarim</a>
-  <div class="nav">
-    <a href="index.html#home">Home</a>
-    <a href="index.html#services">Services</a>
-    <a href="index.html#portfolio">Portfolio</a>
-    <a href="index.html#about">About</a>
-  </div>
-  
-  <div class="menu-hamburguer">
-    <div class="bar1"></div>
-    <div class="bar2"></div>
-    <div class="bar3"></div>
-  </div>
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="index.html" aria-label="Victor Bazarim, página inicial">
+        <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="17" width="5" height="10" rx="1.5"/><rect x="13.5" y="11" width="5" height="16" rx="1.5"/><rect x="22" y="5" width="5" height="22" rx="1.5"/></svg>
+        <span>Victor Bazarim</span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-toggle>
+        <span class="menu-toggle__bars" aria-hidden="true"><span></span><span></span><span></span></span>
+        Menu
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Principal">
+        <ul class="site-nav__list">
+          <li><a href="index.html#home">Início</a></li>
+          <li><a href="projeto1.html" class="is-active">Projetos</a></li>
+          <li><a href="dashboard.html">Dashboards</a></li>
+          <li><a href="certificados.html">Certificados</a></li>
+          <li><a href="index.html#about">Sobre</a></li>
+          <li><a href="index.html#contact" class="site-nav__cta">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-  <div class="nav-responsive">
-    <a href="index.html#home">Home</a>
-    <a href="index.html#services">Services</a>
-    <a href="index.html#portfolio">Portfolio</a>
-    <a href="index.html#about">About</a>
-  </div>
-</header>
+  <main id="conteudo" tabindex="-1">
+    <header class="page-head">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Trilha de navegação">
+          <ol><li><a href="index.html">Início</a></li><li><a href="projeto1.html">Projetos</a></li><li aria-current="page">Robô de automação</li></ol>
+        </nav>
+        <ul class="tags"><li>Python</li><li>Automação</li><li>PyAutoGUI</li><li>Pandas</li></ul>
+        <h1>Robô de Automação de Tarefas</h1>
+        <p class="lead">Robô de cadastro com Python e PyAutoGUI, desenvolvido para automatizar tarefas repetitivas.</p>
+        <div class="page-actions">
+          <a class="btn btn--primary" href="scripts/scripts.py.zip" download><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Baixar script (.zip)</a>
+          <a class="btn btn--ghost" href="scripts/task.txt" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>Ver script<span class="visually-hidden"> (abre em nova aba)</span></a>
+        </div>
+      </div>
+    </header>
 
-<!-- Seção de Detalhes do Projeto -->
-<section class="project-overview">
-  <h1>Detalhes do Robô de Automação de Tarefas</h1>
-  <p>Este robô foi desenvolvido com o objetivo de automatizar tarefas repetitivas utilizando Python. <br>Abaixo, você pode conferir o vídeo de funcionamento e o script utilizado para este projeto.</p>
+    <div class="container case-layout">
+      <article class="prose">
+          <figure class="media">
+            <video controls preload="metadata" playsinline width="1280" height="720" data-fallback="video-robo-aviso">
+              <source src="videos/funcionamento.mp4.mp4" type="video/mp4">
+              <p>Seu navegador não reproduz vídeos. <a href="videos/funcionamento.mp4.mp4" download>Baixe o vídeo</a>.</p>
+            </video>
+            <figcaption>
+              <span>Vídeo de funcionamento do robô.</span>
+              <a href="videos/funcionamento.mp4.mp4" download><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Baixar vídeo</a>
+              <span class="media__note" id="video-robo-aviso" hidden>Não foi possível reproduzir o vídeo neste navegador. <a href="videos/funcionamento.mp4.mp4" download>Baixe o arquivo</a> para assistir.</span>
+            </figcaption>
+          </figure>
 
-  <!-- Vídeo de funcionamento -->
-  <h3>Vídeo de Funcionamento:</h3>
-  <video width="600" controls>
-    <source src="videos/funcionamento.mp4.mp4" type="video/mp4"> <!-- Coloque o caminho correto do vídeo -->
-  </video>
+          <h2>Problema</h2>
+          <p>Automatizar uma tarefa repetitiva: o cadastro de produtos em um sistema online.</p>
+          <p>O projeto foi desenvolvido durante minhas aulas de Python da Hashtag, onde aprendi a usar a biblioteca <strong>PyAutoGUI</strong> para automatizar tarefas no computador. A ferramenta simula ações como escrever textos, pressionar teclas, clicar e fazer combinações de teclas.</p>
 
-  <!-- Botão para visualizar ou baixar o script -->
-  <h3>Script do Projeto:</h3>
-  <a href="scripts/scripts.py.zip" download class="btn" >Baixar Script</a> <!-- Botão de Download do Script -->
+          <h2>Dados utilizados</h2>
+          <p>Uma base de produtos em CSV, carregada com <strong>Pandas</strong>, com código, marca, tipo, categoria, preço unitário, custo e observações de cada item.</p>
 
-  <a href="scripts/task.txt" target="_blank" class="btn">Visualizar Script</a> <!-- Botão para Visualizar Script -->
-</section>
+          <h2>Processo</h2>
+          <ol class="steps">
+            <li>
+              <h3>Entrar no sistema da empresa</h3>
+              <p>Na aula, o caminho ensinado foi abrir o Windows Explorer e, em seguida, o Google Chrome. Achei mais eficiente abrir diretamente o navegador padrão, qualquer que seja, usando a função <code>subprocess.run()</code>. Outra alternativa seria a biblioteca <code>webbrowser</code>, que também abre um link no navegador padrão:</p>
+              <pre class="code-block"><code>import webbrowser
+webbrowser.open(link)  # abre o link no navegador padrão</code></pre>
+            </li>
+            <li>
+              <h3>Fazer login no sistema</h3>
+              <p>O PyAutoGUI simula o preenchimento dos campos de e-mail e senha no formulário de login e, em seguida, o clique no botão de login.</p>
+            </li>
+            <li>
+              <h3>Importar a base de produtos</h3>
+              <p>A base a ser cadastrada é carregada de um arquivo CSV com Pandas, o que permite manipular os dados de forma eficiente.</p>
+            </li>
+            <li>
+              <h3>Cadastrar os produtos automaticamente</h3>
+              <p>O robô percorre cada linha da tabela e preenche os campos correspondentes no sistema (código, marca, tipo, categoria, preço unitário, custo e observações). Depois envia o formulário e repete o processo.</p>
+            </li>
+            <li>
+              <h3>Repetir até o fim da lista</h3>
+              <p>Após cada envio, o robô rola a página para cima, preparando a tela para o próximo cadastro.</p>
+            </li>
+          </ol>
 
-<Section>
+          <h2>Resultado e aprendizados</h2>
+          <p>O robô percorre a base inteira: preenche, envia e repete o cadastro até o último produto da lista.</p>
+          <p>Essa aula foi fundamental para o meu aprendizado no uso do PyAutoGUI, que se mostrou uma ferramenta muito interessante para a automação de tarefas repetitivas.</p>
 
-  <div>
-     <h3>Funcionamento do <span>Robô de Automação de Tarefas</span></h3>
-     <p>
-      Robô de Cadastro com Python e PyAutoGUI<br><br>
-      Este projeto foi desenvolvido durante minhas aulas de Python da Hashtag, onde aprendi a utilizar a biblioteca PyAutoGUI para automação de tarefas no computador. A ferramenta permite simular ações como escrever textos, pressionar teclas, clicar e realizar combinações de teclas. No projeto, automatizamos o cadastro de produtos em um sistema online.<br><br>
-      
-      Passo a Passo do Projeto:<br>
-      <span>Passo 1:</span> Entrar no sistema da empresa<br><br>
-      
-      Na aula, foi ensinado a abrir o Windows Explorer e, em seguida, o Google Chrome. No entanto, achei mais eficiente abrir o navegador padrão diretamente, independente de qual seja, utilizando a função subprocess.run() para isso. Outra alternativa seria o uso da biblioteca webbrowser, que também pode abrir um link no navegador padrão:<br>
-      <pre><code>
-    import webbrowser
-    webbrowser.open
-      </code></pre><br>
-      
-      <span>Passo 2:</span> Fazer login no sistema<br><br>
-    
-      Utilizei o PyAutoGUI para simular o preenchimento dos campos de e-mail e senha no formulário de login e, em seguida, clicar no botão de login.<br><br>
-    
-      <span>Passo 3:</span> Importar a base de produtos<br><br>
-    
-      A base de produtos a ser cadastrada foi carregada a partir de um arquivo CSV usando a biblioteca Pandas. Isso permite a manipulação dos dados de forma eficiente.<br><br>
-    
-      <span>Passo 4:</span> Cadastro automático de produtos<br><br>
-    
-      O robô percorre cada linha da tabela de produtos e preenche os campos correspondentes no sistema, como código, marca, tipo, categoria, preço unitário, custo, e observações. Após o preenchimento, ele envia o formulário e repete o processo até o final da lista.<br><br>
-    
-      <span>Passo 5:</span> Repetição do processo até o fim da lista<br><br>
-    
-      O robô é programado para rolar a página para cima após cada envio, preparando a tela para o próximo cadastro.<br><br>
-    
-      Observações Importantes:<br>
-      Posições de "clicks" do mouse: As coordenadas usadas para clicar nos campos da tela podem variar conforme a resolução do monitor e a interface do sistema. Caso necessário, é importante ajustar os valores de x e y nas funções pyautogui.click().<br>
-      Parar o programa: Caso o robô precise ser interrompido durante a execução, basta mover o mouse para o canto superior esquerdo da tela, uma função de segurança embutida no PyAutoGUI chamada FAILSAFE.<br><br>
-    
-      Ferramentas Utilizadas:<br>
-      PyAutoGUI: Para automação das interações com a interface gráfica do sistema.<br>
-      Pandas: Para manipulação e leitura dos dados do CSV.<br><br>
-    
-      Essa aula foi fundamental para meu aprendizado no uso do PyAutoGUI, que se mostrou uma ferramenta muito interessante para automação de tarefas repetitivas.<br><br>
-    </p>
-    
-  
-  </div>
+          <h2>Observações importantes</h2>
+          <ul>
+            <li><strong>Posições dos cliques:</strong> as coordenadas usadas para clicar nos campos podem variar conforme a resolução do monitor e a interface do sistema. Se necessário, ajuste os valores de x e y nas funções <code>pyautogui.click()</code>.</li>
+            <li><strong>Parar o programa:</strong> para interromper o robô durante a execução, basta mover o mouse para o canto superior esquerdo da tela. É uma função de segurança do PyAutoGUI chamada <code>FAILSAFE</code>.</li>
+          </ul>
 
-</Section>
-   <!-- Rodapé igual ao da página principal -->
-   <footer>
-    <p>Contact: <span>queirozvitor11@gmail.com</span>/ Copyright &copy; 2024 by &lt;/Victor&gt;. All Rights Reserved.</p>
+          <nav class="pager" aria-label="Outros projetos">
+            <a class="pager__prev" href="datalhes-projetoanalise.html"><span>Anterior</span><strong>Análise Exploratória de Dados Municipais</strong></a>
+            <a class="pager__next" href="detalhes-projetocert.html"><span>Próximo</span><strong>Programa para Junção de Arquivos PDF</strong></a>
+          </nav>
+      </article>
+      <aside class="case-aside" aria-labelledby="ficha-title">
+        <h2 id="ficha-title">Ficha do projeto</h2>
+        <dl class="facts">
+          <div><dt>Tipo</dt><dd>Automação de processos</dd></div>
+          <div><dt>Contexto</dt><dd>Aulas de Python da Hashtag</dd></div>
+          <div><dt>Ferramentas</dt><dd>Python, PyAutoGUI e Pandas</dd></div>
+          <div><dt>Entrada</dt><dd>Base de produtos em CSV</dd></div>
+        </dl>
+      </aside>
+    </div>
+  </main>
+
+  <section class="cta-band" aria-labelledby="cta-title">
+    <div class="container cta-band__inner">
+      <div>
+        <h2 id="cta-title">Vamos conversar?</h2>
+        <p>Estou sempre disposto a aprender, explorar novas tecnologias e encarar novas oportunidades.</p>
+      </div>
+      <div class="cta-band__actions">
+        <a class="btn btn--primary" href="index.html#contact">Entrar em contato</a>
+        <a class="btn btn--ghost" href="pdfs/Curriculo,%20Victor%20Queiroz%20Bazarim%20-%20v7.pdf" download><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Baixar currículo (PDF)</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <div class="site-footer__brand">
+        <a class="brand" href="index.html" aria-label="Victor Bazarim, página inicial">
+          <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="17" width="5" height="10" rx="1.5"/><rect x="13.5" y="11" width="5" height="16" rx="1.5"/><rect x="22" y="5" width="5" height="22" rx="1.5"/></svg>
+          <span>Victor Bazarim</span>
+        </a>
+        <p>Análise de dados, inteligência comercial e automação de processos.</p>
+      </div>
+      <nav class="footer-nav" aria-labelledby="rodape-nav">
+        <h2 id="rodape-nav">Navegação</h2>
+        <ul>
+            <li><a href="index.html#home">Início</a></li>
+            <li><a href="projeto1.html">Projetos</a></li>
+            <li><a href="dashboard.html">Dashboards</a></li>
+            <li><a href="certificados.html">Certificados</a></li>
+            <li><a href="index.html#about">Sobre</a></li>
+            <li><a href="index.html#contact">Contato</a></li>
+        </ul>
+      </nav>
+      <div class="site-footer__contact">
+        <h2>Contato</h2>
+        <a href="mailto:queirozvitor11@gmail.com">queirozvitor11@gmail.com</a>
+        <ul class="social">
+          <li><a href="https://www.linkedin.com/in/victor-queiroz-bazarim-401411167/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (abre em nova aba)"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a></li>
+          <li><a href="https://github.com/HubBazarim" target="_blank" rel="noopener noreferrer" aria-label="GitHub (abre em nova aba)"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></a></li>
+          <li><a href="https://www.instagram.com/victor_bazarim/" target="_blank" rel="noopener noreferrer" aria-label="Instagram (abre em nova aba)"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container site-footer__legal">
+      <p>&copy; 2024–<span data-year>2026</span> &lt;/Victor&gt;. Todos os direitos reservados.</p>
+      <a href="#top">Voltar ao topo</a>
+    </div>
   </footer>
-  
-  <!-- Adicione o script aqui -->
-  <script>
-    const menuHamburguer = document.querySelector('.menu-hamburguer');
-    const navResponsive = document.querySelector('.nav-responsive');
-  
-    menuHamburguer.addEventListener('click', () => {
-      menuHamburguer.classList.toggle('change');
-      navResponsive.classList.toggle('nav-visible');  // Adiciona ou remove a classe que exibe o menu
-    });
-  </script>
-  </body>
-  </html>
-  
+
+  <a class="to-top" href="#top" data-to-top>
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+    <span class="visually-hidden">Voltar ao topo</span>
+  </a>
+</body>
+</html>
