@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Dashboards em Power BI | Victor Queiroz Bazarim</title>
   <meta name="description" content="Dashboards em Power BI de Victor Queiroz Bazarim: gestão de vendas, produção e comportamento de compra.">
-  <meta name="theme-color" content="#1f242d">
+  <meta name="theme-color" content="#14171c">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pt_BR">
   <meta property="og:title" content="Dashboards em Power BI | Victor Queiroz Bazarim">
@@ -15,7 +15,25 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap">
   <link rel="stylesheet" href="css/style.css">
-  <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
+  <script>
+    /* Aplica tema e idioma salvos antes de desenhar a página (sem "piscar") */
+    (function (h) {
+      h.className = h.className.replace('no-js', 'js');
+      try {
+        if (localStorage.getItem('vb-tema') === 'claro') {
+          h.setAttribute('data-theme', 'light');
+          var m = document.querySelector('meta[name="theme-color"]');
+          if (m) m.setAttribute('content', '#fbfaf7');
+        }
+        if (localStorage.getItem('vb-idioma') === 'en') {
+          h.lang = 'en';
+          h.classList.add('i18n-pending');
+          setTimeout(function () { h.classList.remove('i18n-pending'); }, 1500);
+        }
+      } catch (e) { /* navegador sem localStorage: mantém o padrão */ }
+    })(document.documentElement);
+  </script>
+  <script src="js/i18n-en.js" defer></script>
   <script src="js/script.js" defer></script>
 </head>
 <body id="top">
@@ -27,9 +45,19 @@
         <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="17" width="5" height="10" rx="1.5"/><rect x="13.5" y="11" width="5" height="16" rx="1.5"/><rect x="22" y="5" width="5" height="22" rx="1.5"/></svg>
         <span>Victor Bazarim</span>
       </a>
+      <div class="header-tools" role="group" aria-label="Preferências">
+        <button class="lang-toggle" type="button" data-lang-toggle data-i18n-skip>
+          <img class="lang-toggle__flag" src="img/flag-us.svg" alt="" width="20" height="14" data-lang-flag>
+          <span class="lang-toggle__code" lang="en" data-lang-code>EN</span><span class="visually-hidden" data-lang-hint>: mudar o site para inglês</span>
+        </button>
+        <button class="theme-toggle" type="button" aria-pressed="false" data-theme-toggle>
+          <svg class="bulb" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g class="bulb__rays"><line x1="12" y1="0.8" x2="12" y2="2.4"/><line x1="3.6" y1="4.4" x2="4.8" y2="5.6"/><line x1="20.4" y1="4.4" x2="19.2" y2="5.6"/><line x1="1" y1="11" x2="2.6" y2="11"/><line x1="21.4" y1="11" x2="23" y2="11"/></g><path class="bulb__glass" d="M12 4.2a6.2 6.2 0 0 0-3.7 11.2c.7.5 1.1 1.3 1.1 2.1v.6h5.2v-.6c0-.8.4-1.6 1.1-2.1A6.2 6.2 0 0 0 12 4.2z"/><path class="bulb__base" d="M9.6 20.6h4.8M10.4 22.8h3.2"/></svg>
+          <span class="visually-hidden">Tema claro</span>
+        </button>
+      </div>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-toggle>
         <span class="menu-toggle__bars" aria-hidden="true"><span></span><span></span><span></span></span>
-        Menu
+        <span class="menu-toggle__label">Menu</span>
       </button>
       <nav class="site-nav" id="site-nav" aria-label="Principal">
         <ul class="site-nav__list">
@@ -72,9 +100,9 @@
           <div class="dash__embed">
             <div class="embed" data-embed>
               <div class="embed__placeholder">
-                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                <svg class="scene scene--point" viewBox="0 0 132 88" aria-hidden="true" focusable="false"><line class="sc-axis" x1="80" y1="82.5" x2="130" y2="82.5"/><rect class="sc-bar" x="84" y="58" width="8" height="24" rx="2" style="--d: 0ms"/><rect class="sc-bar" x="96" y="46" width="8" height="36" rx="2" style="--d: 90ms"/><rect class="sc-bar" x="108" y="52" width="8" height="30" rx="2" style="--d: 180ms"/><rect class="sc-bar" x="120" y="34" width="8" height="48" rx="2" style="--d: 270ms"/><g class="rb"><line class="rb-antenna" x1="36" y1="5" x2="36" y2="13"/><circle class="rb-tip" cx="36" cy="5" r="3.2"/><rect class="rb-head" x="16" y="12" width="40" height="28" rx="9"/><g class="rb-face"><rect class="rb-glow" x="18" y="15" width="36" height="20" rx="10"/><rect class="rb-visor" x="22" y="19" width="28" height="12" rx="6"/><circle class="rb-eye" cx="30" cy="25" r="2.2"/><circle class="rb-eye" cx="42" cy="25" r="2.2"/></g><rect class="rb-neck" x="31" y="40" width="10" height="4" rx="1.5"/><rect class="rb-body" x="18" y="43" width="36" height="28" rx="8"/><rect class="rb-badge" x="31" y="51" width="10" height="10" rx="2.5"/><g class="rb-arm rb-arm-l"><rect x="9" y="45" width="7" height="20" rx="3.5"/></g><g class="rb-arm rb-arm-r"><rect x="56" y="45" width="7" height="20" rx="3.5"/></g><rect class="rb-base" x="20" y="73" width="32" height="9" rx="4.5"/><circle class="rb-bolt" cx="27" cy="77.5" r="1.8"/><circle class="rb-bolt" cx="36" cy="77.5" r="1.8"/><circle class="rb-bolt" cx="45" cy="77.5" r="1.8"/></g></svg>
                 <p class="embed__title">Relatório interativo do Power BI</p>
-                <p>O dashboard carrega só quando você pede, para a página abrir mais rápido.</p>
+                <p role="status" data-embed-status>O dashboard carrega só quando você pede, para a página abrir mais rápido.</p>
                 <a class="btn btn--primary" href="https://app.powerbi.com/view?r=eyJrIjoiMGVmMzFiMjktNzU2Yy00ODc3LWExYmYtOTZhZGNmMjBiMDcwIiwidCI6ImVlOWNhMzg2LTAxOGUtNDUwMC04NGMzLWE5OWM3OWVjMTNkMyJ9" target="_blank" rel="noopener" data-embed-src="https://app.powerbi.com/view?r=eyJrIjoiMGVmMzFiMjktNzU2Yy00ODc3LWExYmYtOTZhZGNmMjBiMDcwIiwidCI6ImVlOWNhMzg2LTAxOGUtNDUwMC04NGMzLWE5OWM3OWVjMTNkMyJ9" data-embed-title="Dashboard de Gestão de Vendas (Power BI)">Carregar dashboard<span class="visually-hidden">: Dashboard de Gestão de Vendas</span></a>
               </div>
             </div>
@@ -82,13 +110,23 @@
           </div>
           <aside class="panel" aria-labelledby="vendas-numeros">
             <h3 class="panel__title" id="vendas-numeros">Indicadores exibidos no dashboard</h3>
-            <dl class="kpis"><div class="kpi"><dt>Valor total faturado</dt><dd>R$ 12,9 mi</dd></div><div class="kpi"><dt>Comissão gerada</dt><dd>R$ 643 mil</dd></div><div class="kpi"><dt>Ticket médio</dt><dd>R$ 51,6 mil</dd></div></dl>
+            <p class="panel__note">Valores do painel com o filtro de produto “Bolsa” selecionado.</p>
+            <dl class="kpis"><div class="kpi"><dt>Valor faturado</dt><dd>R$&nbsp;12,9&nbsp;mi</dd></div><div class="kpi"><dt>Comissão</dt><dd>R$&nbsp;643&nbsp;mil</dd></div><div class="kpi"><dt>Ticket médio</dt><dd>R$&nbsp;51,6&nbsp;mil</dd></div></dl>
             <div class="viz viz-anim">
-              <p class="viz__title">Faturamento por tipo de pagamento</p>
-              <div class="split" style="--cols: 61.39fr 38.61fr" aria-hidden="true"><span class="split__seg"></span><span class="split__seg split__seg--rest"></span></div><ul class="legend"><li><span class="swatch" aria-hidden="true"></span>Transferência/PIX <strong>61,39%</strong></li><li><span class="swatch swatch--rest" aria-hidden="true"></span>Cartão de crédito <strong>38,61%</strong></li></ul>
+              <p class="viz__title">Faturamento por loja</p>
+              <div class="hbars" aria-hidden="true">
+                <div class="hbar"><span class="hbar__label">Matriz</span><span class="hbar__track"><span class="hbar__fill" style="--v: 100%"></span></span><span class="hbar__value">R$&nbsp;5,4&nbsp;mi</span></div>
+                <div class="hbar"><span class="hbar__label">Filial 2</span><span class="hbar__track"><span class="hbar__fill" style="--v: 83.33%"></span></span><span class="hbar__value">R$&nbsp;4,5&nbsp;mi</span></div>
+                <div class="hbar"><span class="hbar__label">Filial 1</span><span class="hbar__track"><span class="hbar__fill" style="--v: 55.56%"></span></span><span class="hbar__value">R$&nbsp;3,0&nbsp;mi</span></div>
+              </div>
+              <p class="visually-hidden">Matriz R$&nbsp;5,4&nbsp;milhões, Filial 2 R$&nbsp;4,5&nbsp;milhões e Filial 1 R$&nbsp;3,0&nbsp;milhões.</p>
             </div>
             <div class="viz viz-anim">
-              <div class="meter"><div class="meter__head"><span>Participação de Bolsas no faturamento</span><strong>32,06%</strong></div><div class="meter__track" aria-hidden="true"><span class="meter__fill" style="--v: 32.06%"></span></div></div>
+              <p class="viz__title">Faturamento por tipo de pagamento</p>
+              <div class="split" style="--cols: 61.39fr 38.61fr" aria-hidden="true"><span class="split__seg"></span><span class="split__seg split__seg--rest"></span></div><ul class="legend"><li><span class="swatch" aria-hidden="true"></span>Cartão de crédito <strong>61,39%</strong></li><li><span class="swatch swatch--rest" aria-hidden="true"></span>Transferência/PIX <strong>38,61%</strong></li></ul>
+            </div>
+            <div class="viz viz-anim">
+              <div class="meter"><div class="meter__head"><span>Participação de Bolsas no total de vendas</span><strong>32,06%</strong></div><div class="meter__track" aria-hidden="true"><span class="meter__fill" style="--v: 32.06%"></span></div></div>
             </div>
           </aside>
         </div>
@@ -96,10 +134,11 @@
           <section class="prose" aria-labelledby="vendas-mostra">
             <h3 id="vendas-mostra">O que o dashboard mostra</h3>
             <ul>
-              <li><strong>Faturamento por loja:</strong> desempenho das unidades (Matriz e Filiais), com destaque para a Matriz, que faturou R$ 5,4 milhões.</li>
-              <li><strong>Faturamento por tipo de pagamento:</strong> 61,39% das vendas por Transferência/PIX e 38,61% via cartão de crédito.</li>
-              <li><strong>Faturamento por período:</strong> tendências de vendas ao longo do ano, com pico em março (R$ 2,04 milhões).</li>
-              <li><strong>Análise por produto:</strong> representatividade dos itens no faturamento; Bolsas lideram com 32,06% do total.</li>
+              <li><strong>Filtro por produto:</strong> no topo do painel, para ver os números de cada item (Bolsa, Boné, Carteira, Fone, Garrafa, Mala, Mochila e Tênis).</li>
+              <li><strong>Faturamento por loja:</strong> desempenho das unidades (Matriz e Filiais). Com o filtro Bolsa, a Matriz faturou R$&nbsp;5,4&nbsp;milhões, a Filial 2, R$&nbsp;4,5&nbsp;milhões e a Filial 1, R$&nbsp;3,0&nbsp;milhões.</li>
+              <li><strong>Faturamento por tipo de pagamento:</strong> com o filtro Bolsa, 61,39% do faturamento veio do cartão de crédito (R$&nbsp;8&nbsp;milhões) e 38,61% de Transferência/PIX (R$&nbsp;5&nbsp;milhões).</li>
+              <li><strong>Faturamento por período:</strong> tendências de vendas ao longo do ano; com o filtro Bolsa, o pico é em março (R$&nbsp;2,04&nbsp;milhões).</li>
+              <li><strong>Análise por produto:</strong> representatividade de cada item no total de vendas (R$&nbsp;40,1&nbsp;milhões). Bolsas lideram com 32,06%, seguidas de Mochilas (19,60%) e Malas (17,68%).</li>
             </ul>
           </section>
           <section class="prose" aria-labelledby="vendas-objetivo">
@@ -107,9 +146,10 @@
             <p>Permitir decisões estratégicas baseadas em dados, a partir de uma visão clara do faturamento por unidade, forma de pagamento, período e produto.</p>
             <h3>Indicadores gerais</h3>
             <ul>
-              <li><strong>Valor total faturado:</strong> R$ 12,9 milhões</li>
-              <li><strong>Comissão gerada:</strong> R$ 643 mil</li>
-              <li><strong>Ticket médio:</strong> R$ 51,6 mil</li>
+              <li><strong>Total de vendas (todos os produtos):</strong> R$ 40.114.345</li>
+              <li><strong>Valor faturado com o filtro Bolsa:</strong> R$&nbsp;12,9&nbsp;milhões</li>
+              <li><strong>Comissão com o filtro Bolsa:</strong> R$&nbsp;643&nbsp;mil</li>
+              <li><strong>Ticket médio com o filtro Bolsa:</strong> R$&nbsp;51,6&nbsp;mil</li>
             </ul>
           </section>
         </div>
@@ -128,9 +168,9 @@
           <div class="dash__embed">
             <div class="embed" data-embed>
               <div class="embed__placeholder">
-                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                <svg class="scene scene--point" viewBox="0 0 132 88" aria-hidden="true" focusable="false"><line class="sc-axis" x1="80" y1="82.5" x2="130" y2="82.5"/><rect class="sc-bar" x="84" y="58" width="8" height="24" rx="2" style="--d: 0ms"/><rect class="sc-bar" x="96" y="46" width="8" height="36" rx="2" style="--d: 90ms"/><rect class="sc-bar" x="108" y="52" width="8" height="30" rx="2" style="--d: 180ms"/><rect class="sc-bar" x="120" y="34" width="8" height="48" rx="2" style="--d: 270ms"/><g class="rb"><line class="rb-antenna" x1="36" y1="5" x2="36" y2="13"/><circle class="rb-tip" cx="36" cy="5" r="3.2"/><rect class="rb-head" x="16" y="12" width="40" height="28" rx="9"/><g class="rb-face"><rect class="rb-glow" x="18" y="15" width="36" height="20" rx="10"/><rect class="rb-visor" x="22" y="19" width="28" height="12" rx="6"/><circle class="rb-eye" cx="30" cy="25" r="2.2"/><circle class="rb-eye" cx="42" cy="25" r="2.2"/></g><rect class="rb-neck" x="31" y="40" width="10" height="4" rx="1.5"/><rect class="rb-body" x="18" y="43" width="36" height="28" rx="8"/><rect class="rb-badge" x="31" y="51" width="10" height="10" rx="2.5"/><g class="rb-arm rb-arm-l"><rect x="9" y="45" width="7" height="20" rx="3.5"/></g><g class="rb-arm rb-arm-r"><rect x="56" y="45" width="7" height="20" rx="3.5"/></g><rect class="rb-base" x="20" y="73" width="32" height="9" rx="4.5"/><circle class="rb-bolt" cx="27" cy="77.5" r="1.8"/><circle class="rb-bolt" cx="36" cy="77.5" r="1.8"/><circle class="rb-bolt" cx="45" cy="77.5" r="1.8"/></g></svg>
                 <p class="embed__title">Relatório interativo do Power BI</p>
-                <p>O dashboard carrega só quando você pede, para a página abrir mais rápido.</p>
+                <p role="status" data-embed-status>O dashboard carrega só quando você pede, para a página abrir mais rápido.</p>
                 <a class="btn btn--primary" href="https://app.powerbi.com/view?r=eyJrIjoiNTM0MDg2MmItYmQyZS00MTIxLTgyYTUtM2FjYWJhYTdhZjU4IiwidCI6ImVlOWNhMzg2LTAxOGUtNDUwMC04NGMzLWE5OWM3OWVjMTNkMyJ9" target="_blank" rel="noopener" data-embed-src="https://app.powerbi.com/view?r=eyJrIjoiNTM0MDg2MmItYmQyZS00MTIxLTgyYTUtM2FjYWJhYTdhZjU4IiwidCI6ImVlOWNhMzg2LTAxOGUtNDUwMC04NGMzLWE5OWM3OWVjMTNkMyJ9" data-embed-title="Dashboard de Produção (Power BI)">Carregar dashboard<span class="visually-hidden">: Dashboard de Produção</span></a>
               </div>
             </div>
@@ -191,9 +231,9 @@
           <div class="dash__embed">
             <div class="embed" data-embed>
               <div class="embed__placeholder">
-                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                <svg class="scene scene--point" viewBox="0 0 132 88" aria-hidden="true" focusable="false"><line class="sc-axis" x1="80" y1="82.5" x2="130" y2="82.5"/><rect class="sc-bar" x="84" y="58" width="8" height="24" rx="2" style="--d: 0ms"/><rect class="sc-bar" x="96" y="46" width="8" height="36" rx="2" style="--d: 90ms"/><rect class="sc-bar" x="108" y="52" width="8" height="30" rx="2" style="--d: 180ms"/><rect class="sc-bar" x="120" y="34" width="8" height="48" rx="2" style="--d: 270ms"/><g class="rb"><line class="rb-antenna" x1="36" y1="5" x2="36" y2="13"/><circle class="rb-tip" cx="36" cy="5" r="3.2"/><rect class="rb-head" x="16" y="12" width="40" height="28" rx="9"/><g class="rb-face"><rect class="rb-glow" x="18" y="15" width="36" height="20" rx="10"/><rect class="rb-visor" x="22" y="19" width="28" height="12" rx="6"/><circle class="rb-eye" cx="30" cy="25" r="2.2"/><circle class="rb-eye" cx="42" cy="25" r="2.2"/></g><rect class="rb-neck" x="31" y="40" width="10" height="4" rx="1.5"/><rect class="rb-body" x="18" y="43" width="36" height="28" rx="8"/><rect class="rb-badge" x="31" y="51" width="10" height="10" rx="2.5"/><g class="rb-arm rb-arm-l"><rect x="9" y="45" width="7" height="20" rx="3.5"/></g><g class="rb-arm rb-arm-r"><rect x="56" y="45" width="7" height="20" rx="3.5"/></g><rect class="rb-base" x="20" y="73" width="32" height="9" rx="4.5"/><circle class="rb-bolt" cx="27" cy="77.5" r="1.8"/><circle class="rb-bolt" cx="36" cy="77.5" r="1.8"/><circle class="rb-bolt" cx="45" cy="77.5" r="1.8"/></g></svg>
                 <p class="embed__title">Relatório interativo do Power BI</p>
-                <p>O dashboard carrega só quando você pede, para a página abrir mais rápido.</p>
+                <p role="status" data-embed-status>O dashboard carrega só quando você pede, para a página abrir mais rápido.</p>
                 <a class="btn btn--primary" href="https://app.powerbi.com/view?r=eyJrIjoiMmU3YzY2MDktOTJjNC00NmUwLWE1OTUtMGYxNWI5OTEyOTRjIiwidCI6ImVlOWNhMzg2LTAxOGUtNDUwMC04NGMzLWE5OWM3OWVjMTNkMyJ9" target="_blank" rel="noopener" data-embed-src="https://app.powerbi.com/view?r=eyJrIjoiMmU3YzY2MDktOTJjNC00NmUwLWE1OTUtMGYxNWI5OTEyOTRjIiwidCI6ImVlOWNhMzg2LTAxOGUtNDUwMC04NGMzLWE5OWM3OWVjMTNkMyJ9" data-embed-title="Monitoramento Estratégico de Vendas, Custos e Lucros (Power BI)">Carregar dashboard<span class="visually-hidden">: Monitoramento Estratégico de Vendas, Custos e Lucros</span></a>
               </div>
             </div>

@@ -7,13 +7,18 @@
  *  - cabeçalho com sombra ao rolar e botão "voltar ao topo"
  *  - link ativo do menu conforme a seção visível (página inicial)
  *  - filtros de projetos e certificados (com contagem e ?filtro= na URL)
+ *  - prévia do dashboard de vendas no card principal (abas "Por loja"/"Por pagamento")
  *  - barras dos gráficos que crescem ao aparecer na tela
  *  - ampliação de certificados (<dialog>)
- *  - dashboards do Power BI carregados só quando o visitante pede
+ *  - robô: gaveta e aceno nos certificados, carimbo ao baixar um PDF
+ *  - dashboards do Power BI carregados só quando o visitante pede (com o robô)
+ *  - simulação do robô de cadastro, com dados fictícios
  *  - aviso quando um vídeo não pode ser reproduzido no navegador
  *  - botão "Copiar e-mail"
  *  - formulário de contato via EmailJS (carregado só quando o formulário é usado)
  *  - ano atual no rodapé
+ *  - idioma (português/inglês) e tema (escuro/claro), salvos no navegador
+ *  - movimento: circuito no topo, linha até o card de vendas, reações do robô
  */
 (function () {
   'use strict';
@@ -34,6 +39,199 @@
   function onMediaChange(query, handler) {
     if (query.addEventListener) query.addEventListener('change', handler);
     else if (query.addListener) query.addListener(handler);
+  }
+
+  function store(key, value) {
+    try { window.localStorage.setItem(key, value); } catch (error) { /* navegação privada */ }
+  }
+
+  function stored(key) {
+    try { return window.localStorage.getItem(key); } catch (error) { return null; }
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Idioma: português (padrão) e inglês                                 */
+  /* O dicionário (js/i18n-en.js) usa o texto em português como chave.   */
+  /* Textos montados pelo script passam por t()/tf() e são redesenhados  */
+  /* quando o idioma muda (render/say).                                  */
+  /* ------------------------------------------------------------------ */
+  var LANG = 'pt';
+  var DICT = window.I18N_EN || {};
+  var rendered = [];
+
+  function norm(text) {
+    return String(text).replace(/\u00a0/g, ' ').replace(/\s+/g, ' ').trim();
+  }
+
+  function t(pt) {
+    if (LANG !== 'en') return pt;
+    var en = DICT[norm(pt)];
+    return en === undefined ? pt : en;
+  }
+
+  function tf(key, vars) {
+    return t(key).replace(/\{(\w+)\}/g, function (match, name) {
+      return vars && vars[name] !== undefined ? vars[name] : match;
+    });
+  }
+
+  // Desenha o texto agora e de novo a cada troca de idioma
+  function render(el, fn) {
+    el.__render = fn;
+    if (rendered.indexOf(el) === -1) rendered.push(el);
+    fn();
+  }
+
+  function say(el, key, vars) {
+    render(el, function () { el.textContent = key ? tf(key, vars) : ''; });
+  }
+
+  // Texto original (em português) do primeiro trecho de texto de um elemento
+  function ptText(el) {
+    for (var node = el.firstChild; node; node = node.nextSibling) {
+      if (node.nodeType === 3 && node.nodeValue.trim()) return norm(node.__pt || node.nodeValue);
+    }
+    return norm(el.textContent);
+  }
+
+  var I18N_ATTRS = ['alt', 'title', 'aria-label', 'placeholder', 'data-title', 'data-stamp-title', 'data-embed-title', 'data-alt'];
+  var I18N_SKIP = { SCRIPT: 1, STYLE: 1, CODE: 1, PRE: 1, NOSCRIPT: 1, TEMPLATE: 1, svg: 1 };
+
+  // Números soltos (61,39% · 3.084.251) seguem o padrão do inglês (61.39% · 3,084,251)
+  function localizeNumber(pt) {
+    return pt.replace(/(\d)([.,])(?=\d)/g, function (match, digit, sep) {
+      return digit + (sep === '.' ? ',' : '.');
+    });
+  }
+
+  function translated(pt) {
+    if (LANG !== 'en') return pt;
+    var en = DICT[norm(pt)];
+    if (en === undefined) {
+      return !/[A-Za-zÀ-ú]/.test(pt) && /\d[.,]\d/.test(pt) ? localizeNumber(pt) : pt;
+    }
+    return pt.match(/^\s*/)[0] + en + pt.match(/\s*$/)[0];
+  }
+
+  function translatePage() {
+    var walker = document.createTreeWalker(root, 4, {
+      acceptNode: function (node) {
+        for (var el = node.parentNode; el && el !== root; el = el.parentNode) {
+          if (I18N_SKIP[el.nodeName] || (el.hasAttribute && el.hasAttribute('data-i18n-skip'))) return 2;
+        }
+        return 1;
+      }
+    });
+    var nodes = [];
+    while (walker.nextNode()) nodes.push(walker.currentNode);
+    nodes.forEach(function (node) {
+      if (node.__pt === undefined) {
+        if (!/[A-Za-zÀ-ú]/.test(node.nodeValue) && !/\d[.,]\d/.test(node.nodeValue)) return;
+        node.__pt = node.nodeValue;
+      }
+      var value = translated(node.__pt);
+      if (node.nodeValue !== value) node.nodeValue = value;
+    });
+
+    $$('[' + I18N_ATTRS.join('],[') + ']').forEach(function (el) {
+      el.__ptAttrs = el.__ptAttrs || {};
+      I18N_ATTRS.forEach(function (name) {
+        if (!el.hasAttribute(name)) return;
+        if (!(name in el.__ptAttrs)) el.__ptAttrs[name] = el.getAttribute(name);
+        el.setAttribute(name, translated(el.__ptAttrs[name]));
+      });
+    });
+
+    $$('meta[name="description"], meta[property="og:title"], meta[property="og:description"]').forEach(function (meta) {
+      if (meta.__pt === undefined) meta.__pt = meta.getAttribute('content');
+      meta.setAttribute('content', translated(meta.__pt));
+    });
+    var locale = $('meta[property="og:locale"]');
+    if (locale) locale.setAttribute('content', LANG === 'en' ? 'en_US' : 'pt_BR');
+  }
+
+  function applyLanguage(lang) {
+    LANG = lang === 'en' ? 'en' : 'pt';
+    root.lang = LANG === 'en' ? 'en' : 'pt-BR';
+    translatePage();
+    rendered = rendered.filter(function (el) { return el.isConnected !== false; });
+    rendered.forEach(function (el) { el.__render(); });
+    root.classList.remove('i18n-pending');
+    var event;
+    try { event = new CustomEvent('langchange'); } catch (error) { event = null; }
+    if (event) document.dispatchEvent(event);
+  }
+
+  /* Botão de idioma: mostra a bandeira e a sigla do idioma para o qual ele muda */
+  function initLanguage() {
+    var button = $('[data-lang-toggle]');
+    var flag = button && $('[data-lang-flag]', button);
+    var code = button && $('[data-lang-code]', button);
+    var hint = button && $('[data-lang-hint]', button);
+
+    function syncButton() {
+      if (!button) return;
+      var target = LANG === 'en' ? 'pt' : 'en';
+      flag.setAttribute('src', target === 'en' ? 'img/flag-us.svg' : 'img/flag-br.svg');
+      code.textContent = target.toUpperCase();
+      code.setAttribute('lang', target === 'en' ? 'en' : 'pt-BR');
+      hint.textContent = LANG === 'en' ? ': switch the site to Portuguese' : ': mudar o site para inglês';
+    }
+
+    if (button) {
+      button.addEventListener('click', function () {
+        var next = LANG === 'en' ? 'pt' : 'en';
+        store('vb-idioma', next);
+        applyLanguage(next);
+        syncButton();
+        // a bandeira ondula uma vez (com movimento reduzido, só troca)
+        flag.classList.remove('is-waving');
+        void flag.offsetWidth;
+        flag.classList.add('is-waving');
+        window.setTimeout(function () { flag.classList.remove('is-waving'); }, 900);
+      });
+    }
+
+    applyLanguage(stored('vb-idioma') === 'en' ? 'en' : 'pt');
+    syncButton();
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Tema: escuro (padrão) e claro, com a lâmpada                        */
+  /* ------------------------------------------------------------------ */
+  function initTheme() {
+    var button = $('[data-theme-toggle]');
+    var meta = $('meta[name="theme-color"]');
+    var timer = null;
+
+    function isLight() {
+      return root.getAttribute('data-theme') === 'light';
+    }
+
+    function sync() {
+      if (button) button.setAttribute('aria-pressed', String(isLight()));
+      if (meta) meta.setAttribute('content', isLight() ? '#fbfaf7' : '#14171c');
+    }
+
+    sync();
+    if (!button) return;
+    button.addEventListener('click', function () {
+      var light = !isLight();
+      if (light) root.setAttribute('data-theme', 'light');
+      else root.removeAttribute('data-theme');
+      store('vb-tema', light ? 'claro' : 'escuro');
+      sync();
+      // acende brevemente ao ir para o claro; apaga ao voltar para o escuro
+      button.classList.remove('is-lighting');
+      button.classList.remove('is-dimming');
+      void button.offsetWidth;
+      button.classList.add(light ? 'is-lighting' : 'is-dimming');
+      window.clearTimeout(timer);
+      timer = window.setTimeout(function () {
+        button.classList.remove('is-lighting');
+        button.classList.remove('is-dimming');
+      }, 1000);
+    });
   }
 
   /* ------------------------------------------------------------------ */
@@ -155,6 +353,7 @@
       var buttons = $$('[data-filter]', controls);
       var status = $('[data-filter-status="' + key + '"]');
       var nouns = (controls.getAttribute('data-filter-noun') || 'item|itens').split('|');
+      var current = { filter: 'todos', shown: 0, label: '' };
       var syncUrl = controls.hasAttribute('data-filter-url');
 
       function tagsOf(item) {
@@ -166,7 +365,7 @@
       }
 
       function noun(count) {
-        return count === 1 ? nouns[0] : nouns[1];
+        return t(count === 1 ? nouns[0] : nouns[1]);
       }
 
       // Guarda o nome de cada filtro e mostra quantos itens ele tem
@@ -196,17 +395,22 @@
           }
         });
 
-        var label = '';
+        var activeButton = null;
         buttons.forEach(function (button) {
           var active = button.getAttribute('data-filter') === filter;
           button.setAttribute('aria-pressed', String(active));
-          if (active) label = button.getAttribute('data-label');
+          if (active) activeButton = button;
         });
 
         if (status) {
-          status.textContent = filter === 'todos'
-            ? 'Mostrando todos os ' + items.length + ' ' + noun(items.length) + '.'
-            : 'Mostrando ' + shown + ' de ' + items.length + ' ' + noun(items.length) + ': ' + label + '.';
+          render(status, function () {
+            status.textContent = filter === 'todos'
+              ? tf('Mostrando todos os {n} {noun}.', { n: items.length, noun: noun(items.length) })
+              : tf('Mostrando {shown} de {total} {noun}: {label}.', {
+                shown: shown, total: items.length, noun: noun(items.length),
+                label: activeButton ? t(ptText(activeButton)) : ''
+              });
+          });
         }
 
         if (syncUrl && window.history && window.history.replaceState) {
@@ -237,6 +441,62 @@
         if (valid) initial = requested;
       }
       apply(initial, false);
+    });
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Prévia do dashboard no card principal                               */
+  /* Abas acessíveis: setas, Home e End trocam a visão; clicar ou tocar  */
+  /* na imagem mostra a outra visão, sem sair do card.                   */
+  /* ------------------------------------------------------------------ */
+  function initPreviewTabs() {
+    $$('[data-preview]').forEach(function (box) {
+      var tabs = $$('[role="tab"]', box);
+      var panels = tabs.map(function (tab) {
+        return document.getElementById(tab.getAttribute('aria-controls'));
+      });
+      if (!tabs.length || panels.some(function (panel) { return !panel; })) return;
+
+      function select(index, moveFocus) {
+        tabs.forEach(function (tab, i) {
+          var active = i === index;
+          tab.setAttribute('aria-selected', String(active));
+          tab.tabIndex = active ? 0 : -1;
+          panels[i].classList.toggle('is-active', active);
+        });
+        if (moveFocus) tabs[index].focus();
+      }
+
+      tabs.forEach(function (tab, i) {
+        tab.addEventListener('click', function () {
+          select(i, false);
+        });
+
+        tab.addEventListener('keydown', function (event) {
+          var target = null;
+          if (event.key === 'ArrowRight') target = (i + 1) % tabs.length;
+          else if (event.key === 'ArrowLeft') target = (i - 1 + tabs.length) % tabs.length;
+          else if (event.key === 'Home') target = 0;
+          else if (event.key === 'End') target = tabs.length - 1;
+          if (target === null) return;
+          event.preventDefault();
+          select(target, true);
+        });
+      });
+
+      panels.forEach(function (panel, i) {
+        var img = $('img', panel);
+        if (!img) return;
+        img.addEventListener('click', function () {
+          select((i + 1) % tabs.length, false);
+        });
+      });
+
+      var initial = 0;
+      tabs.forEach(function (tab, i) {
+        if (tab.getAttribute('aria-selected') === 'true') initial = i;
+      });
+      select(initial, false);
     });
   }
 
@@ -304,8 +564,9 @@
       var pdf = trigger.getAttribute('data-pdf');
       download.hidden = !pdf;
       if (pdf) download.setAttribute('href', pdf);
+      download.setAttribute('data-stamp-title', trigger.getAttribute('data-title') || '');
       var list = visibleTriggers();
-      counter.textContent = (list.indexOf(trigger) + 1) + ' de ' + list.length;
+      counter.textContent = tf('{i} de {n}', { i: list.indexOf(trigger) + 1, n: list.length });
       prev.hidden = next.hidden = list.length < 2;
     }
 
@@ -349,7 +610,208 @@
   }
 
   /* ------------------------------------------------------------------ */
+  /* Robô na página de certificados                                      */
+  /* Ao entrar na área visível: desliza até a gaveta, fecha, vira o visor */
+  /* para os cards e acena. Ao clicar/tocar: aponta para os downloads.   */
+  /* Com movimento reduzido: só mudanças de pose e de estado.            */
+  /* ------------------------------------------------------------------ */
+  function initDrawerScene() {
+    var scene = $('[data-scene-drawer]');
+    if (!scene) return;
+    var button = scene.closest('[data-robot-btn]');
+    var status = $('[data-robot-status]');
+    var arrived = false;
+    var timers = [];
+
+    function later(fn, ms) { timers.push(window.setTimeout(fn, ms)); }
+
+    function settle() {
+      arrived = true;
+      scene.classList.add('is-done');
+      scene.classList.remove('is-playing');
+    }
+
+    function arrive() {
+      if (arrived || scene.classList.contains('is-playing')) return;
+      if (reduceMotion.matches) {
+        // troca de estado sem deslocamento: já na gaveta, visor virado e pose de aceno
+        settle();
+        scene.classList.add('is-greeting');
+        later(function () { scene.classList.remove('is-greeting'); }, 1500);
+        return;
+      }
+      scene.classList.add('is-playing');
+      later(settle, 2350);
+    }
+
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function (entries) {
+        if (entries.some(function (entry) { return entry.isIntersecting; })) {
+          observer.disconnect();
+          later(arrive, 250);
+        }
+      }, { threshold: 0.6 });
+      observer.observe(scene);
+    } else {
+      arrive();
+    }
+
+    if (!button) return;
+    button.addEventListener('click', function () {
+      if (!arrived) {
+        timers.forEach(window.clearTimeout);
+        timers = [];
+        settle();
+      }
+      scene.classList.remove('is-greeting');
+      scene.classList.remove('is-pointing');
+      void scene.getBoundingClientRect();
+      scene.classList.add('is-pointing');
+      // os botões "Baixar PDF" visíveis recebem um destaque breve
+      var hinted = $$('.cert-card:not([hidden]) [data-stamp]').filter(function (link) {
+        var r = link.getBoundingClientRect();
+        return r.bottom > 0 && r.top < window.innerHeight;
+      });
+      if (!hinted.length) hinted = $$('.cert-card:not([hidden]) [data-stamp]').slice(0, 3);
+      hinted.forEach(function (link) {
+        link.classList.remove('is-hinted');
+        void link.offsetWidth;
+        link.classList.add('is-hinted');
+      });
+      if (status) {
+        say(status, '');
+        window.setTimeout(function () { say(status, 'Os PDFs ficam nos botões “Baixar PDF” de cada certificado.'); }, 60);
+      }
+      window.setTimeout(function () {
+        scene.classList.remove('is-pointing');
+        hinted.forEach(function (link) { link.classList.remove('is-hinted'); });
+      }, 1800);
+    });
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Circuito na grade atrás do retrato                                  */
+  /* O traço se desenha uma vez; depois um pulso percorre o caminho e    */
+  /* acende dois nós, com pausa entre as passagens. Fica parado quando a */
+  /* abertura sai da tela.                                               */
+  /* ------------------------------------------------------------------ */
+  function initCircuit() {
+    var svg = $('[data-circuit]');
+    if (!svg) return;
+    var hero = svg.closest('.hero') || svg;
+    if (!('IntersectionObserver' in window)) {
+      svg.classList.add('is-on');
+      return;
+    }
+    svg.classList.add('is-paused');
+    new IntersectionObserver(function (entries) {
+      var visible = entries.some(function (entry) { return entry.isIntersecting; });
+      if (visible) svg.classList.add('is-on');
+      svg.classList.toggle('is-paused', !visible);
+    }, { threshold: 0.2 }).observe(hero);
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Linha que se desenha do título "Projetos" até o card de vendas       */
+  /* ------------------------------------------------------------------ */
+  function initLeadLine() {
+    var svg = $('[data-lead-line]');
+    if (!svg) return;
+    var section = svg.parentNode;
+    var title = $('h2', section);
+    var card = $('.project-card--featured', section);
+    var path = $('.lead-line__path', svg);
+    var node = $('.lead-line__node', svg);
+    if (!title || !card || !path || !node) return;
+
+    function layout() {
+      var visible = !card.hidden && card.offsetParent !== null;
+      svg.classList.toggle('is-hidden', !visible);
+      if (!visible) return;
+      var s = section.getBoundingClientRect();
+      var h = title.getBoundingClientRect();
+      var c = card.getBoundingClientRect();
+      var x0 = Math.round(h.left - s.left);
+      var y0 = Math.round(h.top - s.top) + 1;
+      var gx = Math.max(5, x0 - 14);
+      var x1 = Math.round(c.left - s.left);
+      var y1 = Math.round(c.top - s.top) + 30;
+      svg.setAttribute('viewBox', '0 0 ' + Math.round(s.width) + ' ' + Math.round(s.height));
+      path.setAttribute('d', 'M' + x0 + ' ' + y0 + 'H' + gx + 'V' + y1 + 'H' + x1);
+      node.setAttribute('cx', x1);
+      node.setAttribute('cy', y1);
+    }
+
+    layout();
+    if ('ResizeObserver' in window) new ResizeObserver(layout).observe(section);
+    else window.addEventListener('resize', layout);
+    document.addEventListener('langchange', layout);
+
+    if (!('IntersectionObserver' in window)) {
+      svg.classList.add('is-drawn');
+      return;
+    }
+    var observer = new IntersectionObserver(function (entries) {
+      if (entries.some(function (entry) { return entry.isIntersecting; })) {
+        observer.disconnect();
+        layout();
+        svg.classList.add('is-drawn');
+      }
+    }, { threshold: 0.15 });
+    // observa o card (a seção inteira pode ser mais alta que a tela no celular)
+    observer.observe(card);
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Robô carimba uma folha ao lado de "Baixar PDF"                      */
+  /* O download é o do próprio link (atributo download): nada é bloqueado; */
+  /* a animação só acompanha o clique.                                   */
+  /* ------------------------------------------------------------------ */
+  function initStampDownloads() {
+    var template = document.getElementById('tpl-stamp');
+    var links = $$('[data-stamp]');
+    if (!template || !links.length || !('content' in template)) return;
+    var status = $('[data-download-status]');
+
+    links.forEach(function (link) {
+      link.addEventListener('click', function () {
+        var anchor = link.closest('.stamp-anchor') || link.parentNode;
+        var previous = $('.stamp-pop', anchor);
+        if (previous) previous.remove();
+
+        var pop = document.createElement('span');
+        pop.className = 'stamp-pop';
+        pop.setAttribute('aria-hidden', 'true');
+        pop.appendChild(template.content.cloneNode(true));
+        // No lightbox a reação fica junto aos controles, sem cobrir o certificado:
+        // à esquerda do botão; se o botão estiver numa linha própria (celular), à direita
+        var foot = anchor.closest('.lightbox__foot');
+        if (foot) {
+          var wrapped = anchor.getBoundingClientRect().left - foot.getBoundingClientRect().left < 48;
+          pop.classList.add(wrapped ? 'stamp-pop--side' : 'stamp-pop--before');
+        }
+        anchor.appendChild(pop);
+        var scene = $('.scene', pop);
+        if (scene) scene.classList.add('is-playing');
+        window.setTimeout(function () { pop.remove(); }, 1900);
+
+        if (status) {
+          var title = link.getAttribute('data-stamp-title') || '';
+          say(status, '');
+          window.setTimeout(function () {
+            if (title) say(status, 'Download do PDF iniciado: {title}.', { title: title });
+            else say(status, 'Download do PDF iniciado.');
+          }, 60);
+        }
+      });
+    });
+  }
+
+  /* ------------------------------------------------------------------ */
   /* Dashboards do Power BI sob demanda                                  */
+  /* O iframe começa a carregar no clique; enquanto isso o robô acende o  */
+  /* visor e aponta para o minigráfico. O dashboard aparece quando o      */
+  /* Power BI termina de carregar (ou após 12 s, o que vier primeiro).    */
   /* ------------------------------------------------------------------ */
   function initEmbeds() {
     $$('[data-embed-src]').forEach(function (trigger) {
@@ -357,22 +819,260 @@
         var box = trigger.closest('[data-embed]');
         if (!box) return; // sem a moldura, o link abre o Power BI em nova aba
         event.preventDefault();
-
-        var iframe = document.createElement('iframe');
-        iframe.src = trigger.getAttribute('data-embed-src');
-        iframe.title = trigger.getAttribute('data-embed-title') || 'Dashboard do Power BI';
-        iframe.setAttribute('allowfullscreen', '');
-        box.classList.add('is-loading');
-        iframe.addEventListener('load', function () {
-          box.classList.remove('is-loading');
-        });
+        if (box.classList.contains('is-loading')) return;
 
         var placeholder = trigger.closest('.embed__placeholder');
-        if (placeholder) placeholder.remove();
+        var scene = placeholder ? $('.scene', placeholder) : null;
+        var status = placeholder ? $('[data-embed-status]', placeholder) : null;
+        var started = Date.now();
+        var minimum = reduceMotion.matches ? 0 : 1200;
+        var revealed = false;
+        var fallback = null;
+
+        box.classList.add('is-loading');
+        trigger.setAttribute('aria-disabled', 'true');
+        // Troca só o texto visível do botão ("Carregar dashboard" -> "Carregando…")
+        var labelNode = trigger.firstChild && trigger.firstChild.nodeType === 3 ? trigger.firstChild : null;
+        if (labelNode) {
+          render(trigger, function () { labelNode.nodeValue = t('Carregando…'); });
+        }
+        if (scene) {
+          scene.classList.add('is-active');
+          scene.classList.add('is-lit');
+        }
+        if (status) say(status, 'Carregando o dashboard do Power BI…');
+
+        var iframe = document.createElement('iframe');
+        iframe.title = trigger.getAttribute('data-embed-title') || t('Dashboard do Power BI');
+        iframe.setAttribute('allowfullscreen', '');
+        iframe.className = 'is-pending';
+        iframe.setAttribute('tabindex', '-1');
+        iframe.setAttribute('aria-hidden', 'true');
+
+        function reveal() {
+          if (revealed) return;
+          revealed = true;
+          window.clearTimeout(fallback);
+          var moveFocus = document.activeElement === trigger;
+          box.classList.remove('is-loading');
+          iframe.classList.remove('is-pending');
+          iframe.removeAttribute('tabindex');
+          iframe.removeAttribute('aria-hidden');
+          if (!reduceMotion.matches) iframe.classList.add('is-revealed');
+          if (placeholder) placeholder.remove();
+          if (moveFocus) iframe.focus();
+        }
+
+        iframe.addEventListener('load', function () {
+          window.setTimeout(reveal, Math.max(0, minimum - (Date.now() - started)));
+        });
+        fallback = window.setTimeout(reveal, 12000);
+
+        iframe.src = trigger.getAttribute('data-embed-src');
         box.appendChild(iframe);
-        iframe.focus();
       });
     });
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Simulação do robô de cadastro (dados fictícios)                     */
+  /* O robô pega uma linha da planilha, leva até o formulário, preenche   */
+  /* os campos e o registro aparece como concluído. Pode ser repetida.    */
+  /* ------------------------------------------------------------------ */
+  function initSimulation() {
+    var sim = $('[data-sim]');
+    if (!sim) return;
+    var stage = $('[data-sim-stage]', sim);
+    var sheet = $('[data-sim-sheet]', sim);
+    var lane = $('[data-sim-lane]', sim);
+    var form = $('[data-sim-form]', sim);
+    var bot = $('[data-sim-bot]', sim);
+    var chip = $('[data-sim-chip]', sim);
+    var button = $('[data-sim-run]', sim);
+    var status = $('[data-sim-status]', sim);
+    var rows = $$('[data-sim-row]', sim);
+    if (!stage || !sheet || !lane || !form || !bot || !button || !status || !rows.length) return;
+
+    var fields = $$('[data-field]', form);
+    var submit = $('[data-sim-submit]', form);
+    var stamp = $('[data-sim-stamp]', form);
+    var label = $('[data-sim-label]', button) || button;
+    var next = 0;
+    var running = false;
+    var timers = [];
+
+    function later(fn, ms) {
+      timers.push(window.setTimeout(fn, ms));
+    }
+
+    function box(element) {
+      return element.getBoundingClientRect();
+    }
+
+    function rowData(row) {
+      try {
+        return JSON.parse(row.getAttribute('data-sim-row')) || {};
+      } catch (error) {
+        return {};
+      }
+    }
+
+    // Centraliza o robô no ponto (x, y) da tela, sem deixá-lo sair da faixa do meio
+    function moveTo(x, y) {
+      var s = box(stage);
+      var l = box(lane);
+      var w = bot.offsetWidth;
+      var h = bot.offsetHeight;
+      var minX = l.left - s.left;
+      var maxX = Math.max(minX, l.right - s.left - w);
+      var minY = l.top - s.top;
+      var maxY = Math.max(minY, l.bottom - s.top - h);
+      var left = Math.min(Math.max(x - s.left - w / 2, minX), maxX);
+      var top = Math.min(Math.max(y - s.top - h / 2, minY), maxY);
+      bot.style.setProperty('--x', Math.round(left) + 'px');
+      bot.style.setProperty('--y', Math.round(top) + 'px');
+    }
+
+    function sideBySide() {
+      return box(form).left >= box(sheet).right - 1;
+    }
+
+    function goHome() {
+      var l = box(lane);
+      moveTo(l.left + l.width / 2, l.top + l.height / 2);
+    }
+
+    function goToRow(row) {
+      var l = box(lane);
+      var r = box(row);
+      if (sideBySide()) moveTo(l.left, r.top + r.height / 2);
+      else moveTo(r.left + r.width * 0.3, l.top);
+    }
+
+    function goToForm() {
+      var l = box(lane);
+      var f = box(form);
+      var first = box(fields[0] || form);
+      if (sideBySide()) moveTo(l.right, first.top + first.height / 2);
+      else moveTo(f.left + f.width * 0.62, l.bottom);
+    }
+
+    function setArm(state) {
+      bot.classList.remove('is-grab');
+      bot.classList.remove('is-carry');
+      if (state) bot.classList.add(state);
+    }
+
+    function resetForm() {
+      fields.forEach(function (field) {
+        say(field, '');
+        field.classList.remove('is-new');
+      });
+      if (submit) submit.classList.remove('is-pressed');
+      if (stamp) {
+        stamp.hidden = true;
+        stamp.classList.remove('is-new');
+      }
+    }
+
+    function fill(field, data) {
+      var key = field.getAttribute('data-field');
+      say(field, data[key] || '—');
+    }
+
+    function finish(row, data) {
+      row.classList.remove('is-picked');
+      var done = $('[data-sim-done]', row);
+      if (done) done.hidden = false;
+      if (stamp) {
+        stamp.hidden = false;
+        if (!reduceMotion.matches) stamp.classList.add('is-new');
+      }
+      say(status, 'Concluído: o produto {code} foi cadastrado no formulário de exemplo. Isto é uma simulação; nada foi enviado.', { code: data.codigo });
+      say(label, 'Repetir simulação');
+      button.removeAttribute('aria-disabled');
+      running = false;
+    }
+
+    function run() {
+      if (running) return;
+      running = true;
+      timers.forEach(window.clearTimeout);
+      timers = [];
+
+      // Depois da última linha, a planilha volta a ficar pendente e tudo recomeça
+      if (next >= rows.length) {
+        next = 0;
+        rows.forEach(function (row) {
+          var done = $('[data-sim-done]', row);
+          if (done) done.hidden = true;
+        });
+      }
+      var row = rows[next];
+      var data = rowData(row);
+      next += 1;
+
+      resetForm();
+      rows.forEach(function (item) { item.classList.remove('is-picked'); });
+      row.classList.add('is-picked');
+      button.setAttribute('aria-disabled', 'true');
+      if (chip) chip.textContent = data.codigo || '';
+      say(status, 'Simulação em andamento: o robô está levando o produto {code} da planilha para o formulário.', { code: data.codigo });
+
+      if (reduceMotion.matches) {
+        fields.forEach(function (field) { fill(field, data); });
+        finish(row, data);
+        return;
+      }
+
+      bot.classList.add('is-lit');
+      goToRow(row);
+      later(function () { setArm('is-grab'); }, 600);
+      later(function () { if (chip) chip.classList.add('is-held'); }, 750);
+      later(function () { setArm('is-carry'); }, 850);
+      later(goToForm, 900);
+      later(function () {
+        if (chip) chip.classList.remove('is-held');
+        setArm(null);
+        fields.forEach(function (field, i) {
+          later(function () {
+            fill(field, data);
+            field.classList.add('is-new');
+            later(function () { field.classList.remove('is-new'); }, 300);
+          }, i * 110);
+        });
+      }, 1700);
+
+      var filled = 1700 + fields.length * 110 + 150;
+      later(function () {
+        if (submit) submit.classList.add('is-pressed');
+      }, filled);
+      later(function () {
+        if (submit) submit.classList.remove('is-pressed');
+        bot.classList.remove('is-lit');
+        goHome();
+        finish(row, data);
+      }, filled + 320);
+    }
+
+    button.addEventListener('click', run);
+
+    // Posição inicial (sem transição) e reposicionamento quando o layout muda
+    goHome();
+    window.requestAnimationFrame(function () {
+      bot.classList.add('is-ready');
+    });
+
+    var resizeTimer = null;
+    function rehome() {
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(function () {
+        if (!running) goHome();
+      }, 120);
+    }
+
+    if ('ResizeObserver' in window) new ResizeObserver(rehome).observe(stage);
+    else window.addEventListener('resize', rehome);
   }
 
   /* ------------------------------------------------------------------ */
@@ -427,7 +1127,7 @@
   function initCopy() {
     $$('[data-copy]').forEach(function (button) {
       var label = $('[data-copy-label]', button) || button;
-      var initial = label.textContent;
+      var initial = norm(label.textContent);
       var status = $('[data-copy-status]');
       var timer = null;
 
@@ -435,16 +1135,15 @@
         var text = button.getAttribute('data-copy');
         copyText(text).then(function (ok) {
           button.focus();
-          label.textContent = ok ? 'E-mail copiado' : 'Copie manualmente';
+          say(label, ok ? 'E-mail copiado' : 'Copie manualmente');
           button.classList.toggle('is-done', ok);
           if (status) {
-            status.textContent = ok
-              ? 'E-mail copiado para a área de transferência.'
-              : 'Não foi possível copiar automaticamente. O e-mail é ' + text + '.';
+            if (ok) say(status, 'E-mail copiado para a área de transferência.');
+            else say(status, 'Não foi possível copiar automaticamente. O e-mail é {email}.', { email: text });
           }
           window.clearTimeout(timer);
           timer = window.setTimeout(function () {
-            label.textContent = initial;
+            say(label, initial);
             button.classList.remove('is-done');
           }, 2500);
         });
@@ -496,7 +1195,7 @@
     var status = $('[data-form-status]', form);
     var submit = $('button[type="submit"]', form);
     var submitLabel = $('[data-submit-label]', submit) || submit;
-    var submitText = submitLabel.textContent;
+    var submitText = norm(submitLabel.textContent);
     var fields = $$('input[required], textarea[required]', form);
     var honeypot = form.querySelector('[name="website"]');
     var sdkPromise = null;
@@ -532,14 +1231,14 @@
       var error = document.getElementById(field.id + '-erro');
       field.setAttribute('aria-invalid', text ? 'true' : 'false');
       if (error) {
-        $('[data-error-text]', error).textContent = text || '';
+        say($('[data-error-text]', error), text || '');
         error.hidden = !text;
       }
     }
 
     function checkField(field) {
       var text = '';
-      if (!field.value.trim()) text = messages[field.name] || 'Preencha este campo.';
+      if (!field.value.trim()) text = messages[field.name] || 'Preencha este campo.';  // chaves em português; say() traduz
       else if (field.validity && field.validity.typeMismatch) text = messages.emailFormat;
       setFieldError(field, text);
       return !text;
@@ -556,22 +1255,24 @@
 
     function setStatus(state, text, withEmail) {
       status.setAttribute('data-state', state);
-      status.textContent = text;
-      if (withEmail && fallbackEmail) {
-        var link = document.createElement('a');
-        link.href = 'mailto:' + fallbackEmail;
-        link.textContent = fallbackEmail;
-        status.appendChild(document.createTextNode(' '));
-        status.appendChild(link);
-        status.appendChild(document.createTextNode('.'));
-      }
+      render(status, function () {
+        status.textContent = t(text);
+        if (withEmail && fallbackEmail) {
+          var link = document.createElement('a');
+          link.href = 'mailto:' + fallbackEmail;
+          link.textContent = fallbackEmail;
+          status.appendChild(document.createTextNode(' '));
+          status.appendChild(link);
+          status.appendChild(document.createTextNode('.'));
+        }
+      });
     }
 
     function setSending(sending) {
       submit.disabled = sending;
       if (sending) submit.setAttribute('aria-busy', 'true');
       else submit.removeAttribute('aria-busy');
-      submitLabel.textContent = sending ? 'Enviando…' : submitText;
+      say(submitLabel, sending ? 'Enviando…' : submitText);
     }
 
     function fail() {
@@ -627,15 +1328,23 @@
     });
   }
 
+  initTheme();
   initMenu();
   initScrollState();
   initScrollSpy();
   initFilters();
+  initPreviewTabs();
   initVizAnimation();
   initLightbox();
+  initDrawerScene();
+  initStampDownloads();
   initEmbeds();
+  initSimulation();
   initVideos();
   initCopy();
   initContactForm();
   initYear();
+  initCircuit();
+  initLeadLine();
+  initLanguage(); // por último: guarda os textos originais e aplica o idioma salvo
 })();

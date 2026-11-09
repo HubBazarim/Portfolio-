@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Victor Queiroz Bazarim | Análise de Dados e BI</title>
   <meta name="description" content="Portfólio de Victor Queiroz Bazarim: dashboards em Power BI, análise de dados, SQL, Excel e automação de processos com Python.">
-  <meta name="theme-color" content="#1f242d">
+  <meta name="theme-color" content="#14171c">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pt_BR">
   <meta property="og:title" content="Victor Queiroz Bazarim | Análise de Dados e BI">
@@ -15,7 +15,25 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap">
   <link rel="stylesheet" href="css/style.css">
-  <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
+  <script>
+    /* Aplica tema e idioma salvos antes de desenhar a página (sem "piscar") */
+    (function (h) {
+      h.className = h.className.replace('no-js', 'js');
+      try {
+        if (localStorage.getItem('vb-tema') === 'claro') {
+          h.setAttribute('data-theme', 'light');
+          var m = document.querySelector('meta[name="theme-color"]');
+          if (m) m.setAttribute('content', '#fbfaf7');
+        }
+        if (localStorage.getItem('vb-idioma') === 'en') {
+          h.lang = 'en';
+          h.classList.add('i18n-pending');
+          setTimeout(function () { h.classList.remove('i18n-pending'); }, 1500);
+        }
+      } catch (e) { /* navegador sem localStorage: mantém o padrão */ }
+    })(document.documentElement);
+  </script>
+  <script src="js/i18n-en.js" defer></script>
   <script src="js/script.js" defer></script>
 </head>
 <body id="top">
@@ -27,9 +45,19 @@
         <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="17" width="5" height="10" rx="1.5"/><rect x="13.5" y="11" width="5" height="16" rx="1.5"/><rect x="22" y="5" width="5" height="22" rx="1.5"/></svg>
         <span>Victor Bazarim</span>
       </a>
+      <div class="header-tools" role="group" aria-label="Preferências">
+        <button class="lang-toggle" type="button" data-lang-toggle data-i18n-skip>
+          <img class="lang-toggle__flag" src="img/flag-us.svg" alt="" width="20" height="14" data-lang-flag>
+          <span class="lang-toggle__code" lang="en" data-lang-code>EN</span><span class="visually-hidden" data-lang-hint>: mudar o site para inglês</span>
+        </button>
+        <button class="theme-toggle" type="button" aria-pressed="false" data-theme-toggle>
+          <svg class="bulb" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g class="bulb__rays"><line x1="12" y1="0.8" x2="12" y2="2.4"/><line x1="3.6" y1="4.4" x2="4.8" y2="5.6"/><line x1="20.4" y1="4.4" x2="19.2" y2="5.6"/><line x1="1" y1="11" x2="2.6" y2="11"/><line x1="21.4" y1="11" x2="23" y2="11"/></g><path class="bulb__glass" d="M12 4.2a6.2 6.2 0 0 0-3.7 11.2c.7.5 1.1 1.3 1.1 2.1v.6h5.2v-.6c0-.8.4-1.6 1.1-2.1A6.2 6.2 0 0 0 12 4.2z"/><path class="bulb__base" d="M9.6 20.6h4.8M10.4 22.8h3.2"/></svg>
+          <span class="visually-hidden">Tema claro</span>
+        </button>
+      </div>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-toggle>
         <span class="menu-toggle__bars" aria-hidden="true"><span></span><span></span><span></span></span>
-        Menu
+        <span class="menu-toggle__label">Menu</span>
       </button>
       <nav class="site-nav" id="site-nav" aria-label="Principal">
         <ul class="site-nav__list">
@@ -49,30 +77,47 @@
     <!-- Início -->
     <section class="hero" id="home" aria-labelledby="hero-title">
       <div class="container hero__inner">
-        <div class="hero__intro">
+        <div class="hero__heading">
           <p class="hero__hello">Olá, eu sou</p>
           <h1 class="hero__title" id="hero-title">Victor Queiroz Bazarim</h1>
-          <p class="hero__role">Análise de dados, inteligência comercial e melhoria de processos</p>
-          <p class="hero__text">Estudante de Ciência da Computação, atuo na criação e manutenção de dashboards, no acompanhamento de KPIs, na análise de informações e na automação de processos.</p>
-          <ul class="tool-list" aria-label="Ferramentas principais">
-            <li>Power BI</li>
-            <li>Excel</li>
-            <li>SQL</li>
-            <li>Python</li>
+        </div>
+        <div class="hero__media">
+          <!-- Circuito sobre a grade da foto: um pulso percorre o traço e acende dois nós -->
+          <svg class="circuit" viewBox="0 0 160 72" aria-hidden="true" focusable="false" data-circuit>
+            <path class="circuit__trace" pathLength="100" d="M2 10H40V58H150"/>
+            <path class="circuit__pulse" pathLength="100" d="M2 10H40V58H150"/>
+            <circle class="circuit__node circuit__node--a" cx="40" cy="58" r="3.2"/>
+            <circle class="circuit__node circuit__node--b" cx="150" cy="58" r="3.2"/>
+          </svg>
+          <div class="portrait">
+            <div class="portrait__frame">
+              <img src="img/Imagem%20do%20WhatsApp%20de%202024-08-25%20à(s)%2021.26.46_5df9bf81.png" alt="Foto de Victor Queiroz Bazarim" width="640" height="640" fetchpriority="high" decoding="async">
+            </div>
+          </div>
+        </div>
+        <div class="hero__body">
+          <ul class="hero__role" aria-label="Áreas de atuação">
+            <li>Análise de dados</li>
+            <li>Inteligência comercial</li>
+            <li>Melhoria de processos</li>
           </ul>
+          <p class="hero__text">Estudante de Ciência da Computação, atuo na criação e manutenção de dashboards, no acompanhamento de KPIs, na análise de informações e na automação de processos.</p>
           <div class="hero__actions">
             <a class="btn btn--primary" href="#portfolio">Ver projetos</a>
             <a class="btn btn--ghost" href="pdfs/Curriculo,%20Victor%20Queiroz%20Bazarim%20-%20v7.pdf" download><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Baixar currículo (PDF)</a>
           </div>
-          <ul class="social">
-            <li><a href="https://www.linkedin.com/in/victor-queiroz-bazarim-401411167/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (abre em nova aba)"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a></li>
-            <li><a href="https://github.com/HubBazarim" target="_blank" rel="noopener noreferrer" aria-label="GitHub (abre em nova aba)"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></a></li>
-            <li><a href="https://www.instagram.com/victor_bazarim/" target="_blank" rel="noopener noreferrer" aria-label="Instagram (abre em nova aba)"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a></li>
-          </ul>
-        </div>
-        <div class="hero__media">
-          <div class="portrait">
-            <img src="img/Imagem%20do%20WhatsApp%20de%202024-08-25%20à(s)%2021.26.46_5df9bf81.png" alt="Foto de Victor Queiroz Bazarim" width="480" height="600" fetchpriority="high" decoding="async">
+          <div class="hero__meta">
+            <ul class="tool-list" aria-label="Ferramentas principais">
+              <li>Power BI</li>
+              <li>Excel</li>
+              <li>SQL</li>
+              <li>Python</li>
+            </ul>
+            <ul class="social">
+              <li><a href="https://www.linkedin.com/in/victor-queiroz-bazarim-401411167/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (abre em nova aba)"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a></li>
+              <li><a href="https://github.com/HubBazarim" target="_blank" rel="noopener noreferrer" aria-label="GitHub (abre em nova aba)"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></a></li>
+              <li><a href="https://www.instagram.com/victor_bazarim/" target="_blank" rel="noopener noreferrer" aria-label="Instagram (abre em nova aba)"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a></li>
+            </ul>
           </div>
         </div>
       </div>
@@ -148,6 +193,8 @@
 
     <!-- Projetos (id "portfolio" mantido) -->
     <section class="section" id="portfolio" aria-labelledby="portfolio-title">
+      <!-- Linha que se desenha do título até o card de vendas (posição calculada no script) -->
+      <svg class="lead-line" aria-hidden="true" focusable="false" data-lead-line><path class="lead-line__path" pathLength="100"/><circle class="lead-line__node" r="3.5"/></svg>
       <div class="container">
         <header class="section-head section-head--split">
           <div>
@@ -166,65 +213,93 @@
         </div>
         <p class="slicer__status" role="status" data-filter-status="inicio-projetos"></p>
         <ul class="project-grid" data-filter-list="inicio-projetos">
-          <li class="project-card" data-tags="analise powerbi">
-            <div class="project-card__body">
-              <ul class="tags"><li>Power BI</li><li>Análise de dados</li></ul>
-              <h3 class="project-card__title"><a href="dashboard.html#vendas">Dashboard de Gestão de Vendas</a></h3>
-              <p>Desempenho de vendas por loja, forma de pagamento, período e produto em um só painel.</p>
-              <span class="project-card__more" aria-hidden="true">Ver dashboard</span>
+          <li class="project-card project-card--featured" data-tags="analise powerbi">
+            <div class="feature">
+              <div class="feature__head">
+                <p class="feature__eyebrow">Projeto em destaque</p>
+                <h3 class="project-card__title">Dashboard de Gestão de Vendas</h3>
+              </div>
+              <div class="feature__preview" data-preview>
+                <div class="seg" role="tablist" aria-label="Recorte do painel">
+                  <button class="seg__btn" type="button" role="tab" id="previa-loja-aba" aria-controls="previa-loja" aria-selected="true">Por loja</button>
+                  <button class="seg__btn" type="button" role="tab" id="previa-pagamento-aba" aria-controls="previa-pagamento" aria-selected="false" tabindex="-1">Por pagamento</button>
+                </div>
+                <div class="preview">
+                  <figure class="preview__panel is-active" id="previa-loja" role="tabpanel" aria-labelledby="previa-loja-aba" tabindex="0">
+                    <img class="preview__img" src="img/dashboard-vendas-loja-658.webp" srcset="img/dashboard-vendas-loja-658.webp 658w, img/dashboard-vendas-loja-1316.webp 1316w" sizes="(min-width: 75em) 40rem, (min-width: 48em) 52vw, 88vw" width="658" height="491" alt="Gráfico de barras Faturamento por Loja, com o filtro Bolsa: Matriz R$&nbsp;5,4&nbsp;milhões, Filial 2 R$&nbsp;4,5&nbsp;milhões e Filial 1 R$&nbsp;3,0&nbsp;milhões." loading="lazy" decoding="async">
+                    <figcaption class="preview__caption">Faturamento por loja: <strong>Matriz R$&nbsp;5,4&nbsp;mi</strong>, Filial 2 R$&nbsp;4,5&nbsp;mi e Filial 1 R$&nbsp;3,0&nbsp;mi.</figcaption>
+                  </figure>
+                  <figure class="preview__panel" id="previa-pagamento" role="tabpanel" aria-labelledby="previa-pagamento-aba" tabindex="0">
+                    <img class="preview__img" src="img/dashboard-vendas-pagamento-658.webp" srcset="img/dashboard-vendas-pagamento-658.webp 658w, img/dashboard-vendas-pagamento-1316.webp 1316w" sizes="(min-width: 75em) 40rem, (min-width: 48em) 52vw, 88vw" width="658" height="491" alt="Gráfico de pizza Faturamento por Pagamento, com o filtro Bolsa: cartão de crédito R$&nbsp;8&nbsp;milhões (61,39%) e Transferência/PIX R$&nbsp;5&nbsp;milhões (38,61%)." loading="lazy" decoding="async">
+                    <figcaption class="preview__caption">Faturamento por pagamento: <strong>cartão de crédito 61,39%</strong> (R$&nbsp;8&nbsp;mi) e Transferência/PIX 38,61% (R$&nbsp;5&nbsp;mi).</figcaption>
+                  </figure>
+                </div>
+              </div>
+              <div class="feature__body">
+                <p class="feature__summary">Desempenho de vendas por loja, forma de pagamento, período e produto em um só painel.</p>
+                <dl class="mini-kpis">
+                  <div><dt>Valor faturado</dt><dd>R$&nbsp;12,9&nbsp;mi</dd></div>
+                  <div><dt>Comissão</dt><dd>R$&nbsp;643&nbsp;mil</dd></div>
+                  <div><dt>Ticket médio</dt><dd>R$&nbsp;51,6&nbsp;mil</dd></div>
+                </dl>
+                <p class="mini-kpis__note">Indicadores e recortes do painel com o filtro de produto “Bolsa” selecionado. Com todos os produtos, as vendas somam R$&nbsp;40,1&nbsp;mi.</p>
+                <ul class="tags"><li>Power BI</li><li>Análise de dados</li></ul>
+                <div class="feature__actions">
+                  <a class="btn btn--primary btn--small" href="dashboard.html#vendas">Abrir dashboard completo<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+                </div>
+              </div>
             </div>
-            <div class="cover cover--data viz-anim"><p class="cover__value">R$ 12,9 mi</p><p class="cover__label">faturamento total exibido no painel, por tipo de pagamento:</p><div class="split" style="--cols: 61.39fr 38.61fr" aria-hidden="true"><span class="split__seg"></span><span class="split__seg split__seg--rest"></span></div><ul class="legend"><li><span class="swatch" aria-hidden="true"></span>Transferência/PIX <strong>61,39%</strong></li><li><span class="swatch swatch--rest" aria-hidden="true"></span>Cartão de crédito <strong>38,61%</strong></li></ul></div>
           </li>
           <li class="project-card" data-tags="analise powerbi">
             <div class="project-card__body">
-              <ul class="tags"><li>Power BI</li><li>Análise de dados</li></ul>
               <h3 class="project-card__title"><a href="dashboard.html#producao">Dashboard de Produção</a></h3>
               <p>Eficiência, qualidade e disponibilidade da produção, com filtros por operador e período.</p>
+              <ul class="tags"><li>Power BI</li><li>Análise de dados</li></ul>
               <span class="project-card__more" aria-hidden="true">Ver dashboard</span>
             </div>
             <div class="cover cover--data viz-anim"><div class="viz"><div class="meter"><div class="meter__head"><span>Disponibilidade acumulada</span><strong>77,69%</strong></div><div class="meter__track" aria-hidden="true"><span class="meter__fill" style="--v: 77.69%"></span></div></div><div class="meter"><div class="meter__head"><span>Qualidade</span><strong>99,32%</strong></div><div class="meter__track" aria-hidden="true"><span class="meter__fill" style="--v: 99.32%"></span></div></div></div><p class="cover__label">Quantidade produzida: 3.084.251. Rejeitada: 21.076.</p></div>
           </li>
           <li class="project-card" data-tags="analise">
             <div class="project-card__body">
-              <ul class="tags"><li>Análise exploratória</li><li>Estatística</li><li>Projeto acadêmico</li></ul>
               <h3 class="project-card__title"><a href="datalhes-projetoanalise.html">Análise Exploratória de Dados Municipais</a></h3>
               <p>Aspectos demográficos, econômicos e sociais de 5.570 municípios brasileiros.</p>
+              <ul class="tags"><li>Análise exploratória</li><li>Estatística</li><li>Projeto acadêmico</li></ul>
               <span class="project-card__more" aria-hidden="true">Ver projeto</span>
             </div>
             <div class="cover cover--data viz-anim"><p class="cover__value">r = 0,85</p><p class="cover__label">correlação entre PIB e população em 5.570 municípios brasileiros</p><div class="corr" aria-hidden="true"><div class="corr__track"><span class="corr__bar" style="--r: 0.85"></span><span class="corr__zero"></span></div><div class="corr__ticks"><span>−1</span><span>0</span><span>+1</span></div></div></div>
           </li>
           <li class="project-card" data-tags="analise powerbi">
             <div class="project-card__body">
-              <ul class="tags"><li>Power BI</li><li>Análise de dados</li></ul>
               <h3 class="project-card__title"><a href="dashboard.html#monitoramento">Monitoramento Estratégico de Vendas, Custos e Lucros</a></h3>
               <p>Comportamento de compra e perfil dos clientes por salário, escolaridade, estado civil e canal de compra.</p>
+              <ul class="tags"><li>Power BI</li><li>Análise de dados</li></ul>
               <span class="project-card__more" aria-hidden="true">Ver dashboard</span>
             </div>
             <div class="cover cover--data"><p class="cover__label">Dois painéis no mesmo relatório:</p><ul class="page-thumbs"><li>Comportamento de compra</li><li>Perfil dos clientes</li></ul><ul class="tags"><li>Correlação</li><li>Diagrama de Sankey</li><li>Filtro por país</li></ul></div>
           </li>
           <li class="project-card" data-tags="python automacao">
             <div class="project-card__body">
-              <ul class="tags"><li>Python</li><li>PyAutoGUI</li><li>Pandas</li></ul>
               <h3 class="project-card__title"><a href="detalhes-projeto.html">Robô de Automação de Tarefas</a></h3>
               <p>Cadastro automático de produtos em um sistema online a partir de uma base CSV.</p>
+              <ul class="tags"><li>Python</li><li>PyAutoGUI</li><li>Pandas</li></ul>
               <span class="project-card__more" aria-hidden="true">Ver projeto</span>
             </div>
             <div class="cover cover--image"><img src="img/portfolio1.jpg" alt="" width="800" height="500" loading="lazy" decoding="async"></div>
           </li>
           <li class="project-card" data-tags="python automacao">
             <div class="project-card__body">
-              <ul class="tags"><li>Python</li><li>PyPDF2</li></ul>
               <h3 class="project-card__title"><a href="detalhes-projetocert.html">Programa para Junção de Arquivos PDF</a></h3>
               <p>Combina os PDFs de uma pasta, em ordem alfabética, em um único documento.</p>
+              <ul class="tags"><li>Python</li><li>PyPDF2</li></ul>
               <span class="project-card__more" aria-hidden="true">Ver projeto</span>
             </div>
             <div class="cover cover--image"><img src="img/portfolio2.jpg" alt="" width="800" height="500" loading="lazy" decoding="async"></div>
           </li>
           <li class="project-card" data-tags="python">
             <div class="project-card__body">
-              <ul class="tags"><li>Python</li><li>Flet</li></ul>
               <h3 class="project-card__title"><a href="Chat.html">Chat para Empresas</a></h3>
               <p>Aplicativo de chat em tempo real com Python e Flet, com feedback visual de mensagens e novas entradas.</p>
+              <ul class="tags"><li>Python</li><li>Flet</li></ul>
               <span class="project-card__more" aria-hidden="true">Ver projeto</span>
             </div>
             <div class="cover cover--image"><img src="img/portfolio4.jpg" alt="" width="800" height="500" loading="lazy" decoding="async"></div>

@@ -8,12 +8,12 @@ O site é **estático** (HTML, CSS e JavaScript puros, sem frameworks e sem etap
 
 | Página | Conteúdo |
 | --- | --- |
-| `index.html` | Início, competências com evidências, projetos com filtros, certificados de dados, sobre e contato |
+| `index.html` | Início, competências com evidências, projetos com filtros (o Dashboard de Gestão de Vendas é o card principal, com prévia "Por loja"/"Por pagamento"), certificados de dados, sobre e contato |
 | `projeto1.html` | Todos os projetos com problema, dados, ferramentas e resultado (filtro também pela URL, ex.: `projeto1.html?filtro=powerbi`) |
-| `dashboard.html` | Os 3 dashboards do Power BI, com os indicadores de cada um; o relatório carrega só quando o visitante pede |
-| `certificados.html` | 14 certificados com filtro por área, ampliação e download do PDF |
+| `dashboard.html` | Os 3 dashboards do Power BI, com os indicadores de cada um; o relatório carrega só quando o visitante pede (o robô acende o visor e aponta para um minigráfico enquanto o Power BI carrega) |
+| `certificados.html` | 14 certificados com filtro por área, ampliação e download do PDF (o robô fecha uma gaveta e acena ao abrir a página e carimba uma folha a cada download) |
 | `datalhes-projetoanalise.html` | Estudo de caso: análise exploratória de 5.570 municípios |
-| `detalhes-projeto.html` | Estudo de caso: robô de automação (PyAutoGUI + Pandas) |
+| `detalhes-projeto.html` | Estudo de caso: robô de automação (PyAutoGUI + Pandas), com a simulação "Testar com um exemplo" (dados fictícios) |
 | `detalhes-projetocert.html` | Estudo de caso: junção de PDFs (PyPDF2) |
 | `Chat.html` | Estudo de caso: chat em tempo real (Flet) |
 | `projeto2.html`, `projeto3.html`, `webdevelopment.html`, `backend.html` | Páginas antigas: só redirecionam para `projeto1.html` (podem ser apagadas) |
@@ -26,7 +26,7 @@ O site é **estático** (HTML, CSS e JavaScript puros, sem frameworks e sem etap
 ├── favicon.svg
 ├── css/style.css      → todo o visual (cores e tamanhos ficam no topo, em :root)
 ├── js/script.js       → todo o comportamento (menu, filtros, ampliação, formulário…)
-├── img/               → foto, capas dos projetos e imagens dos certificados
+├── img/               → foto, capas dos projetos, recortes do dashboard de vendas (dashboard-vendas-*.webp) e certificados
 ├── pdfs/              → currículo e certificados em PDF
 ├── videos/            → vídeos de funcionamento dos projetos
 └── scripts/           → scripts dos projetos em Python
@@ -50,7 +50,15 @@ Todos os caminhos são **relativos** (sem `/` no início), então o site funcion
 
 **Novo certificado:** copie um `<li class="cert-card">` em `certificados.html`, troque título, imagem e PDF e escolha a área em `data-tags` (`dados`, `programacao`, `gestao` ou `redes`). Se for de dados, inclua também na lista da seção "Certificados" do `index.html` e ajuste o número total no texto.
 
-**Cores e fontes:** altere as variáveis no início de `css/style.css` (`--c-accent` é o ciano da marca).
+**Cores e fontes:** altere as variáveis no início de `css/style.css`. A regra de cores do site:
+
+- fundo `--c-bg` (#14171C), cards `--c-surface` (#1E232B) e texto `--c-text` (#F4F2EE);
+- dourado fosco `--c-gold` (#C8A76A) só em detalhes: moldura do retrato, marcadores de seção e carimbo do robô;
+- ciano `--c-accent` (#00D9F5) só no que responde à pessoa: botões, links, controles ativos e gráficos que mudam com a interação.
+
+**Prévia do dashboard de vendas:** os recortes `img/dashboard-vendas-loja-*.webp`, `img/dashboard-vendas-pagamento-*.webp` e `img/dashboard-vendas-painel-*.webp` vêm de `img/Primeiro Dash_page-0001.jpg`. Nessa imagem o filtro de produto "Bolsa" está selecionado, por isso os valores do card (R$ 12,9 mi, Matriz R$ 5,4 mi, cartão de crédito 61,39%) indicam esse filtro; sem filtro, as vendas somam R$ 40,1 mi. Se o painel mudar, gere novos recortes com os mesmos nomes e atualize os valores do texto.
+
+**Robô:** é um SVG desenhado no próprio HTML (sem imagens nem bibliotecas). As animações ficam em `css/style.css` (seção "Robô das páginas internas") e só acontecem ao abrir a página de certificados ou depois de um clique; com "reduzir movimento" ativo, a mudança aparece sem animação. O download de "Baixar PDF" é o do próprio link: a animação não bloqueia nada.
 
 ## Testar localmente
 

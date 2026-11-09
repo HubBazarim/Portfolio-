@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Robô de Automação de Tarefas | Victor Queiroz Bazarim</title>
   <meta name="description" content="Robô em Python com PyAutoGUI e Pandas que automatiza o cadastro de produtos em um sistema online.">
-  <meta name="theme-color" content="#1f242d">
+  <meta name="theme-color" content="#14171c">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pt_BR">
   <meta property="og:title" content="Robô de Automação de Tarefas | Victor Queiroz Bazarim">
@@ -15,7 +15,25 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap">
   <link rel="stylesheet" href="css/style.css">
-  <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
+  <script>
+    /* Aplica tema e idioma salvos antes de desenhar a página (sem "piscar") */
+    (function (h) {
+      h.className = h.className.replace('no-js', 'js');
+      try {
+        if (localStorage.getItem('vb-tema') === 'claro') {
+          h.setAttribute('data-theme', 'light');
+          var m = document.querySelector('meta[name="theme-color"]');
+          if (m) m.setAttribute('content', '#fbfaf7');
+        }
+        if (localStorage.getItem('vb-idioma') === 'en') {
+          h.lang = 'en';
+          h.classList.add('i18n-pending');
+          setTimeout(function () { h.classList.remove('i18n-pending'); }, 1500);
+        }
+      } catch (e) { /* navegador sem localStorage: mantém o padrão */ }
+    })(document.documentElement);
+  </script>
+  <script src="js/i18n-en.js" defer></script>
   <script src="js/script.js" defer></script>
 </head>
 <body id="top">
@@ -27,9 +45,19 @@
         <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="17" width="5" height="10" rx="1.5"/><rect x="13.5" y="11" width="5" height="16" rx="1.5"/><rect x="22" y="5" width="5" height="22" rx="1.5"/></svg>
         <span>Victor Bazarim</span>
       </a>
+      <div class="header-tools" role="group" aria-label="Preferências">
+        <button class="lang-toggle" type="button" data-lang-toggle data-i18n-skip>
+          <img class="lang-toggle__flag" src="img/flag-us.svg" alt="" width="20" height="14" data-lang-flag>
+          <span class="lang-toggle__code" lang="en" data-lang-code>EN</span><span class="visually-hidden" data-lang-hint>: mudar o site para inglês</span>
+        </button>
+        <button class="theme-toggle" type="button" aria-pressed="false" data-theme-toggle>
+          <svg class="bulb" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g class="bulb__rays"><line x1="12" y1="0.8" x2="12" y2="2.4"/><line x1="3.6" y1="4.4" x2="4.8" y2="5.6"/><line x1="20.4" y1="4.4" x2="19.2" y2="5.6"/><line x1="1" y1="11" x2="2.6" y2="11"/><line x1="21.4" y1="11" x2="23" y2="11"/></g><path class="bulb__glass" d="M12 4.2a6.2 6.2 0 0 0-3.7 11.2c.7.5 1.1 1.3 1.1 2.1v.6h5.2v-.6c0-.8.4-1.6 1.1-2.1A6.2 6.2 0 0 0 12 4.2z"/><path class="bulb__base" d="M9.6 20.6h4.8M10.4 22.8h3.2"/></svg>
+          <span class="visually-hidden">Tema claro</span>
+        </button>
+      </div>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-toggle>
         <span class="menu-toggle__bars" aria-hidden="true"><span></span><span></span><span></span></span>
-        Menu
+        <span class="menu-toggle__label">Menu</span>
       </button>
       <nav class="site-nav" id="site-nav" aria-label="Principal">
         <ul class="site-nav__list">
@@ -73,6 +101,72 @@
               <span class="media__note" id="video-robo-aviso" hidden>Não foi possível reproduzir o vídeo neste navegador. <a href="videos/funcionamento.mp4.mp4" download>Baixe o arquivo</a> para assistir.</span>
             </figcaption>
           </figure>
+
+          <section class="sim" aria-labelledby="sim-title" data-sim>
+            <div class="sim__head">
+              <h2 id="sim-title">Teste com um exemplo</h2>
+              <p class="sim__badge">Simulação com dados fictícios</p>
+            </div>
+            <p class="sim__intro">Uma versão em miniatura do que o robô faz: ele pega uma linha da planilha e preenche o cadastro no sistema. Os produtos abaixo são fictícios e nada é enviado.</p>
+            <div class="sim__stage" data-sim-stage>
+              <div class="sim__sheet sim__panel" data-sim-sheet>
+                <p class="sim__label"><code>produtos.csv</code><span>planilha de exemplo</span></p>
+                <div class="sim__scroll">
+                  <table class="sim__table">
+                    <caption class="visually-hidden">Planilha fictícia de produtos</caption>
+                    <thead>
+                      <tr><th scope="col">código</th><th scope="col">marca</th><th scope="col">tipo</th><th scope="col">preço</th></tr>
+                    </thead>
+                    <tbody>
+                    <tr data-sim-row='{"codigo": "PRD-001", "marca": "Marca A", "tipo": "Mouse", "categoria": "1", "preco": "R$ 25,90", "custo": "R$ 6,50", "obs": "—"}'>
+                      <td>PRD-001<span class="sim__done" data-sim-done hidden><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span class="visually-hidden"> (cadastrado)</span></span></td>
+                      <td>Marca A</td>
+                      <td>Mouse</td>
+                      <td>R$ 25,90</td>
+                    </tr>
+                    <tr data-sim-row='{"codigo": "PRD-002", "marca": "Marca B", "tipo": "Teclado", "categoria": "1", "preco": "R$ 89,90", "custo": "R$ 31,00", "obs": "—"}'>
+                      <td>PRD-002<span class="sim__done" data-sim-done hidden><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span class="visually-hidden"> (cadastrado)</span></span></td>
+                      <td>Marca B</td>
+                      <td>Teclado</td>
+                      <td>R$ 89,90</td>
+                    </tr>
+                    <tr data-sim-row='{"codigo": "PRD-003", "marca": "Marca C", "tipo": "Fone", "categoria": "2", "preco": "R$ 129,00", "custo": "R$ 45,00", "obs": "Lote novo"}'>
+                      <td>PRD-003<span class="sim__done" data-sim-done hidden><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span class="visually-hidden"> (cadastrado)</span></span></td>
+                      <td>Marca C</td>
+                      <td>Fone</td>
+                      <td>R$ 129,00</td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="sim__lane" data-sim-lane></div>
+              <div class="sim__form sim__panel" data-sim-form>
+                <p class="sim__label"><span>Sistema de cadastro</span><span>formulário de exemplo</span></p>
+                <dl class="sim__fields">
+                  <div class="sim__field"><dt>Código</dt><dd data-field="codigo"></dd></div>
+                  <div class="sim__field"><dt>Marca</dt><dd data-field="marca"></dd></div>
+                  <div class="sim__field"><dt>Tipo</dt><dd data-field="tipo"></dd></div>
+                  <div class="sim__field"><dt>Categoria</dt><dd data-field="categoria"></dd></div>
+                  <div class="sim__field"><dt>Preço unitário</dt><dd data-field="preco"></dd></div>
+                  <div class="sim__field"><dt>Custo</dt><dd data-field="custo"></dd></div>
+                  <div class="sim__field sim__field--wide"><dt>Obs.</dt><dd data-field="obs"></dd></div>
+                </dl>
+                <div class="sim__submit-row">
+                  <span class="sim__submit" data-sim-submit aria-hidden="true">Enviar</span>
+                  <p class="sim__stamp" data-sim-stamp hidden>Concluído</p>
+                </div>
+              </div>
+              <div class="sim__bot" data-sim-bot aria-hidden="true">
+                <svg class="scene scene--plain" viewBox="0 0 72 88" aria-hidden="true" focusable="false"><g class="rb"><line class="rb-antenna" x1="36" y1="5" x2="36" y2="13"/><circle class="rb-tip" cx="36" cy="5" r="3.2"/><rect class="rb-head" x="16" y="12" width="40" height="28" rx="9"/><g class="rb-face"><rect class="rb-glow" x="18" y="15" width="36" height="20" rx="10"/><rect class="rb-visor" x="22" y="19" width="28" height="12" rx="6"/><circle class="rb-eye" cx="30" cy="25" r="2.2"/><circle class="rb-eye" cx="42" cy="25" r="2.2"/></g><rect class="rb-neck" x="31" y="40" width="10" height="4" rx="1.5"/><rect class="rb-body" x="18" y="43" width="36" height="28" rx="8"/><rect class="rb-badge" x="31" y="51" width="10" height="10" rx="2.5"/><g class="rb-arm rb-arm-l"><rect x="9" y="45" width="7" height="20" rx="3.5"/></g><g class="rb-arm rb-arm-r"><rect x="56" y="45" width="7" height="20" rx="3.5"/></g><rect class="rb-base" x="20" y="73" width="32" height="9" rx="4.5"/><circle class="rb-bolt" cx="27" cy="77.5" r="1.8"/><circle class="rb-bolt" cx="36" cy="77.5" r="1.8"/><circle class="rb-bolt" cx="45" cy="77.5" r="1.8"/></g></svg>
+                <span class="sim__chip" data-sim-chip></span>
+              </div>
+            </div>
+            <div class="sim__actions">
+              <button class="btn btn--primary" type="button" data-sim-run><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="6 4 20 12 6 20 6 4"/></svg><span data-sim-label>Testar com um exemplo</span></button>
+              <p class="sim__status" role="status" data-sim-status></p>
+            </div>
+          </section>
 
           <h2>Problema</h2>
           <p>Automatizar uma tarefa repetitiva: o cadastro de produtos em um sistema online.</p>

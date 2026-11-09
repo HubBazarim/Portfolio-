@@ -7,7 +7,7 @@
   <meta name="description" content="Esta página foi incorporada à lista de projetos.">
   <meta name="robots" content="noindex">
   <meta http-equiv="refresh" content="0; url=projeto1.html">
-  <meta name="theme-color" content="#1f242d">
+  <meta name="theme-color" content="#14171c">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pt_BR">
   <meta property="og:title" content="Projetos | Victor Queiroz Bazarim">
@@ -17,7 +17,25 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap">
   <link rel="stylesheet" href="css/style.css">
-  <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
+  <script>
+    /* Aplica tema e idioma salvos antes de desenhar a página (sem "piscar") */
+    (function (h) {
+      h.className = h.className.replace('no-js', 'js');
+      try {
+        if (localStorage.getItem('vb-tema') === 'claro') {
+          h.setAttribute('data-theme', 'light');
+          var m = document.querySelector('meta[name="theme-color"]');
+          if (m) m.setAttribute('content', '#fbfaf7');
+        }
+        if (localStorage.getItem('vb-idioma') === 'en') {
+          h.lang = 'en';
+          h.classList.add('i18n-pending');
+          setTimeout(function () { h.classList.remove('i18n-pending'); }, 1500);
+        }
+      } catch (e) { /* navegador sem localStorage: mantém o padrão */ }
+    })(document.documentElement);
+  </script>
+  <script src="js/i18n-en.js" defer></script>
   <script src="js/script.js" defer></script>
 </head>
 <!--
