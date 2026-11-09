@@ -3172,7 +3172,18 @@ main:focus {
   bottom: -.3rem;
   height: 3.25rem;
   pointer-events: none;
-  animation: stamp-pop-out .25s 1.6s var(--ease) both;
+  animation: stamp-pop-in .22s var(--ease) both;
+}
+
+.stamp-pop.is-leaving {
+  animation: stamp-pop-out .25s var(--ease) both;
+}
+
+@keyframes stamp-pop-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
 }
 
 .stamp-pop .scene {
@@ -3258,6 +3269,7 @@ main:focus {
 
 .title-row .scene {
   flex-shrink: 0;
+  margin-left: clamp(0rem, 8vw - 1.6rem, 1.6rem); /* espaço para a chegada, sem estourar no celular */
   height: clamp(3.5rem, 2.9rem + 2vw, 4.75rem);
 }
 
@@ -3915,58 +3927,59 @@ main:focus {
 
 /* 15b. MOVIMENTO DURANTE A NAVEGAÇÃO ===================================== */
 
-/* Circuito sobre a grade da foto: o traço se desenha, um pulso percorre o
-   caminho e acende dois nós; repete a cada 8 s e pausa fora da tela */
+/* Circuito ao redor do retrato: um caminho pela lateral e outro pela base.
+   O pulso percorre os dois e acende dois pontos da moldura. A 1ª passagem
+   acontece na abertura; depois repete com pausas, só com a foto na tela.
+   Unidades do SVG = foto (100 x 125); traços e pontos com espessura fixa em px. */
 .circuit {
   position: absolute;
-  left: -2.1rem;
-  bottom: -.6rem;
+  inset: 0 auto auto 0;
   z-index: -1;
-  width: 7rem;
+  width: 100%;
   height: auto;
-  aspect-ratio: 160 / 72;
+  aspect-ratio: 100 / 125;
   overflow: visible;
   pointer-events: none;
 }
 
-@media (min-width: 37.5em) {
-  .circuit {
-    left: -3rem;
-    bottom: -.875rem;
-    width: 10rem;
-  }
+.circuit path {
+  vector-effect: non-scaling-stroke;
 }
 
 .circuit__trace {
   fill: none;
   stroke: var(--circuit-trace);
-  stroke-width: 1.2;
-  stroke-dasharray: 100;
-  stroke-dashoffset: 100;
-  transition: stroke-dashoffset 1.2s var(--ease);
+  stroke-width: 1.4;
+  opacity: 0;
+  transition: opacity .5s var(--ease);
 }
 
 .circuit.is-on .circuit__trace {
-  stroke-dashoffset: 0;
+  opacity: 1;
 }
 
 .circuit__pulse {
   fill: none;
   stroke: var(--circuit-pulse);
-  stroke-width: 3.4;
+  stroke-width: 5;
   stroke-linecap: round;
-  stroke-dasharray: .1 300;
+  stroke-dasharray: 1.5 300;
   opacity: 0;
-  filter: drop-shadow(0 0 3px var(--circuit-pulse));
-  animation: circuit-pulse 8s linear 1.4s infinite;
+  filter: drop-shadow(0 0 4px var(--circuit-pulse));
+  animation: circuit-side 7s linear .35s infinite;
   animation-play-state: paused;
 }
 
+.circuit__pulse--base {
+  animation-name: circuit-base;
+}
+
 .circuit__node {
-  fill: var(--circuit-node-off);
+  fill: none;
   stroke: var(--circuit-trace);
-  stroke-width: 1.2;
-  animation: circuit-node-a 8s linear 1.4s infinite;
+  stroke-width: 7;
+  stroke-linecap: round;
+  animation: circuit-node-a 7s linear .35s infinite;
   animation-play-state: paused;
 }
 
@@ -3979,23 +3992,29 @@ main:focus {
   animation-play-state: running;
 }
 
-@keyframes circuit-pulse {
-  0% { stroke-dashoffset: 0; opacity: 0; }
-  1.5% { opacity: 1; }
-  20% { stroke-dashoffset: -100; opacity: 1; }
-  23%, 100% { stroke-dashoffset: -100; opacity: 0; }
+@keyframes circuit-side {
+  0% { stroke-dashoffset: 0; opacity: 1; }
+  10% { stroke-dashoffset: -98.5; opacity: 1; }
+  11%, 100% { stroke-dashoffset: -98.5; opacity: 0; }
+}
+
+@keyframes circuit-base {
+  0%, 10% { stroke-dashoffset: 0; opacity: 0; }
+  10.5% { opacity: 1; }
+  26% { stroke-dashoffset: -98.5; opacity: 1; }
+  27.5%, 100% { stroke-dashoffset: -98.5; opacity: 0; }
 }
 
 @keyframes circuit-node-a {
-  0%, 8.6% { fill: var(--circuit-node-off); stroke: var(--circuit-trace); }
-  10%, 38% { fill: var(--circuit-node); stroke: var(--circuit-node); }
-  50%, 100% { fill: var(--circuit-node-off); stroke: var(--circuit-trace); }
+  0%, 9.5% { stroke: var(--circuit-trace); stroke-width: 7; filter: none; }
+  11%, 45% { stroke: var(--circuit-node); stroke-width: 10; filter: drop-shadow(0 0 5px var(--circuit-node)); }
+  58%, 100% { stroke: var(--circuit-trace); stroke-width: 7; filter: none; }
 }
 
 @keyframes circuit-node-b {
-  0%, 19.5% { fill: var(--circuit-node-off); stroke: var(--circuit-trace); }
-  21%, 42% { fill: var(--circuit-node); stroke: var(--circuit-node); }
-  54%, 100% { fill: var(--circuit-node-off); stroke: var(--circuit-trace); }
+  0%, 25.5% { stroke: var(--circuit-trace); stroke-width: 7; filter: none; }
+  27%, 55% { stroke: var(--circuit-node); stroke-width: 10; filter: drop-shadow(0 0 5px var(--circuit-node)); }
+  68%, 100% { stroke: var(--circuit-trace); stroke-width: 7; filter: none; }
 }
 
 /* Linha da seção Projetos até o card de vendas (traçado calculado no script) */
@@ -4042,6 +4061,7 @@ main:focus {
 
 /* Robô dos certificados: botão sem aparência de botão (o personagem é o alvo) */
 .robot-btn {
+  position: relative;
   display: inline-flex;
   flex-shrink: 0;
   padding: 0;
@@ -4059,11 +4079,12 @@ main:focus {
 }
 
 .js .scene--drawer:not(.is-done) .rb {
-  transform: translateX(-14px);
+  transform: translateX(-30px);
+  opacity: 0;
 }
 
 .scene--drawer.is-done .rb-face {
-  transform: translate(-1.5px, 2.5px);
+  transform: translate(-3px, 3.5px);
 }
 
 .scene--drawer.is-playing .rb { animation: rb-slide 2.3s var(--ease) both; }
@@ -4072,13 +4093,15 @@ main:focus {
 .scene--drawer.is-playing .rb-arm-r { animation-duration: 2.3s; }
 
 @keyframes rb-slide {
-  0% { transform: translateX(-14px); }
-  22%, 100% { transform: none; }
+  0% { transform: translateX(-30px); opacity: 0; }
+  8% { opacity: 1; }
+  12% { transform: translateX(-30px) translateY(-3px); }
+  24%, 100% { transform: none; opacity: 1; }
 }
 
 @keyframes rb-face-turn {
   0%, 44% { transform: none; }
-  52%, 100% { transform: translate(-1.5px, 2.5px); }
+  52%, 100% { transform: translate(-3px, 3.5px); }
 }
 
 /* Ao clicar ou tocar: aponta para a área de download (abaixo, nos cards) */
@@ -4111,13 +4134,137 @@ main:focus {
 
   .circuit__node {
     animation: none;
-    fill: var(--circuit-node);
     stroke: var(--circuit-node);
+    stroke-width: 10;
   }
 
   .cert-card [data-stamp].is-hinted {
     animation: none;
     box-shadow: 0 0 0 3px var(--c-accent-line);
+  }
+}
+
+
+/* Balão do robô: curto, por cima do layout (não empurra nada) */
+.robot-bubble {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + .45rem);
+  z-index: 3;
+  width: max-content;
+  max-width: min(15rem, 70vw);
+  padding: .45rem .75rem;
+  border: 1px solid var(--c-line-strong);
+  border-radius: var(--radius) var(--radius) 4px var(--radius);
+  background-color: var(--c-surface);
+  box-shadow: 0 10px 24px -14px rgba(0, 0, 0, .5);
+  color: var(--c-text);
+  font-size: var(--fs-xs);
+  font-weight: 500;
+  line-height: 1.4;
+  text-align: left;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(4px);
+  transition: opacity .25s var(--ease), transform .25s var(--ease), visibility 0s linear .25s;
+  pointer-events: none;
+}
+
+.robot-btn.is-talking .robot-bubble {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition: opacity .25s var(--ease), transform .25s var(--ease), visibility 0s;
+}
+
+[data-theme="light"] .robot-bubble {
+  box-shadow: 0 10px 24px -14px rgba(36, 33, 43, .35);
+}
+
+/* Ação discreta "Mostrar onde baixar" (certificados) */
+.link-action {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  margin-top: var(--space-4);
+  padding: .3rem 0;
+  border: 0;
+  background: none;
+  color: var(--c-accent);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: .25em;
+  text-decoration-thickness: 1px;
+  cursor: pointer;
+}
+
+.link-action .icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.link-action:hover {
+  text-decoration-thickness: 2px;
+}
+
+/* Projetos: um pulso percorre a linha dourada; ao chegar, o card responde */
+.lead-line__pulse {
+  fill: none;
+  stroke: var(--circuit-pulse);
+  stroke-width: 5;
+  stroke-linecap: round;
+  stroke-dasharray: 1 300;
+  stroke-dashoffset: 0;
+  opacity: 0;
+  filter: drop-shadow(0 0 4px var(--circuit-pulse));
+}
+
+.lead-line.is-drawn .lead-line__pulse {
+  animation: lead-pulse .8s linear .75s both;
+}
+
+@keyframes lead-pulse {
+  0% { stroke-dashoffset: 0; opacity: 1; }
+  92% { opacity: 1; }
+  100% { stroke-dashoffset: -99; opacity: 0; }
+}
+
+.project-card--featured.is-arrived {
+  animation: card-arrive 1.3s var(--ease);
+}
+
+.project-card--featured.is-arrived .seg__btn[aria-selected="true"] {
+  animation: tab-arrive 1.3s var(--ease);
+}
+
+@keyframes card-arrive {
+  0% { box-shadow: 0 0 0 0 var(--c-accent-line); border-color: var(--c-accent); }
+  60% { box-shadow: 0 0 0 6px transparent; border-color: var(--c-accent); }
+  100% { box-shadow: 0 0 0 0 transparent; }
+}
+
+@keyframes tab-arrive {
+  0%, 100% { box-shadow: 0 0 0 0 transparent; }
+  35% { box-shadow: 0 0 0 5px var(--c-accent-glow); }
+}
+
+/* Troca "Por loja"/"Por pagamento": o gráfico desliza um pouco ao entrar */
+.preview__panel.slide-next { animation: preview-next .32s var(--ease); }
+.preview__panel.slide-prev { animation: preview-prev .32s var(--ease); }
+
+@keyframes preview-next { from { transform: translateX(18px); } }
+@keyframes preview-prev { from { transform: translateX(-18px); } }
+
+@media (prefers-reduced-motion: reduce) {
+  /* estado no lugar do movimento: a borda do card fica destacada por um instante */
+  .project-card--featured.is-arrived {
+    animation: none;
+    border-color: var(--c-accent);
+  }
+
+  .lead-line__pulse {
+    display: none;
   }
 }
 
@@ -4160,6 +4307,7 @@ main:focus {
   --viz-rest: #8a8497;
 
   --circuit-trace: rgba(36, 33, 43, .22);
+  --circuit-node: var(--c-accent);
   --circuit-node-off: var(--c-bg);
   --grid-dot: rgba(36, 33, 43, .22);
   --bulb-glow: #f5b400;

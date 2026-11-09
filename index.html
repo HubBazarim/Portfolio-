@@ -82,14 +82,17 @@
           <h1 class="hero__title" id="hero-title">Victor Queiroz Bazarim</h1>
         </div>
         <div class="hero__media">
-          <!-- Circuito sobre a grade da foto: um pulso percorre o traço e acende dois nós -->
-          <svg class="circuit" viewBox="0 0 160 72" aria-hidden="true" focusable="false" data-circuit>
-            <path class="circuit__trace" pathLength="100" d="M2 10H40V58H150"/>
-            <path class="circuit__pulse" pathLength="100" d="M2 10H40V58H150"/>
-            <circle class="circuit__node circuit__node--a" cx="40" cy="58" r="3.2"/>
-            <circle class="circuit__node circuit__node--b" cx="150" cy="58" r="3.2"/>
-          </svg>
           <div class="portrait">
+            <!-- Circuito ao redor do retrato: caminho lateral e caminho da base; o pulso
+                 percorre os dois e acende dois pontos da moldura (unidades: foto = 100 x 125) -->
+            <svg class="circuit" viewBox="0 0 100 125" aria-hidden="true" focusable="false" data-circuit>
+              <path class="circuit__trace" pathLength="100" d="M-6 14V133"/>
+              <path class="circuit__trace" pathLength="100" d="M-20 133H112"/>
+              <path class="circuit__pulse circuit__pulse--side" pathLength="100" d="M-6 14V133"/>
+              <path class="circuit__pulse circuit__pulse--base" pathLength="100" d="M-6 133H112"/>
+              <path class="circuit__node circuit__node--a" d="M-6 133h0"/>
+              <path class="circuit__node circuit__node--b" d="M112 133h0"/>
+            </svg>
             <div class="portrait__frame">
               <img src="img/Imagem%20do%20WhatsApp%20de%202024-08-25%20à(s)%2021.26.46_5df9bf81.png" alt="Foto de Victor Queiroz Bazarim" width="640" height="640" fetchpriority="high" decoding="async">
             </div>
@@ -194,7 +197,7 @@
     <!-- Projetos (id "portfolio" mantido) -->
     <section class="section" id="portfolio" aria-labelledby="portfolio-title">
       <!-- Linha que se desenha do título até o card de vendas (posição calculada no script) -->
-      <svg class="lead-line" aria-hidden="true" focusable="false" data-lead-line><path class="lead-line__path" pathLength="100"/><circle class="lead-line__node" r="3.5"/></svg>
+      <svg class="lead-line" aria-hidden="true" focusable="false" data-lead-line><path class="lead-line__path" pathLength="100"/><path class="lead-line__pulse" pathLength="100"/><circle class="lead-line__node" r="3.5"/></svg>
       <div class="container">
         <header class="section-head section-head--split">
           <div>

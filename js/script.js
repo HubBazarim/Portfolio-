@@ -231,6 +231,9 @@
         button.classList.remove('is-lighting');
         button.classList.remove('is-dimming');
       }, 1000);
+      var event;
+      try { event = new CustomEvent('themechange'); } catch (error) { event = null; }
+      if (event) document.dispatchEvent(event);
     });
   }
 
@@ -457,9 +460,19 @@
       });
       if (!tabs.length || panels.some(function (panel) { return !panel; })) return;
 
+      var currentTab = -1;
+
       function select(index, moveFocus) {
+        var direction = currentTab < 0 || index === currentTab ? '' : (index > currentTab ? 'slide-next' : 'slide-prev');
+        currentTab = index;
         tabs.forEach(function (tab, i) {
           var active = i === index;
+          panels[i].classList.remove('slide-next');
+          panels[i].classList.remove('slide-prev');
+          if (active && direction) {
+            void panels[i].offsetWidth;
+            panels[i].classList.add(direction);
+          }
           tab.setAttribute('aria-selected', String(active));
           tab.tabIndex = active ? 0 : -1;
           panels[i].classList.toggle('is-active', active);
@@ -619,6 +632,21 @@
     var scene = $('[data-scene-drawer]');
     if (!scene) return;
     var button = scene.closest('[data-robot-btn]');
+    var bubble = button ? $('[data-robot-bubble]', button) : null;
+    var talkTimer = null;
+
+    // Balão curto: aparece na chegada e ao passar o mouse/focar no robô
+    function talk(ms) {
+      if (!bubble) return;
+      window.clearTimeout(talkTimer);
+      button.classList.add('is-talking');
+      if (ms) talkTimer = window.setTimeout(quiet, ms);
+    }
+
+    function quiet() {
+      window.clearTimeout(talkTimer);
+      if (button) button.classList.remove('is-talking');
+    }
     var status = $('[data-robot-status]');
     var arrived = false;
     var timers = [];
@@ -637,10 +665,12 @@
         // troca de estado sem deslocamento: já na gaveta, visor virado e pose de aceno
         settle();
         scene.classList.add('is-greeting');
+        talk(4500);
         later(function () { scene.classList.remove('is-greeting'); }, 1500);
         return;
       }
       scene.classList.add('is-playing');
+      later(function () { talk(4000); }, 1250);
       later(settle, 2350);
     }
 
@@ -656,8 +686,21 @@
       arrive();
     }
 
-    if (!button) return;
-    button.addEventListener('click', function () {
+    var showButtons = $$('[data-show-download]');
+    if (button) showButtons.unshift(button);
+    showButtons.forEach(function (trigger) {
+      trigger.addEventListener('click', showWhere);
+    });
+
+    if (button) {
+      button.addEventListener('pointerenter', function (event) { if (event.pointerType === 'mouse') talk(0); });
+      button.addEventListener('pointerleave', function () { talkTimer = window.setTimeout(quiet, 600); });
+      button.addEventListener('focus', function () { talk(0); });
+      button.addEventListener('blur', quiet);
+    }
+
+    function showWhere() {
+      quiet();
       if (!arrived) {
         timers.forEach(window.clearTimeout);
         timers = [];
@@ -667,26 +710,39 @@
       scene.classList.remove('is-pointing');
       void scene.getBoundingClientRect();
       scene.classList.add('is-pointing');
-      // os botões "Baixar PDF" visíveis recebem um destaque breve
-      var hinted = $$('.cert-card:not([hidden]) [data-stamp]').filter(function (link) {
-        var r = link.getBoundingClientRect();
-        return r.bottom > 0 && r.top < window.innerHeight;
-      });
-      if (!hinted.length) hinted = $$('.cert-card:not([hidden]) [data-stamp]').slice(0, 3);
-      hinted.forEach(function (link) {
-        link.classList.remove('is-hinted');
-        void link.offsetWidth;
-        link.classList.add('is-hinted');
-      });
+      // leva ao primeiro certificado do filtro atual e destaca o "Baixar PDF" quando ele aparecer
+      var first = $$('.cert-card').filter(function (card) { return !card.closest('[hidden]') && !card.hidden; })[0];
+      var target = first ? $('[data-stamp]', first) : null;
+      var hinted = target ? [target] : [];
+      if (target) {
+        first.scrollIntoView({ behavior: reduceMotion.matches ? 'auto' : 'smooth', block: 'center' });
+        var hint = function () {
+          target.classList.remove('is-hinted');
+          void target.offsetWidth;
+          target.classList.add('is-hinted');
+          window.setTimeout(function () { target.classList.remove('is-hinted'); }, 1800);
+          try { target.focus({ preventScroll: true }); } catch (error) { target.focus(); }
+        };
+        if ('IntersectionObserver' in window) {
+          var seen = new IntersectionObserver(function (entries) {
+            if (entries.some(function (entry) { return entry.isIntersecting; })) {
+              seen.disconnect();
+              window.setTimeout(hint, 150);
+            }
+          }, { threshold: 1 });
+          seen.observe(target);
+        } else {
+          hint();
+        }
+      }
       if (status) {
         say(status, '');
         window.setTimeout(function () { say(status, 'Os PDFs ficam nos botões “Baixar PDF” de cada certificado.'); }, 60);
       }
       window.setTimeout(function () {
         scene.classList.remove('is-pointing');
-        hinted.forEach(function (link) { link.classList.remove('is-hinted'); });
       }, 1800);
-    });
+    }
   }
 
   /* ------------------------------------------------------------------ */
@@ -698,17 +754,24 @@
   function initCircuit() {
     var svg = $('[data-circuit]');
     if (!svg) return;
-    var hero = svg.closest('.hero') || svg;
-    if (!('IntersectionObserver' in window)) {
-      svg.classList.add('is-on');
-      return;
+    var photo = svg.closest('.portrait') || svg;
+    var visible = true;
+
+    // Recomeça a passagem do pulso (usado ao trocar o tema com a foto na tela)
+    function replay() {
+      if (!visible || reduceMotion.matches || !svg.getAnimations) return;
+      svg.getAnimations({ subtree: true }).forEach(function (anim) {
+        if (anim.animationName && anim.animationName.indexOf('circuit-') === 0) anim.currentTime = 350;
+      });
     }
-    svg.classList.add('is-paused');
+
+    document.addEventListener('themechange', replay);
+    svg.classList.add('is-on');
+    if (!('IntersectionObserver' in window)) return;
     new IntersectionObserver(function (entries) {
-      var visible = entries.some(function (entry) { return entry.isIntersecting; });
-      if (visible) svg.classList.add('is-on');
+      visible = entries.some(function (entry) { return entry.isIntersecting; });
       svg.classList.toggle('is-paused', !visible);
-    }, { threshold: 0.2 }).observe(hero);
+    }, { threshold: 0.25 }).observe(photo);
   }
 
   /* ------------------------------------------------------------------ */
@@ -722,7 +785,16 @@
     var card = $('.project-card--featured', section);
     var path = $('.lead-line__path', svg);
     var node = $('.lead-line__node', svg);
+    var pulse = $('.lead-line__pulse', svg);
     if (!title || !card || !path || !node) return;
+
+    // Quando o pulso chega, o card de vendas responde com um destaque breve
+    function arrive() {
+      window.setTimeout(function () {
+        card.classList.add('is-arrived');
+        window.setTimeout(function () { card.classList.remove('is-arrived'); }, 1400);
+      }, reduceMotion.matches ? 0 : 1500);
+    }
 
     function layout() {
       var visible = !card.hidden && card.offsetParent !== null;
@@ -738,6 +810,7 @@
       var y1 = Math.round(c.top - s.top) + 30;
       svg.setAttribute('viewBox', '0 0 ' + Math.round(s.width) + ' ' + Math.round(s.height));
       path.setAttribute('d', 'M' + x0 + ' ' + y0 + 'H' + gx + 'V' + y1 + 'H' + x1);
+      if (pulse) pulse.setAttribute('d', path.getAttribute('d'));
       node.setAttribute('cx', x1);
       node.setAttribute('cy', y1);
     }
@@ -756,6 +829,7 @@
         observer.disconnect();
         layout();
         svg.classList.add('is-drawn');
+        arrive();
       }
     }, { threshold: 0.15 });
     // observa o card (a seção inteira pode ser mais alta que a tela no celular)
@@ -773,27 +847,77 @@
     if (!template || !links.length || !('content' in template)) return;
     var status = $('[data-download-status]');
 
-    links.forEach(function (link) {
-      link.addEventListener('click', function () {
-        var anchor = link.closest('.stamp-anchor') || link.parentNode;
-        var previous = $('.stamp-pop', anchor);
-        if (previous) previous.remove();
+    // O robô aparece ao passar o mouse (ou focar) em "Baixar PDF" e fica até o fim do
+    // carimbo. Se o PDF abrir em outra aba, ele espera a pessoa voltar para sumir.
+    function popFor(link) {
+      var anchor = link.closest('.stamp-anchor') || link.parentNode;
+      var pop = $('.stamp-pop', anchor);
+      if (pop) {
+        window.clearTimeout(pop.__timer);
+        pop.classList.remove('is-leaving');
+        return pop;
+      }
+      pop = document.createElement('span');
+      pop.className = 'stamp-pop';
+      pop.setAttribute('aria-hidden', 'true');
+      pop.appendChild(template.content.cloneNode(true));
+      // No lightbox a reação fica junto aos controles, sem cobrir o certificado:
+      // à esquerda do botão; se o botão estiver numa linha própria (celular), à direita
+      var foot = anchor.closest('.lightbox__foot');
+      if (foot) {
+        var wrapped = anchor.getBoundingClientRect().left - foot.getBoundingClientRect().left < 48;
+        pop.classList.add(wrapped ? 'stamp-pop--side' : 'stamp-pop--before');
+      }
+      anchor.appendChild(pop);
+      return pop;
+    }
 
-        var pop = document.createElement('span');
-        pop.className = 'stamp-pop';
-        pop.setAttribute('aria-hidden', 'true');
-        pop.appendChild(template.content.cloneNode(true));
-        // No lightbox a reação fica junto aos controles, sem cobrir o certificado:
-        // à esquerda do botão; se o botão estiver numa linha própria (celular), à direita
-        var foot = anchor.closest('.lightbox__foot');
-        if (foot) {
-          var wrapped = anchor.getBoundingClientRect().left - foot.getBoundingClientRect().left < 48;
-          pop.classList.add(wrapped ? 'stamp-pop--side' : 'stamp-pop--before');
+    function hide(pop, delay) {
+      if (!pop) return;
+      window.clearTimeout(pop.__timer);
+      pop.__timer = window.setTimeout(function () {
+        if (document.hidden) {
+          // voltou de outra aba: mostra o resultado mais um pouco antes de sair
+          document.addEventListener('visibilitychange', function back() {
+            if (document.hidden) return;
+            document.removeEventListener('visibilitychange', back);
+            hide(pop, 1500);
+          });
+          return;
         }
-        anchor.appendChild(pop);
+        pop.classList.add('is-leaving');
+        pop.__timer = window.setTimeout(function () { pop.remove(); }, 260);
+      }, delay);
+    }
+
+    links.forEach(function (link) {
+      function preview(event) {
+        if (event && event.pointerType && event.pointerType !== 'mouse') return;
+        var pop = popFor(link);
+        if (!pop.__stamping) window.clearTimeout(pop.__timer);
+      }
+
+      function leave() {
+        var pop = $('.stamp-pop', link.closest('.stamp-anchor') || link.parentNode);
+        if (pop && !pop.__stamping) hide(pop, 350);
+      }
+
+      link.addEventListener('pointerenter', preview);
+      link.addEventListener('focus', function () { preview(null); });
+      link.addEventListener('pointerleave', leave);
+      link.addEventListener('blur', leave);
+
+      link.addEventListener('click', function () {
+        var pop = popFor(link);
         var scene = $('.scene', pop);
-        if (scene) scene.classList.add('is-playing');
-        window.setTimeout(function () { pop.remove(); }, 1900);
+        pop.__stamping = true;
+        if (scene) {
+          scene.classList.remove('is-playing');
+          void scene.getBoundingClientRect();
+          scene.classList.add('is-playing');
+        }
+        window.setTimeout(function () { pop.__stamping = false; }, 1400);
+        hide(pop, 3200);
 
         if (status) {
           var title = link.getAttribute('data-stamp-title') || '';
