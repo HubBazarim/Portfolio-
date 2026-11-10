@@ -315,32 +315,55 @@
   /* Link ativo do menu conforme a seção visível (página inicial)        */
   /* ------------------------------------------------------------------ */
   function initScrollSpy() {
-    var links = $$('.site-nav a[href^="#"]');
+    // Só na página inicial: é a única com links de âncora no menu
+    if (!$('.site-nav a[href^="#"]')) return;
+    var links = $$('.site-nav a');
     var sections = $$('main section[id]');
-    if (!links.length || !sections.length || !('IntersectionObserver' in window)) return;
+    if (!links.length || !sections.length) return;
 
+    // "#about" e "certificados.html" apontam para a mesma ideia de seção
     var linkFor = {};
     links.forEach(function (link) {
-      linkFor[link.getAttribute('href').slice(1)] = link;
+      var href = link.getAttribute('href') || '';
+      var corte = href.indexOf('#');
+      var id = corte >= 0 ? href.slice(corte + 1) : href.replace(/\.html$/, '');
+      if (id && !linkFor[id]) linkFor[id] = link;
     });
 
-    function setActive(id) {
+    var alvos = sections.filter(function (section) { return linkFor[section.id]; });
+    if (!alvos.length) return;
+
+    var atual = null;
+    var ticking = false;
+
+    function update() {
+      ticking = false;
+      // a seção em leitura é a última que já passou pelo primeiro terço da tela
+      var marca = window.pageYOffset + window.innerHeight * 0.4;
+      var escolhido = alvos[0];
+      alvos.forEach(function (section) {
+        if (section.getBoundingClientRect().top + window.pageYOffset <= marca) escolhido = section;
+      });
+      // no fim da página, o último item sempre ganha
+      if (window.innerHeight + window.pageYOffset >= document.documentElement.scrollHeight - 4) {
+        escolhido = alvos[alvos.length - 1];
+      }
+      if (escolhido === atual) return;
+      atual = escolhido;
       links.forEach(function (link) {
-        if (linkFor[id] === link) link.setAttribute('aria-current', 'true');
+        if (link === linkFor[escolhido.id]) link.setAttribute('aria-current', 'true');
         else link.removeAttribute('aria-current');
       });
     }
 
-    // Uma faixa estreita no meio da tela decide qual seção está "em leitura"
-    var observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) setActive(entry.target.id);
-      });
-    }, { rootMargin: '-45% 0px -50% 0px' });
-
-    sections.forEach(function (section) {
-      observer.observe(section);
-    });
+    window.addEventListener('scroll', function () {
+      if (!ticking) {
+        ticking = true;
+        window.requestAnimationFrame(update);
+      }
+    }, { passive: true });
+    window.addEventListener('resize', update, { passive: true });
+    update();
   }
 
   /* ------------------------------------------------------------------ */
@@ -743,6 +766,107 @@
         scene.classList.remove('is-pointing');
       }, 1800);
     }
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Robô do Bazarim Score: diz os números da página, uma frase por vez  */
+  /* As frases já estão no HTML (e por isso são traduzidas junto).       */
+  /* ------------------------------------------------------------------ */
+  function initRobotTalk() {
+    var button = $('[data-robot-talk]');
+    if (!button) return;
+    var lines = $$('.robot-line', button);
+    if (!lines.length) return;
+    var scene = $('.scene', button);
+    var index = 0;
+    var timer = null;
+    var pausa = reduceMotion.matches ? 4200 : 3200;
+
+    function show(n) {
+      lines.forEach(function (line, k) { line.classList.toggle('is-on', k === n); });
+    }
+
+    function next() {
+      index += 1;
+      if (index >= lines.length) {
+        index = 0;
+        button.classList.remove('is-talking');
+        return;
+      }
+      show(index);
+      timer = window.setTimeout(next, pausa);
+    }
+
+    function start() {
+      window.clearTimeout(timer);
+      index = 0;
+      show(0);
+      button.classList.add('is-talking');
+      timer = window.setTimeout(next, pausa);
+    }
+
+    function stop() {
+      window.clearTimeout(timer);
+      button.classList.remove('is-talking');
+    }
+
+    button.addEventListener('pointerenter', function (event) { if (event.pointerType === 'mouse') start(); });
+    button.addEventListener('pointerleave', stop);
+    button.addEventListener('focus', start);
+    button.addEventListener('blur', stop);
+    button.addEventListener('click', start);
+
+    function arrive() {
+      if (scene) scene.classList.add('is-active');
+      window.setTimeout(start, 400);
+    }
+
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function (entries) {
+        if (entries.some(function (entry) { return entry.isIntersecting; })) {
+          observer.disconnect();
+          arrive();
+        }
+      }, { threshold: 0.6 });
+      observer.observe(button);
+    } else {
+      arrive();
+    }
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Olhos dos robôs seguem o ponteiro do mouse                          */
+  /* Cada cena recebe --eye-x/--eye-y; o CSS move as pupilas dentro do   */
+  /* visor. Só com mouse e só sem a preferência por movimento reduzido.  */
+  /* ------------------------------------------------------------------ */
+  function initEyes() {
+    if (reduceMotion.matches) return;
+    var frame = null;
+    var px = 0;
+    var py = 0;
+
+    function update() {
+      frame = null;
+      $$('.scene').forEach(function (scene) {
+        var face = $('.rb-face', scene);
+        if (!face) return;
+        var box = face.getBoundingClientRect();
+        if (!box.width) return;
+        var dx = px - (box.left + box.width / 2);
+        var dy = py - (box.top + box.height / 2);
+        var distance = Math.sqrt(dx * dx + dy * dy) || 1;
+        var reach = Math.min(1, distance / 240); // perto do robô, o olhar anda menos
+        scene.style.setProperty('--eye-x', (dx / distance * reach * 3).toFixed(2) + 'px');
+        scene.style.setProperty('--eye-y', (dy / distance * reach * 1.7).toFixed(2) + 'px');
+      });
+    }
+
+    document.addEventListener('pointermove', function (event) {
+      if (event.pointerType && event.pointerType !== 'mouse') return;
+      px = event.clientX;
+      py = event.clientY;
+      if (!frame) frame = window.requestAnimationFrame(update);
+    }, { passive: true });
   }
 
   /* ------------------------------------------------------------------ */
@@ -1470,5 +1594,7 @@
   initYear();
   initCircuit();
   initLeadLine();
+  initEyes();
+  initRobotTalk();
   initLanguage(); // por último: guarda os textos originais e aplica o idioma salvo
 })();
