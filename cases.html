@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cases | Victor Queiroz Bazarim</title>
+  <meta name="description" content="Case de Victor Queiroz Bazarim na Dexco: o fluxo manual de contratos por e-mail e planilha substituído por aceite digital via WhatsApp, integrado a um CRM.">
+  <meta name="theme-color" content="#14171c">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="Cases | Victor Queiroz Bazarim">
+  <meta property="og:description" content="Case de Victor Queiroz Bazarim na Dexco: o fluxo manual de contratos por e-mail e planilha substituído por aceite digital via WhatsApp, integrado a um CRM.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <script>
+    /* Aplica tema e idioma salvos antes de desenhar a página (sem "piscar") */
+    (function (h) {
+      h.className = h.className.replace('no-js', 'js');
+      try {
+        if (localStorage.getItem('vb-tema') === 'claro') {
+          h.setAttribute('data-theme', 'light');
+          var m = document.querySelector('meta[name="theme-color"]');
+          if (m) m.setAttribute('content', '#fbfaf7');
+        }
+        if (localStorage.getItem('vb-idioma') === 'en') {
+          h.lang = 'en';
+          h.classList.add('i18n-pending');
+          setTimeout(function () { h.classList.remove('i18n-pending'); }, 1500);
+        }
+      } catch (e) { /* navegador sem localStorage: mantém o padrão */ }
+    })(document.documentElement);
+  </script>
+  <script src="js/i18n-en.js" defer></script>
+  <script src="js/script.js" defer></script>
+</head>
+<body id="top">
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="index.html" aria-label="Victor Bazarim, página inicial">
+        <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="17" width="5" height="10" rx="1.5"/><rect x="13.5" y="11" width="5" height="16" rx="1.5"/><rect x="22" y="5" width="5" height="22" rx="1.5"/></svg>
+        <span>Victor Bazarim</span>
+      </a>
+      <div class="header-tools" role="group" aria-label="Preferências">
+        <button class="lang-toggle" type="button" data-lang-toggle data-i18n-skip>
+          <img class="lang-toggle__flag" src="img/flag-us.svg" alt="" width="20" height="14" data-lang-flag>
+          <span class="lang-toggle__code" lang="en" data-lang-code>EN</span><span class="visually-hidden" data-lang-hint>: mudar o site para inglês</span>
+        </button>
+        <button class="theme-toggle" type="button" aria-pressed="false" data-theme-toggle>
+          <svg class="bulb" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g class="bulb__rays"><line x1="12" y1="0.8" x2="12" y2="2.4"/><line x1="3.6" y1="4.4" x2="4.8" y2="5.6"/><line x1="20.4" y1="4.4" x2="19.2" y2="5.6"/><line x1="1" y1="11" x2="2.6" y2="11"/><line x1="21.4" y1="11" x2="23" y2="11"/></g><path class="bulb__glass" d="M12 4.2a6.2 6.2 0 0 0-3.7 11.2c.7.5 1.1 1.3 1.1 2.1v.6h5.2v-.6c0-.8.4-1.6 1.1-2.1A6.2 6.2 0 0 0 12 4.2z"/><path class="bulb__base" d="M9.6 20.6h4.8M10.4 22.8h3.2"/></svg>
+          <span class="visually-hidden">Tema claro</span>
+        </button>
+      </div>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-toggle>
+        <span class="menu-toggle__bars" aria-hidden="true"><span></span><span></span><span></span></span>
+        <span class="menu-toggle__label">Menu</span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Principal">
+        <ul class="site-nav__list">
+          <li><a href="index.html#home">Início</a></li>
+          <li><a href="projeto1.html">Projetos</a></li>
+          <li><a href="dashboard.html">Dashboards</a></li>
+          <li><a href="certificados.html">Certificados</a></li>
+          <li><a href="cases.html" class="is-active" aria-current="page">Cases</a></li>
+          <li><a href="index.html#about">Sobre</a></li>
+          <li><a href="index.html#contact" class="site-nav__cta">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo" tabindex="-1">
+    <header class="page-head">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Trilha de navegação">
+          <ol><li><a href="index.html">Início</a></li><li aria-current="page">Cases</li></ol>
+        </nav>
+        <ul class="tags"><li>Case</li><li>Dexco</li><li>Pricing</li><li>Melhoria de processos</li></ul>
+        <div class="title-row">
+          <h1>Do e-mail ao WhatsApp: contratos sem registro manual</h1>
+          <button class="robot-btn" type="button" data-robot-btn data-robot-talk aria-describedby="robot-dica-case">
+            <svg class="scene scene--point" viewBox="0 0 132 88" aria-hidden="true" focusable="false" data-scene-case><line class="sc-axis" x1="80" y1="82.5" x2="130" y2="82.5"/><rect class="sc-bar" x="84" y="58" width="8" height="24" rx="2" style="--d: 0ms"/><rect class="sc-bar" x="96" y="46" width="8" height="36" rx="2" style="--d: 90ms"/><rect class="sc-bar" x="108" y="52" width="8" height="30" rx="2" style="--d: 180ms"/><rect class="sc-bar" x="120" y="34" width="8" height="48" rx="2" style="--d: 270ms"/><g class="rb"><line class="rb-antenna" x1="36" y1="5" x2="36" y2="13"/><circle class="rb-tip" cx="36" cy="5" r="3.2"/><rect class="rb-head" x="16" y="12" width="40" height="28" rx="9"/><g class="rb-face"><rect class="rb-glow" x="18" y="15" width="36" height="20" rx="10"/><rect class="rb-visor" x="22" y="19" width="28" height="12" rx="6"/><circle class="rb-eye" cx="30" cy="25" r="2.2"/><circle class="rb-eye" cx="42" cy="25" r="2.2"/></g><rect class="rb-neck" x="31" y="40" width="10" height="4" rx="1.5"/><rect class="rb-body" x="18" y="43" width="36" height="28" rx="8"/><rect class="rb-badge" x="31" y="51" width="10" height="10" rx="2.5"/><g class="rb-arm rb-arm-l"><rect x="9" y="45" width="7" height="20" rx="3.5"/></g><g class="rb-arm rb-arm-r"><rect x="56" y="45" width="7" height="20" rx="3.5"/></g><rect class="rb-base" x="20" y="73" width="32" height="9" rx="4.5"/><circle class="rb-bolt" cx="27" cy="77.5" r="1.8"/><circle class="rb-bolt" cx="36" cy="77.5" r="1.8"/><circle class="rb-bolt" cx="45" cy="77.5" r="1.8"/></g></svg>
+            <span class="robot-bubble robot-bubble--lines" aria-hidden="true" data-robot-bubble>
+              <span class="robot-line">Cerca de 400 contratos por ano passavam por aqui.</span>
+              <span class="robot-line">Cada um virava print e digitação à mão.</span>
+              <span class="robot-line">Hoje o analista não precisa mais mexer neles.</span>
+              <span class="robot-line">Clique em Antes e Depois logo abaixo.</span>
+            </span>
+            <span class="visually-hidden">Robô: resumo do case</span>
+          </button>
+          <span class="visually-hidden" id="robot-dica-case">O comparativo entre o fluxo antigo e o novo está logo abaixo.</span>
+        </div>
+        <p class="lead">Como estagiário de pricing na Dexco, substituí um fluxo de contratos feito por e-mail, print e digitação em planilha por um aceite digital enviado pelo WhatsApp e registrado direto no CRM. O projeto foi aprovado pelo diretor comercial e segue em uso no setor.</p>
+<dl class="kpis"><div class="kpi"><dt>Contratos por ano</dt><dd>cerca de 400</dd></div><div class="kpi"><dt>Etapas do fluxo</dt><dd>6 → 3</dd></div><div class="kpi"><dt>Tempo diário do analista</dt><dd>5–10 min → 0</dd></div><div class="kpi"><dt>Da pesquisa à aprovação</dt><dd>abr → jul</dd></div></dl>
+      </div>
+    </header>
+
+    <section class="section section--band" aria-labelledby="fluxo-title">
+      <div class="container">
+        <header class="section-head">
+          <h2 id="fluxo-title">Antes e depois</h2>
+          <p>O mesmo contrato nos dois fluxos. Alterne para ver quais etapas deixaram de existir.</p>
+        </header>
+        <div class="flow-compare" data-preview>
+          <div class="seg" role="tablist" aria-label="Fluxo de contratos">
+            <button class="seg__btn" type="button" role="tab" id="fluxo-antes-aba" aria-controls="fluxo-antes" aria-selected="true">Antes</button>
+            <button class="seg__btn" type="button" role="tab" id="fluxo-depois-aba" aria-controls="fluxo-depois" aria-selected="false" tabindex="-1">Depois</button>
+          </div>
+          <div class="preview">
+          <figure class="preview__panel flow-panel is-active" id="fluxo-antes" role="tabpanel" aria-labelledby="fluxo-antes-aba" tabindex="0">
+            <p class="flow__label">Antes: por e-mail e planilha</p>
+            <ol class="flow">
+              <li class="flow__step flow__step--vendedor"><span class="flow__actor">Vendedor</span><span class="flow__text">Fecha o negócio com o cliente</span></li>
+              <li class="flow__step flow__step--analista"><span class="flow__actor">Analista</span><span class="flow__text">Envia o contrato ao cliente por e‑mail</span></li>
+              <li class="flow__step flow__step--cliente"><span class="flow__actor">Cliente</span><span class="flow__text">Responde o e‑mail dando o aceite</span></li>
+              <li class="flow__step flow__step--analista"><span class="flow__actor">Analista</span><span class="flow__text">Tira print da resposta</span></li>
+              <li class="flow__step flow__step--analista"><span class="flow__actor">Analista</span><span class="flow__text">Leva o print para o Smartsheet</span></li>
+              <li class="flow__step flow__step--analista"><span class="flow__actor">Analista</span><span class="flow__text">Digita nome, CNPJ, tipo e valor do contrato</span></li>
+            </ol>
+            <figcaption><ul class="flow__facts"><li>6 etapas</li><li>3 pessoas</li><li>5 a 10 min por dia do analista</li></ul></figcaption>
+          </figure>
+          <figure class="preview__panel flow-panel" id="fluxo-depois" role="tabpanel" aria-labelledby="fluxo-depois-aba" tabindex="0">
+            <p class="flow__label">Depois: pelo WhatsApp e CRM</p>
+            <ol class="flow">
+              <li class="flow__step flow__step--vendedor"><span class="flow__actor">Vendedor</span><span class="flow__text">Fecha o negócio e envia o contrato pelo celular, com um clique</span></li>
+              <li class="flow__step flow__step--cliente"><span class="flow__actor">Cliente</span><span class="flow__text">Recebe no WhatsApp, lê e dá o aceite ali mesmo</span></li>
+              <li class="flow__step flow__step--plataforma"><span class="flow__actor">Plataforma</span><span class="flow__text">Registra o aceite no CRM, já com os dados do cliente</span></li>
+              <li class="flow__gone"><span class="flow__gone-title">3 etapas a menos</span><span class="flow__gone-text">Print, Smartsheet e digitação deixaram de existir.</span></li>
+            </ol>
+            <figcaption><ul class="flow__facts"><li>3 etapas</li><li>2 pessoas</li><li>Nenhuma etapa manual do analista</li></ul></figcaption>
+          </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container case-layout">
+      <article class="prose">
+        <h2>O desafio</h2>
+        <p>No pricing da Dexco, todo estagiário precisa entregar um projeto que melhore a rotina do setor. Comecei a procurar o meu logo que cheguei, e ele apareceu numa tarefa que acabou ficando comigo: o registro dos contratos.</p>
+        <p>Quando um vendedor fechava negócio, o contrato ia para o cliente por e-mail. O cliente respondia aceitando, alguém tirava um print da resposta, levava para o Smartsheet e digitava ali nome, CNPJ, tipo de contrato e valor. Era trabalho do analista, de 5 a 10 minutos todos os dias, e passou para o estagiário. Ou seja, para mim.</p>
+        <p><strong>Em vez de só executar a tarefa, decidi tentar acabar com ela.</strong></p>
+        <ul>
+          <li><strong>Retrabalho diário:</strong> a mesma informação era copiada de um lugar para outro, todo dia.</li>
+          <li><strong>Digitação manual:</strong> CNPJ e valor digitados à mão, com o risco de erro que isso carrega.</li>
+          <li><strong>O print como registro:</strong> a confirmação do cliente ficava guardada como uma captura de tela.</li>
+        </ul>
+
+        <h2>O caminho</h2>
+        <ol class="timeline">
+          <li class="timeline__item viz-anim">
+            <p class="timeline__when">Fevereiro</p>
+            <h3 class="timeline__title">Chegada ao pricing</h3>
+            <p>Entro na Dexco como estagiário de pricing. A regra do setor: cada estagiário entrega um projeto que melhore a rotina.</p>
+          </li>
+          <li class="timeline__item viz-anim">
+            <p class="timeline__when">Diagnóstico</p>
+            <h3 class="timeline__title">O gargalo</h3>
+            <p>O registro dos contratos passa para mim. Mapeio o fluxo e proponho atacá-lo; o analista sênior que avalia os projetos aprova o tema.</p>
+          </li>
+          <li class="timeline__item viz-anim">
+            <p class="timeline__when">Abril</p>
+            <h3 class="timeline__title">Primeiras tentativas</h3>
+            <p>Começo pelas ferramentas da Microsoft. Com o Power Automate, mantendo o e-mail, a solução era viável, mas exigia licença com custo alto. Com o Power Apps, o desenvolvimento passaria do prazo do estágio.</p>
+          </li>
+          <li class="timeline__item viz-anim">
+            <p class="timeline__when">Pesquisa de mercado</p>
+            <h3 class="timeline__title">Um fornecedor pronto</h3>
+            <p>Peço para avaliar uma solução externa e chego à ElevaSign, plataforma de assinaturas e aceites digitais da Media4all. Testo a plataforma lado a lado com concorrentes.</p>
+          </li>
+          <li class="timeline__item viz-anim">
+            <p class="timeline__when">Jurídico e custos</p>
+            <h3 class="timeline__title">A base para decidir</h3>
+            <p>Pesquiso a validade jurídica do aceite digital e comparo valores e benefícios entre as opções, para levar à diretoria uma escolha bem fundamentada.</p>
+          </li>
+          <li class="timeline__item viz-anim">
+            <p class="timeline__when">Julho</p>
+            <h3 class="timeline__title">Aprovação</h3>
+            <p>Apresento a proposta ao diretor comercial com slides pensados para serem entendidos num olhar, como ele preferia. O projeto é aprovado e implantado no setor de pricing.</p>
+          </li>
+        </ol>
+
+        <h2>A solução</h2>
+        <p>A ElevaSign oferece um CRM próprio, que foi personalizado para o fluxo do setor. O modelo de contrato ficou cadastrado na plataforma e a base de clientes foi importada para lá. Assim, quando fecha um negócio, o vendedor não preenche nada: abre a ferramenta no celular e envia. O cliente recebe o contrato no WhatsApp, lê e dá o aceite ali mesmo, e a plataforma devolve a confirmação ao CRM, já registrada.</p>
+        <p><strong>É aceite digital, não assinatura digital.</strong> São categorias diferentes: a assinatura digital usa certificado ICP-Brasil; o aceite é a confirmação eletrônica da vontade do cliente, vinculada ao contrato.</p>
+
+        <aside class="legal" aria-labelledby="legal-title">
+          <h3 id="legal-title">Por que o aceite tem validade jurídica</h3>
+          <ul class="legal__list">
+            <li><strong>Código Civil, art. 107.</strong> “A validade da declaração de vontade não dependerá de forma especial, senão quando a lei expressamente a exigir.” <a href="https://www.planalto.gov.br/ccivil_03/leis/2002/l10406compilada.htm" target="_blank" rel="noopener noreferrer">Ver a lei<span class="visually-hidden"> (abre em nova aba)</span></a></li>
+            <li><strong>MP 2.200-2/2001, art. 10, §2º.</strong> Além do certificado ICP-Brasil, admite outros meios de comprovar a autoria e a integridade de um documento eletrônico, desde que aceitos pelas partes. <a href="https://planalto.gov.br/ccivil_03/MPV/Antigas_2001/2200-2.htm" target="_blank" rel="noopener noreferrer">Ver a norma<span class="visually-hidden"> (abre em nova aba)</span></a></li>
+            <li><strong>A diferença para a assinatura digital.</strong> O documento assinado com certificado ICP-Brasil tem presunção legal de veracidade (art. 10, §1º). O aceite se apoia no §2º.</li>
+          </ul>
+          <p>A pesquisa concluiu que o aceite atendia aos contratos do setor e deixava um registro mais seguro do que o print de e-mail.</p>
+          <p class="legal__note">Resumo da pesquisa feita durante o projeto. Não substitui orientação jurídica.</p>
+        </aside>
+
+        <h2>O que eu fiz</h2>
+        <ul>
+          <li><strong>Diagnóstico:</strong> identifiquei o gargalo e propus o tema do projeto.</li>
+          <li><strong>Testes e descartes:</strong> avaliei Power Automate e Power Apps e descartei os dois por custo e por prazo.</li>
+          <li><strong>Pesquisa de mercado:</strong> encontrei a ElevaSign e testei a plataforma junto com concorrentes.</li>
+          <li><strong>Pesquisa jurídica:</strong> levantei a base legal do aceite digital e como ele se diferencia da assinatura digital.</li>
+          <li><strong>Análise financeira:</strong> comparei valores e benefícios entre as opções.</li>
+          <li><strong>Apresentação e negociação:</strong> montei a apresentação, apresentei ao diretor comercial e fechei o acordo.</li>
+        </ul>
+
+        <h2>Resultados</h2>
+        <p>O fluxo caiu de seis para três etapas, e o analista saiu dele: os 5 a 10 minutos diários de print e digitação deixaram de existir. A tarefa virou um clique do vendedor, no celular, no momento em que ele fecha o negócio, e isso vale para os cerca de 400 contratos que o setor fecha por ano.</p>
+        <p>A solução segue em uso no setor de pricing. O jurídico e o RH demonstraram interesse em levar a ferramenta para as próprias áreas.</p>
+        <p>Depois da implantação, a ElevaSign publicou no LinkedIn um depoimento da Dexco sobre a ferramenta, citando ganho de tempo, mais autonomia, menos erros e o processo centralizado em um só lugar:</p>
+        <figure class="quote">
+          <blockquote><p>“A utilização da ElevaSign nos trouxe um grande ganho de tempo e eficiência […]”</p></blockquote>
+          <figcaption>Jessica Aoki, Dexco · <a href="https://lnkd.in/p/d_eM2pP3" target="_blank" rel="noopener noreferrer">depoimento publicado pela ElevaSign<span class="visually-hidden"> (abre em nova aba)</span></a></figcaption>
+        </figure>
+        <p>O depoimento fala da ferramenta, não de mim, mas confirma publicamente o resultado do projeto.</p>
+      </article>
+
+      <aside class="case-aside" aria-labelledby="ficha-title">
+        <h2 id="ficha-title">Ficha do case</h2>
+        <dl class="facts">
+          <div><dt>Empresa</dt><dd>Dexco</dd></div>
+          <div><dt>Área</dt><dd>Pricing</dd></div>
+          <div><dt>Minha função</dt><dd>Estagiário</dd></div>
+          <div><dt>Período</dt><dd>Fevereiro a julho</dd></div>
+          <div><dt>Projeto</dt><dd>Abril a julho</dd></div>
+          <div><dt>Solução</dt><dd>Aceite digital via WhatsApp, com o CRM da ElevaSign</dd></div>
+          <div><dt>Também avaliadas</dt><dd>Power Automate, Power Apps e plataformas concorrentes</dd></div>
+          <div><dt>Aprovação</dt><dd>Diretor comercial</dd></div>
+          <div><dt>Situação</dt><dd>Em uso no setor</dd></div>
+        </dl>
+        <a class="btn btn--ghost btn--small" href="https://lnkd.in/p/d_eM2pP3" target="_blank" rel="noopener noreferrer"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Ver o depoimento<span class="visually-hidden"> (abre em nova aba)</span></a>
+      </aside>
+    </div>
+  </main>
+
+  <section class="cta-band" aria-labelledby="cta-title">
+    <div class="container cta-band__inner">
+      <div>
+        <h2 id="cta-title">Vamos conversar?</h2>
+        <p>Estou sempre disposto a aprender, explorar novas tecnologias e encarar novas oportunidades.</p>
+      </div>
+      <div class="cta-band__actions">
+        <a class="btn btn--primary" href="index.html#contact">Entrar em contato</a>
+        <a class="btn btn--ghost" href="pdfs/Curriculo,%20Victor%20Queiroz%20Bazarim%20-%20v7.pdf" download><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Baixar currículo (PDF)</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <div class="site-footer__brand">
+        <a class="brand" href="index.html" aria-label="Victor Bazarim, página inicial">
+          <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="17" width="5" height="10" rx="1.5"/><rect x="13.5" y="11" width="5" height="16" rx="1.5"/><rect x="22" y="5" width="5" height="22" rx="1.5"/></svg>
+          <span>Victor Bazarim</span>
+        </a>
+        <p>Análise de dados, inteligência comercial e automação de processos.</p>
+      </div>
+      <nav class="footer-nav" aria-labelledby="rodape-nav">
+        <h2 id="rodape-nav">Navegação</h2>
+        <ul>
+            <li><a href="index.html#home">Início</a></li>
+            <li><a href="projeto1.html">Projetos</a></li>
+            <li><a href="dashboard.html">Dashboards</a></li>
+            <li><a href="certificados.html">Certificados</a></li>
+            <li><a href="cases.html">Cases</a></li>
+            <li><a href="index.html#about">Sobre</a></li>
+            <li><a href="index.html#contact">Contato</a></li>
+        </ul>
+      </nav>
+      <div class="site-footer__contact">
+        <h2>Contato</h2>
+        <a href="mailto:queirozvitor11@gmail.com">queirozvitor11@gmail.com</a>
+        <ul class="social">
+          <li><a href="https://www.linkedin.com/in/victor-queiroz-bazarim-401411167/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (abre em nova aba)"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a></li>
+          <li><a href="https://github.com/HubBazarim" target="_blank" rel="noopener noreferrer" aria-label="GitHub (abre em nova aba)"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></a></li>
+          <li><a href="https://www.instagram.com/victor_bazarim/" target="_blank" rel="noopener noreferrer" aria-label="Instagram (abre em nova aba)"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container site-footer__legal">
+      <p>&copy; 2024–<span data-year>2026</span> &lt;/Victor&gt;. Todos os direitos reservados.</p>
+      <a href="#top">Voltar ao topo</a>
+    </div>
+  </footer>
+
+  <a class="to-top" href="#top" data-to-top>
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+    <span class="visually-hidden">Voltar ao topo</span>
+  </a>
+</body>
+</html>

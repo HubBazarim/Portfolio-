@@ -8,7 +8,7 @@ O site é **estático** (HTML, CSS e JavaScript puros, sem frameworks e sem etap
 
 | Página | Conteúdo |
 | --- | --- |
-| `index.html` | Início, competências com evidências, projetos com filtros (o Dashboard de Gestão de Vendas é o card principal, com prévia "Por loja"/"Por pagamento"), certificados de dados, sobre e contato |
+| `index.html` | Início, competências com evidências, projetos com filtros (o Dashboard de Gestão de Vendas é o card principal, com prévia "Por loja"/"Por pagamento"; o selo do Bazarim Score, no topo da seção, conta sozinho os projetos e certificados publicados), certificados de dados, sobre e contato |
 | `projeto1.html` | Todos os projetos com problema, dados, ferramentas e resultado (filtro também pela URL, ex.: `projeto1.html?filtro=powerbi`) |
 | `dashboard.html` | Os 3 dashboards do Power BI, com os indicadores de cada um; o relatório carrega só quando o visitante pede (o robô acende o visor e aponta para um minigráfico enquanto o Power BI carrega) |
 | `certificados.html` | 14 certificados com filtro por área, ampliação e download do PDF (o robô fecha uma gaveta e acena ao abrir a página e carimba uma folha a cada download) |
@@ -16,6 +16,8 @@ O site é **estático** (HTML, CSS e JavaScript puros, sem frameworks e sem etap
 | `detalhes-projeto.html` | Estudo de caso: robô de automação (PyAutoGUI + Pandas), com a simulação "Testar com um exemplo" (dados fictícios) |
 | `detalhes-projetocert.html` | Estudo de caso: junção de PDFs (PyPDF2) |
 | `Chat.html` | Estudo de caso: chat em tempo real (Flet) |
+| `cases.html` | Case da Dexco: o fluxo de contratos por e-mail e Smartsheet substituído por aceite digital via WhatsApp (ElevaSign). Antes × depois alternável, linha do tempo, base jurídica e depoimento com link para o post original. Quando houver um segundo case, esta página vira a lista e o da Dexco passa para `case-dexco.html` |
+| `bazarim-score.html` | Endereço antigo do Bazarim Score: redireciona para a seção Projetos da página inicial |
 | `projeto2.html`, `projeto3.html`, `webdevelopment.html`, `backend.html` | Páginas antigas: só redirecionam para `projeto1.html` (podem ser apagadas) |
 
 ## Estrutura de pastas
